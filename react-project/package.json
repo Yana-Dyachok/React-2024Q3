@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "cd .. && husky react-project/.husky"
   },
   "dependencies": {
     "react": "^18.3.1",

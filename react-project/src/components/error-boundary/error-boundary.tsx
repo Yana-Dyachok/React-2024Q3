@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return this.props.fallback || <p>Oops, something's wrong</p>;
     }
 
-    return this.props.children || null;
+    return this.props.children;
   }
 }
 

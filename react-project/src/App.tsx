@@ -1,10 +1,11 @@
-import './App.css';
-
+import ErrorBoundary from './components/error-boundary/error-boundary';
 function App() {
   return (
-    <>
-    <p>hi</p>
-    </>
+    <ErrorBoundary fallback={<p>Get Error</p>}>
+      <>
+        <p>Hi</p>
+      </>
+    </ErrorBoundary>
   );
 }
 

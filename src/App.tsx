@@ -31,7 +31,6 @@ function App() {
       </p>
     </>
   );
-  ou;
 }
 
 export default App;

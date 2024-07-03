@@ -19,8 +19,8 @@ body {
   -webkit-font-smoothing: auto;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: var(--c-green-600);
-  background-color: var(--c-yelow);
+  color: var(--c-white);
+  background-color: var(--c-green-900);
   overflow-x: hidden;
 }
 

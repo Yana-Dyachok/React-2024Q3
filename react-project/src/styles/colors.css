@@ -1,10 +1,9 @@
 :root {
-  --c-white: #faf4f4;
+  --c-white: #ffffff;
+  --c-red: #c72931;
   --c-gray: #8a8787;
-  --c-yelow: #feeeab;
-  --c-orange-100: #f99a54;
-  --c-orange-300: #f8853e;
-  --c-green-400: #136e35;
-  --c-green-600: #0e6047;
+  --c-grey-700: #303a40;
+  --c-grey-900: #283035;
+  --c-green-900: #354249;
   --c-black: black;
 }

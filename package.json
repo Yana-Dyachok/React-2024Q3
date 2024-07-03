@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -32,5 +32,11 @@
     "prettier": "^3.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.3.2"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
   }
 }

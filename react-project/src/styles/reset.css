@@ -1,0 +1,91 @@
+
+html {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+  }
+  
+  ul li {
+    list-style-type: none;
+    list-style-position: inside;
+  }
+  
+  button {
+    display: inline-block;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    outline: 0;
+  }
+  
+  html, body {
+    min-height: 100vh;
+  }
+  
+  input,
+  textarea, 
+  select, 
+  button {
+    font: inherit;
+    appearance: none;
+    border: none;
+    outline: 0;
+  }
+  
+  a {
+    text-decoration-color: transparent;
+    color: inherit;
+    transition: text-decoration-color 0.4s ease-in-out;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  
+  figure {
+    margin: 0;
+  }
+  
+  fieldset {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  
+  address {
+    font-style: normal;
+  }

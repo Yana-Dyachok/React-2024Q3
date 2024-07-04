@@ -1,5 +1,6 @@
 import ErrorBoundary from './components/error-boundary/error-boundary';
 import MainContent from './components/main-content/main-content';
+import Button from './components/ui/button/button';
 function App() {
   const throwError = () => {
     throw new Error('Manual error thrown');
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <ErrorBoundary fallback={<p>Get Error</p>}>
-      <button onClick={throwError}>Error</button>
+      <Button btnType="button" onClick={throwError}>
+        Error
+      </Button>
       <MainContent />
     </ErrorBoundary>
   );

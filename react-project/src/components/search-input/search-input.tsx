@@ -31,13 +31,14 @@ class SearchInput extends Component<SearchInputProps, SearchInputState> {
   }
 
   handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const query = event.target.value;
+    const query = event.target.value.trim();
     this.setState({ searchQuery: query });
     saveToLocalStorage('searchQuery', query);
   }
 
   handleSearchClick() {
-    this.props.onSearchChange(this.state.searchQuery);
+    const trimmedQuery = this.state.searchQuery.trim();
+    this.props.onSearchChange(trimmedQuery);
   }
 
   render() {

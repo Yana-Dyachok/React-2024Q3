@@ -4,11 +4,15 @@ import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
 import styles from './main-content.module.css';
+import { getFromLocalStorage } from '../../utils/local-storage/ls-handler';
 
-class MainContent extends Component<
-  Record<string, never>,
-  { data: ApiResponse | null; loading: boolean; searchQuery: string }
-> {
+interface MainContentState {
+  data: ApiResponse | null;
+  loading: boolean;
+  searchQuery: string;
+}
+
+class MainContent extends Component<Record<string, never>, MainContentState> {
   constructor(props: Record<string, never>) {
     super(props);
     this.state = {
@@ -70,15 +74,23 @@ class MainContent extends Component<
       <div className={styles.wrapper}>
         <div className={styles.mainContent}>
           <SearchInput onSearchChange={this.handleSearchChange} />
+          {
+            getFromLocalStorage('searchQuery') === '' || null ? (
+              <SearchResult medicalConditions={[]} />
+            ) : (
+              data && (
+                <SearchResult medicalConditions={data.medicalConditions} />
+              )
+            )
+            //  {data && (
+            //    <div>
+            //      <p>Page Number: {data.page.pageNumber}</p>
+            //      <p>Page Size: {data.page.pageSize}</p>
+            //    </div>
+            //  )}
+            //  {data && <SearchResult medicalConditions={data.medicalConditions} />}
+          }
           {loading && <Loading />}
-          {data && (
-            <div>
-              <p>Page Number: {data.page.pageNumber}</p>
-              <p>Page Size: {data.page.pageSize}</p>
-              {/* <pre>{JSON.stringify(data.medicalConditions, null, 2)}</pre> */}
-            </div>
-          )}
-          <SearchResult />
         </div>
       </div>
     );

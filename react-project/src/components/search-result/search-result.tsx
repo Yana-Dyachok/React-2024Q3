@@ -1,8 +1,9 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { ApiResponse, Conditions } from '../../api/api-interface';
 import Loading from '../ui/loading/loading';
 import styles from './search-result.module.css';
+import fetchData from '../../api/api-get-search';
 
 interface MedicalConditionsProps {
   medicalConditions: Conditions[];
@@ -22,29 +23,15 @@ class SearchResult extends Component<
     };
   }
 
-  async fetchData(page: number, pageSize: number) {
+  fetchData = async (page: number, pageSize: number) => {
+    this.setState({ loading: true });
     try {
-      const apiUrl = 'https://stapi.co/api/v1/rest/medicalCondition/search';
-      const params = new URLSearchParams({
-        pageNumber: (page - 1).toString(),
-        pageSize: pageSize.toString(),
-      });
-
-      const response = await fetch(`${apiUrl}?${params.toString()}`);
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch medical conditions: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const jsonData = await response.json();
-      console.log(jsonData);
+      const jsonData = await fetchData(page, pageSize);
       this.setState({ data: jsonData, loading: false });
     } catch (error) {
-      console.error('Error fetching medical conditions:', error);
       this.setState({ loading: false });
     }
-  }
+  };
 
   componentDidMount() {
     this.fetchData(this.state.page, this.state.pageSize);
@@ -69,8 +56,10 @@ class SearchResult extends Component<
           <section className={styles.searchResultBlock}>
             {data?.medicalConditions.map((condition: Conditions) => (
               <div key={condition.uid} className={styles.conditionBlock}>
-                <span className={styles.conditionTitle}>condition:</span>
                 <span className={styles.name}>{condition.name}</span>
+                <span className={styles.conditionTitle}>{`it's ${
+                  condition.psychologicalCondition ? '' : 'not'
+                } psychological condition`}</span>
               </div>
             ))}
           </section>
@@ -88,8 +77,10 @@ class SearchResult extends Component<
       <section className={styles.searchResultBlock}>
         {medicalConditions.map((condition: Conditions) => (
           <div key={condition.uid} className={styles.conditionBlock}>
-            <span className={styles.conditionTitle}>condition:</span>
             <span className={styles.name}>{condition.name}</span>
+            <span className={styles.conditionTitle}>{`it's ${
+              condition.psychologicalCondition ? '' : 'not'
+            } psychological condition`}</span>
           </div>
         ))}
       </section>

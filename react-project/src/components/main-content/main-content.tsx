@@ -1,7 +1,9 @@
 import { Component } from 'react';
 import { ApiResponse } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
+import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
+import styles from './main-content.module.css';
 
 class MainContent extends Component<
   Record<string, never>,
@@ -65,16 +67,19 @@ class MainContent extends Component<
   render() {
     const { loading, data } = this.state;
     return (
-      <div>
-        <SearchInput onSearchChange={this.handleSearchChange} />
-        {loading && <Loading />}
-        {data && (
-          <div>
-            <p>Page Number: {data.page.pageNumber}</p>
-            <p>Page Size: {data.page.pageSize}</p>
-            <pre>{JSON.stringify(data.medicalConditions, null, 2)}</pre>
-          </div>
-        )}
+      <div className={styles.wrapper}>
+        <div className={styles.mainContent}>
+          <SearchInput onSearchChange={this.handleSearchChange} />
+          {loading && <Loading />}
+          {data && (
+            <div>
+              <p>Page Number: {data.page.pageNumber}</p>
+              <p>Page Size: {data.page.pageSize}</p>
+              {/* <pre>{JSON.stringify(data.medicalConditions, null, 2)}</pre> */}
+            </div>
+          )}
+          <SearchResult />
+        </div>
       </div>
     );
   }

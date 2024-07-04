@@ -1,7 +1,7 @@
 .searchInputBlock {
   display: flex;
   padding: 0.5rem;
-  width: 26rem;
+  min-width: 100%;
   box-sizing: border-box;
   background-color: var(--c-grey-900);
   border: 0.17rem solid var(--c-white);

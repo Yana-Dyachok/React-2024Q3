@@ -7,10 +7,8 @@ function App() {
 
   return (
     <ErrorBoundary fallback={<p>Get Error</p>}>
-      <>
-        <MainContent />
-        <button onClick={throwError}>Throw Error</button>
-      </>
+      <button onClick={throwError}>Error</button>
+      <MainContent />
     </ErrorBoundary>
   );
 }

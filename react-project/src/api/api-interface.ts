@@ -12,12 +12,14 @@ interface Sort {
   clauses: string[][];
 }
 
-interface MedicalConditions {
-  conditions: string[][];
+export interface Conditions {
+  uid: string;
+  name: string;
+  psychologicalCondition: boolean;
 }
 
 export interface ApiResponse {
   page: Page;
   sort: Sort;
-  medicalConditions: MedicalConditions;
+  medicalConditions: Conditions[];
 }

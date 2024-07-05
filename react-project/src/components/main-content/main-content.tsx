@@ -16,11 +16,19 @@ interface MainContentState {
 class MainContent extends Component<Record<string, never>, MainContentState> {
   constructor(props: Record<string, never>) {
     super(props);
+    const searchQuery = getFromLocalStorage('searchQuery') || '';
     this.state = {
       data: null,
       loading: false,
-      searchQuery: getFromLocalStorage('searchQuery'),
+      searchQuery: searchQuery,
     };
+  }
+
+  componentDidMount() {
+    const { searchQuery } = this.state;
+    if (searchQuery || searchQuery === '') {
+      this.handleSearchChange(searchQuery);
+    }
   }
 
   fetchData = async (searchQuery: string) => {
@@ -41,15 +49,12 @@ class MainContent extends Component<Record<string, never>, MainContentState> {
 
   render() {
     const { loading, data } = this.state;
+    console.log(data);
     return (
       <div className={styles.wrapper}>
         <div className={styles.mainContent}>
           <SearchInput onSearchChange={this.handleSearchChange} />
-          {getFromLocalStorage('searchQuery') === '' || null ? (
-            <SearchResult medicalConditions={[]} />
-          ) : (
-            data && <SearchResult medicalConditions={data.medicalConditions} />
-          )}
+          {data && <SearchResult medicalConditions={data.medicalConditions} />}
           {loading && <Loading />}
         </div>
       </div>

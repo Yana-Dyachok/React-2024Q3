@@ -50,7 +50,11 @@ class SearchResult extends Component<
       return <Loading />;
     }
     const totalPages = data?.page.totalPages || 1;
-    if (!medicalConditions || medicalConditions.length === 0) {
+    if (
+      !medicalConditions ||
+      medicalConditions.length === 0 ||
+      medicalConditions.length === 50
+    ) {
       return (
         <>
           <section className={styles.searchResultBlock}>

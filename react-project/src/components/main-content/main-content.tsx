@@ -49,7 +49,6 @@ class MainContent extends Component<Record<string, never>, MainContentState> {
 
   render() {
     const { loading, data } = this.state;
-    console.log(data);
     return (
       <div className={styles.wrapper}>
         <div className={styles.mainContent}>

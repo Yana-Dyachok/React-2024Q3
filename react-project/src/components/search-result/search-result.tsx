@@ -9,9 +9,16 @@ interface MedicalConditionsProps {
   medicalConditions: Conditions[];
 }
 
+interface SearchResultState {
+  data: ApiResponse | null;
+  loading: boolean;
+  page: number;
+  pageSize: number;
+}
+
 class SearchResult extends Component<
   MedicalConditionsProps,
-  { data: ApiResponse | null; loading: boolean; page: number; pageSize: number }
+  SearchResultState
 > {
   constructor(props: MedicalConditionsProps) {
     super(props);
@@ -23,7 +30,12 @@ class SearchResult extends Component<
     };
   }
 
-  fetchData = async (page: number, pageSize: number) => {
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    const { page, pageSize } = this.state;
     this.setState({ loading: true });
     try {
       const jsonData = await fetchData(page, pageSize);
@@ -33,61 +45,53 @@ class SearchResult extends Component<
     }
   };
 
-  componentDidMount() {
-    this.fetchData(this.state.page, this.state.pageSize);
-  }
-
   handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
-    this.setState({ page: value, loading: true }, () => {
-      this.fetchData(this.state.page, this.state.pageSize);
-    });
+    this.setState({ page: value }, this.fetchData);
   };
+
+  renderConditions = (conditions: Conditions[]) => (
+    <section className={styles.searchResultBlock}>
+      {conditions.map((condition: Conditions) => (
+        <div key={condition.uid} className={styles.conditionBlock}>
+          <span className={styles.name}>{condition.name}</span>
+          <span className={styles.conditionTitle}>
+            {`it's ${
+              condition.psychologicalCondition ? '' : 'not'
+            } psychological condition`}
+          </span>
+        </div>
+      ))}
+    </section>
+  );
 
   render() {
     const { loading, data, page } = this.state;
     const { medicalConditions } = this.props;
+
     if (loading) {
       return <Loading />;
     }
-    const totalPages = data?.page.totalPages || 1;
-    if (
+
+    const conditionsToRender: Conditions[] =
       !medicalConditions ||
       medicalConditions.length === 0 ||
       medicalConditions.length === 50
-    ) {
-      return (
-        <>
-          <section className={styles.searchResultBlock}>
-            {data?.medicalConditions.map((condition: Conditions) => (
-              <div key={condition.uid} className={styles.conditionBlock}>
-                <span className={styles.name}>{condition.name}</span>
-                <span className={styles.conditionTitle}>{`it's ${
-                  condition.psychologicalCondition ? '' : 'not'
-                } psychological condition`}</span>
-              </div>
-            ))}
-          </section>
-          <Pagination
-            className={styles.pagination}
-            count={totalPages}
-            page={page}
-            onChange={this.handleChange}
-            sx={{ button: { color: 'inherit' } }}
-          />
-        </>
-      );
-    }
+        ? data?.medicalConditions || []
+        : medicalConditions;
+
+    const totalPages = data?.page.totalPages || 1;
+
     return (
-      <section className={styles.searchResultBlock}>
-        {medicalConditions.map((condition: Conditions) => (
-          <div key={condition.uid} className={styles.conditionBlock}>
-            <span className={styles.name}>{condition.name}</span>
-            <span className={styles.conditionTitle}>{`it's ${
-              condition.psychologicalCondition ? '' : 'not'
-            } psychological condition`}</span>
-          </div>
-        ))}
-      </section>
+      <>
+        {this.renderConditions(conditionsToRender)}
+        <Pagination
+          className={styles.pagination}
+          count={totalPages}
+          page={page}
+          onChange={this.handleChange}
+          sx={{ button: { color: 'inherit' } }}
+        />
+      </>
     );
   }
 }

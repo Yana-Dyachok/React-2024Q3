@@ -21,6 +21,7 @@ class SearchInput extends Component<SearchInputProps, SearchInputState> {
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +42,12 @@ class SearchInput extends Component<SearchInputProps, SearchInputState> {
     this.props.onSearchChange(trimmedQuery);
   }
 
+  handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      this.handleSearchClick();
+    }
+  }
+
   render() {
     return (
       <section className={styles.searchInputBlock}>
@@ -51,6 +58,7 @@ class SearchInput extends Component<SearchInputProps, SearchInputState> {
           pattern="[a-zA-Z]*"
           value={this.state.searchQuery}
           onChange={this.handleSearchChange}
+          onKeyPress={this.handleKeyPress}
           autoComplete="off"
         />
         <button

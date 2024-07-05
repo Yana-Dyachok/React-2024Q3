@@ -84,15 +84,17 @@ class SearchResult extends Component<
     return (
       <>
         {this.renderConditions(conditionsToRender)}
-        {conditionsToRender.length > 7 && (
-          <Pagination
-            className={styles.pagination}
-            count={totalPages}
-            page={page}
-            onChange={this.handleChange}
-            sx={{ button: { color: 'inherit' } }}
-          />
-        )}
+        {!medicalConditions ||
+          medicalConditions.length === 0 ||
+          (medicalConditions.length === 50 && (
+            <Pagination
+              className={styles.pagination}
+              count={totalPages}
+              page={page}
+              onChange={this.handleChange}
+              sx={{ button: { color: 'inherit' } }}
+            />
+          ))}
       </>
     );
   }

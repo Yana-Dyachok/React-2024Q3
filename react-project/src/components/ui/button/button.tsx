@@ -1,5 +1,7 @@
+import { Component } from 'react';
 import styles from './btn.module.css';
-type ButtonType = {
+
+type ButtonProps = {
   btnType: 'button' | 'submit';
   children: string;
   to?: string;
@@ -7,14 +9,14 @@ type ButtonType = {
   onClick?: () => void;
 };
 
-function Button({
-  btnType = 'button',
-  children,
-  onClick,
-  to,
-  disabled,
-}: ButtonType) {
-  const handleClick = () => {
+class Button extends Component<ButtonProps> {
+  static defaultProps = {
+    btnType: 'button',
+    disabled: false,
+  };
+
+  handleClick = () => {
+    const { to, onClick } = this.props;
     if (to) {
       window.location.href = to;
     }
@@ -23,16 +25,19 @@ function Button({
     }
   };
 
-  return (
-    <button
-      className={styles.btn}
-      type={btnType === 'button' ? 'button' : 'submit'}
-      onClick={handleClick}
-      disabled={disabled}
-    >
-      {children}
-    </button>
-  );
+  render() {
+    const { btnType, children, disabled } = this.props;
+    return (
+      <button
+        className={styles.btn}
+        type={btnType === 'button' ? 'button' : 'submit'}
+        onClick={this.handleClick}
+        disabled={disabled}
+      >
+        {children}
+      </button>
+    );
+  }
 }
 
 export default Button;

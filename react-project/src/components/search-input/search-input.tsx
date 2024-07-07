@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   getFromLocalStorage,
   saveToLocalStorage,
@@ -13,7 +13,7 @@ interface SearchInputState {
   searchQuery: string;
 }
 
-class SearchInput extends Component<SearchInputProps, SearchInputState> {
+class SearchInput extends React.Component<SearchInputProps, SearchInputState> {
   constructor(props: SearchInputProps) {
     super(props);
     this.state = {

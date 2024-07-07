@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 import styles from './btn.module.css';
 
 type ButtonProps = {
@@ -9,7 +9,7 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-class Button extends Component<ButtonProps> {
+class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     btnType: 'button',
     disabled: false,

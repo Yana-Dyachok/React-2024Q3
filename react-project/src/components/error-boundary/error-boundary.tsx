@@ -1,15 +1,19 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import React from 'react';
+import PopUp from '../ui/popup/popup';
 
 interface ErrorBoundaryProps {
-  fallback?: ReactNode;
-  children?: ReactNode;
+  fallback?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -19,14 +23,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, info: ErrorInfo): void {
+  componentDidCatch(error: Error, info: React.ErrorInfo): void {
     console.error('Error occurred:', error);
     console.error('Component stack:', info.componentStack);
   }
 
-  render(): ReactNode {
+  render(): React.ReactNode {
     if (this.state.hasError) {
-      return this.props.fallback || <p>Oops, something's wrong</p>;
+      return (
+        this.props.fallback || (
+          <PopUp text="Oops, something's wrong" duration={2000} />
+        )
+      );
     }
 
     return this.props.children;

@@ -1,11 +1,12 @@
-import { Component } from 'react';
+import React from 'react';
 import { ApiResponse } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
-import styles from './main-content.module.css';
 import { getFromLocalStorage } from '../../utils/local-storage/ls-handler';
 import fetchDataConditions from '../../api/api-post';
+
+import styles from './main-content.module.css';
 
 interface MainContentState {
   data: ApiResponse | null;
@@ -13,7 +14,10 @@ interface MainContentState {
   searchQuery: string;
 }
 
-class MainContent extends Component<Record<string, never>, MainContentState> {
+class MainContent extends React.Component<
+  Record<string, never>,
+  MainContentState
+> {
   constructor(props: Record<string, never>) {
     super(props);
     const searchQuery = getFromLocalStorage('searchQuery') || '';

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ApiResponse, Conditions } from '../../api/api-interface';
 import Loading from '../ui/loading/loading';
-import styles from './search-result.module.css';
 import fetchData from '../../api/api-get-search';
+import styles from './search-result.module.css';
 
 interface MedicalConditionsProps {
   medicalConditions: Conditions[];
@@ -15,7 +15,7 @@ interface SearchResultState {
   pageSize: number;
 }
 
-class SearchResult extends Component<
+class SearchResult extends React.Component<
   MedicalConditionsProps,
   SearchResultState
 > {

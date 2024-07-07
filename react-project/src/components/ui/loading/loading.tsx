@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import React from 'react';
 import styles from './loading.module.css';
 
-class Loading extends Component {
+class Loading extends React.Component {
   render() {
     return (
       <section className={styles.rectSpinner}>

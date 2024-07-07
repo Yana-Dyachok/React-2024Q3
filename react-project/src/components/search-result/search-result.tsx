@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Pagination from '@mui/material/Pagination';
 import { ApiResponse, Conditions } from '../../api/api-interface';
 import Loading from '../ui/loading/loading';
 import styles from './search-result.module.css';
@@ -26,7 +25,7 @@ class SearchResult extends Component<
       data: null,
       loading: true,
       page: 1,
-      pageSize: 10,
+      pageSize: 15,
     };
   }
 
@@ -65,7 +64,7 @@ class SearchResult extends Component<
   );
 
   render() {
-    const { loading, data, page } = this.state;
+    const { loading, data } = this.state;
     const { medicalConditions } = this.props;
 
     if (loading) {
@@ -79,24 +78,7 @@ class SearchResult extends Component<
         ? data?.medicalConditions || []
         : medicalConditions;
 
-    const totalPages = data?.page.totalPages || 1;
-
-    return (
-      <>
-        {this.renderConditions(conditionsToRender)}
-        {!medicalConditions ||
-          medicalConditions.length === 0 ||
-          (medicalConditions.length === 50 && (
-            <Pagination
-              className={styles.pagination}
-              count={totalPages}
-              page={page}
-              onChange={this.handleChange}
-              sx={{ button: { color: 'inherit' } }}
-            />
-          ))}
-      </>
-    );
+    return <>{this.renderConditions(conditionsToRender)}</>;
   }
 }
 

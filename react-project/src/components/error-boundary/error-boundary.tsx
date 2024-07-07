@@ -1,9 +1,8 @@
 import React from 'react';
-import PopUp from '../ui/popup/popup';
 
 interface ErrorBoundaryProps {
-  fallback?: React.ReactNode;
-  children?: React.ReactNode;
+  fallback: React.ReactNode;
+  children: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -30,11 +29,7 @@ class ErrorBoundary extends React.Component<
 
   render(): React.ReactNode {
     if (this.state.hasError) {
-      return (
-        this.props.fallback || (
-          <PopUp text="Oops, something's wrong" duration={2000} />
-        )
-      );
+      return this.props.fallback;
     }
 
     return this.props.children;

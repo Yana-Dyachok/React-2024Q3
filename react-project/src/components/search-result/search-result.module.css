@@ -1,0 +1,31 @@
+.searchResultBlock {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+  min-height: 20rem;
+  box-sizing: border-box;
+  background-color: var(--c-grey-900);
+  border: 0.17rem solid var(--c-white);
+  border-radius: 0.2rem;
+}
+
+.conditionBlock {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 0.05rem dotted rgba(233, 223, 223, 0.2);
+}
+
+.conditionTitle {
+  font-family: 'oswald';
+  color: var(--c-white);
+}
+
+.name {
+  color: var(--c-red);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}

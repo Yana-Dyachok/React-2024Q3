@@ -1,0 +1,32 @@
+@import './fonts.css';
+@import './colors.css';
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+body {
+  margin: 0 auto;
+  font-family: 'salina trial';
+  font-size: 1.5rem;
+  font-weight: 400;
+  -webkit-font-smoothing: auto;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: var(--c-white);
+  background-color: var(--c-green-900);
+  overflow-x: hidden;
+}
+
+@media (max-width: 580px) {
+  body {
+    font-size: 1rem;
+  }
+}

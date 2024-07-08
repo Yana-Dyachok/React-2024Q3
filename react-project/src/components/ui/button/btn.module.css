@@ -1,0 +1,32 @@
+.btn {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--c-red);
+  background-color: var(--c-grey-900);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--c-red));
+  cursor: pointer;
+}
+
+.btn:active,
+.btn:focus {
+  background-color: var(--c-green-900);
+}
+
+.btn:disabled {
+  border: none;
+  background-color: var(--c-gray);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) and (pointer: fine) {
+  .btn:hover:not([disabled]) {
+    color: var(--c-white);
+    background-color: var(--c-grey-700);
+    filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--c-white));
+    transform: scale(1.05);
+  }
+}

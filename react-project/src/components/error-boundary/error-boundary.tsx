@@ -1,8 +1,10 @@
 import React from 'react';
+import Button from '../ui/button/button';
+import styles from '../main-content/main-content.module.css';
 
 interface ErrorBoundaryProps {
-  fallback: React.ReactNode;
-  children: React.ReactNode;
+  fallback?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -29,7 +31,14 @@ class ErrorBoundary extends React.Component<
 
   render(): React.ReactNode {
     if (this.state.hasError) {
-      return this.props.fallback;
+      return (
+        <div className={styles.wrapper}>
+          <h2>Ooops... You are getting an error</h2>
+          <Button btnType="button" to="/">
+            Back
+          </Button>
+        </div>
+      );
     }
 
     return this.props.children;

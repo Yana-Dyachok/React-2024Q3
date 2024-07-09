@@ -24,8 +24,3 @@
 .name {
   color: var(--c-red);
 }
-
-.pagination {
-  display: flex;
-  justify-content: center;
-}

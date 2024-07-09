@@ -1,0 +1,57 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sliderBtn {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  background-color: var(--c-white);
+}
+
+.prev {
+  mask-image: url('../../../assets/svg-icons/icon-arrow-left.svg');
+}
+
+.next {
+  mask-image: url('../../../assets/svg-icons/icon-arrow-right.svg');
+}
+
+.pageNumber {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: inherit;
+}
+
+.pageNumber:hover {
+  color: var(--c-gray);
+  background-color: var(--c-grey-700);
+  border-radius: 50%;
+}
+
+.active {
+  color: var(--c-red);
+}
+
+.ellipsis {
+  font-size: 1rem;
+  color: var(--c-gray);
+}
+
+.sliderBtn:disabled {
+  border: none;
+  box-shadow: none;
+  cursor: not-allowed;
+  background-color: var(--c-gray);
+}
+
+@media (hover: hover) and (pointer: fine) and (pointer: fine) {
+  .sliderBtn:hover:not([disabled]) {
+    background-color: var(--c-red);
+  }
+}

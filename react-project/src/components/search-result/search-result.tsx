@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ApiResponse, Conditions } from '../../api/api-interface';
 import Loading from '../ui/loading/loading';
 import fetchData from '../../api/api-get-search';
-import { Pagination } from '@mui/material';
+import Pagination from '../ui/pagination/pagination';
 import styles from './search-result.module.css';
 
 interface MedicalConditionsProps {
@@ -33,7 +33,7 @@ const SearchResult: React.FC<MedicalConditionsProps> = ({
     fetchDataAsync();
   }, [page, pageSize]);
 
-  const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (value: number) => {
     setPage(value);
   };
 
@@ -72,11 +72,9 @@ const SearchResult: React.FC<MedicalConditionsProps> = ({
         medicalConditions.length === 0 ||
         medicalConditions.length === 50) && (
         <Pagination
-          className={styles.pagination}
-          count={totalPages}
-          page={page}
-          onChange={handleChange}
-          sx={{ button: { color: 'inherit' } }}
+          totalPages={totalPages}
+          currentPage={page}
+          onPageChange={handleChange}
         />
       )}
     </>

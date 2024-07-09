@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './btn.module.css';
 
 type ButtonProps = {
@@ -9,14 +8,14 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-class Button extends React.Component<ButtonProps> {
-  static defaultProps = {
-    btnType: 'button',
-    disabled: false,
-  };
-
-  handleClick = () => {
-    const { to, onClick } = this.props;
+const Button = ({
+  btnType = 'button',
+  children,
+  onClick,
+  to,
+  disabled,
+}: ButtonProps) => {
+  const handleClick = () => {
     if (to) {
       window.location.href = to;
     }
@@ -25,19 +24,16 @@ class Button extends React.Component<ButtonProps> {
     }
   };
 
-  render() {
-    const { btnType, children, disabled } = this.props;
-    return (
-      <button
-        className={styles.btn}
-        type={btnType === 'button' ? 'button' : 'submit'}
-        onClick={this.handleClick}
-        disabled={disabled}
-      >
-        {children}
-      </button>
-    );
-  }
-}
+  return (
+    <button
+      className={styles.btn}
+      type={btnType === 'button' ? 'button' : 'submit'}
+      onClick={handleClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default Button;

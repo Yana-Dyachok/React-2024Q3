@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   getFromLocalStorage,
   saveToLocalStorage,
@@ -9,66 +9,52 @@ interface SearchInputProps {
   onSearchChange: (search: string) => void;
 }
 
-interface SearchInputState {
-  searchQuery: string;
-}
+const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-class SearchInput extends React.Component<SearchInputProps, SearchInputState> {
-  constructor(props: SearchInputProps) {
-    super(props);
-    this.state = {
-      searchQuery: '',
-    };
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const savedQuery = getFromLocalStorage('searchQuery');
     if (savedQuery) {
-      this.setState({ searchQuery: savedQuery });
+      setSearchQuery(savedQuery);
     }
-  }
+  }, []);
 
-  handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim();
-    this.setState({ searchQuery: query });
+    setSearchQuery(query);
     saveToLocalStorage('searchQuery', query);
-  }
+  };
 
-  handleSearchClick() {
-    const trimmedQuery = this.state.searchQuery.trim();
-    this.props.onSearchChange(trimmedQuery);
-  }
+  const handleSearchClick = () => {
+    const trimmedQuery = searchQuery.trim();
+    onSearchChange(trimmedQuery);
+  };
 
-  handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      this.handleSearchClick();
+      handleSearchClick();
     }
-  }
+  };
 
-  render() {
-    return (
-      <section className={styles.searchInputBlock}>
-        <input
-          className={styles.searchInput}
-          type="text"
-          placeholder="Search"
-          pattern="[a-zA-Z]*"
-          value={this.state.searchQuery}
-          onChange={this.handleSearchChange}
-          onKeyPress={this.handleKeyPress}
-          autoComplete="off"
-        />
-        <button
-          type="button"
-          className={styles.searchBtn}
-          onClick={this.handleSearchClick}
-        />
-      </section>
-    );
-  }
-}
+  return (
+    <section className={styles.searchInputBlock}>
+      <input
+        className={styles.searchInput}
+        type="text"
+        placeholder="Search"
+        pattern="[a-zA-Z]*"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        onKeyPress={handleKeyPress}
+        autoComplete="off"
+      />
+      <button
+        type="button"
+        className={styles.searchBtn}
+        onClick={handleSearchClick}
+      />
+    </section>
+  );
+};
 
 export default SearchInput;

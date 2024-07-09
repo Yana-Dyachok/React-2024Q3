@@ -1,35 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../ui/button/button';
 
-interface ErrorBtnProps {}
+const ErrorButton: React.FC = () => {
+  const [hasError, setHasError] = useState(false);
 
-interface ErrorBtnState {
-  hasError: boolean;
-}
-
-class ErrorButton extends React.Component<ErrorBtnProps, ErrorBtnState> {
-  constructor(props: ErrorBtnProps) {
-    super(props);
-    this.state = { hasError: false };
+  if (hasError) {
+    throw new Error('You are getting an error');
   }
 
-  render() {
-    const { hasError } = this.state;
+  const handleClick = () => {
+    setHasError(true);
+  };
 
-    if (hasError) {
-      throw new Error('You are getting an error');
-    }
-
-    const handleClick = () => {
-      this.setState({ hasError: true });
-    };
-
-    return (
-      <Button btnType="button" onClick={handleClick}>
-        Error
-      </Button>
-    );
-  }
-}
+  return (
+    <Button btnType="button" onClick={handleClick}>
+      Error
+    </Button>
+  );
+};
 
 export default ErrorButton;

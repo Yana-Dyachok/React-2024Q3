@@ -1,17 +1,19 @@
 import React from 'react';
-import { ApiResponse } from '../../api/api-interface';
+import { Conditions } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
-import { getFromLocalStorage } from '../../utils/local-storage/ls-handler';
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '../../utils/local-storage/ls-handler';
 import fetchDataConditions from '../../api/api-post';
 
 import styles from './main-content.module.css';
 
 interface MainContentState {
-  data: ApiResponse | null;
+  data: Conditions[];
   loading: boolean;
-  searchQuery: string;
 }
 
 class MainContent extends React.Component<
@@ -20,45 +22,45 @@ class MainContent extends React.Component<
 > {
   constructor(props: Record<string, never>) {
     super(props);
-    const searchQuery = getFromLocalStorage('searchQuery') || '';
     this.state = {
-      data: null,
-      loading: false,
-      searchQuery: searchQuery,
+      data: [],
+      loading: true,
     };
   }
 
-  componentDidMount() {
-    const { searchQuery } = this.state;
-    if (searchQuery || searchQuery === '') {
-      this.handleSearchChange(searchQuery);
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const LSResult: string = getFromLocalStorage('searchQuery');
+
+    const ApiResult: Conditions[] | null = await fetchDataConditions(LSResult);
+    if (ApiResult) {
+      this.setState({ data: ApiResult, loading: false });
+    } else {
+      this.setState({ data: [], loading: false });
     }
   }
 
-  fetchData = async (searchQuery: string) => {
+  handleSearchChange = async (search: string) => {
     this.setState({ loading: true });
-    try {
-      const jsonData = await fetchDataConditions(searchQuery);
-      this.setState({ data: jsonData, loading: false });
-    } catch (error) {
-      this.setState({ loading: false });
+
+    const searchValue = search.trim();
+    saveToLocalStorage('searchQuery', searchValue);
+
+    const result: Conditions[] | null = await fetchDataConditions(searchValue);
+    if (result) {
+      this.setState({ data: result, loading: false });
+    } else {
+      this.setState({ data: [], loading: false });
     }
   };
 
-  handleSearchChange = (searchQuery: string) => {
-    this.setState({ searchQuery }, () => {
-      this.fetchData(searchQuery);
-    });
-  };
-
   render() {
-    const { loading, data } = this.state;
+    const { data, loading } = this.state;
     return (
       <div className={styles.wrapper}>
         <div className={styles.mainContent}>
           <SearchInput onSearchChange={this.handleSearchChange} />
-          {data && <SearchResult medicalConditions={data.medicalConditions} />}
-          {loading && <Loading />}
+          {loading ? <Loading /> : <SearchResult medicalConditions={data} />}
         </div>
       </div>
     );

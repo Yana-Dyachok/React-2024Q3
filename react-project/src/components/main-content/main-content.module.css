@@ -2,17 +2,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 4rem;
   padding: 0.5rem;
 }
 
 .mainContent {
   max-width: 50rem;
-  min-width: 20rem;
+  min-width: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   gap: 1rem;
+}
+
+@media (max-width: 1080px) {
+  .wrapper {
+    gap: 1rem;
+  }
+  .mainContent {
+    min-width: 20rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .wrapper {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }

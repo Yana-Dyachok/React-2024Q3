@@ -1,0 +1,14 @@
+.conditionBlock {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 0.05rem dotted rgba(233, 223, 223, 0.2);
+}
+
+.conditionTitle {
+  font-family: 'oswald';
+  color: var(--c-white);
+}
+
+.name {
+  color: var(--c-red);
+}

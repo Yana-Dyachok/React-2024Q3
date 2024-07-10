@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { ApiResponse, Conditions } from '../../api/api-interface';
 import Loading from '../ui/loading/loading';
 import fetchData from '../../api/api-get-search';
+import fetchDataConditions from '../../api/api-post';
 import Pagination from '../ui/pagination/pagination';
-import styles from './search-result.module.css';
-
-interface MedicalConditionsProps {
-  medicalConditions: Conditions[];
+import SearchList from '../search-list/search-list';
+interface SearchResultProps {
+  searchData: ApiResponse;
+  searchQuery: string;
 }
 
-const SearchResult: React.FC<MedicalConditionsProps> = ({
-  medicalConditions,
+const SearchResult: React.FC<SearchResultProps> = ({
+  searchData,
+  searchQuery,
 }) => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -21,62 +23,51 @@ const SearchResult: React.FC<MedicalConditionsProps> = ({
     const fetchDataAsync = async () => {
       setLoading(true);
       try {
-        const jsonData = await fetchData(page, pageSize);
-        setData(jsonData);
+        const apiResult =
+          searchQuery === ''
+            ? await fetchData(page, pageSize)
+            : await fetchDataConditions(searchQuery, pageSize, page);
+        if (apiResult !== null) {
+          setData(apiResult);
+        } else {
+          setData(null);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
+        setData(null);
       } finally {
         setLoading(false);
       }
     };
 
     fetchDataAsync();
-  }, [page, pageSize]);
+  }, [page, pageSize, searchQuery]);
 
   const handleChange = (value: number) => {
     setPage(value);
   };
-
-  const renderConditions = (conditions: Conditions[]) => (
-    <section className={styles.searchResultBlock}>
-      {conditions.map((condition: Conditions) => (
-        <div key={condition.uid} className={styles.conditionBlock}>
-          <span className={styles.name}>{condition.name}</span>
-          <span className={styles.conditionTitle}>
-            {`it's ${
-              condition.psychologicalCondition ? '' : 'not'
-            } psychological condition`}
-          </span>
-        </div>
-      ))}
-    </section>
-  );
 
   if (loading) {
     return <Loading />;
   }
 
   const conditionsToRender: Conditions[] =
-    !medicalConditions ||
-    medicalConditions.length === 0 ||
-    medicalConditions.length === 50
+    searchQuery === ''
       ? data?.medicalConditions || []
-      : medicalConditions;
-
-  const totalPages = data?.page.totalPages || 1;
+      : searchData.medicalConditions;
+  const totalPages =
+    searchQuery === ''
+      ? data?.page.totalPages || 1
+      : searchData.page.totalPages;
 
   return (
     <>
-      {renderConditions(conditionsToRender)}
-      {(!medicalConditions ||
-        medicalConditions.length === 0 ||
-        medicalConditions.length === 50) && (
-        <Pagination
-          totalPages={totalPages}
-          currentPage={page}
-          onPageChange={handleChange}
-        />
-      )}
+      <SearchList conditions={conditionsToRender} />
+      <Pagination
+        totalPages={totalPages}
+        currentPage={page}
+        onPageChange={handleChange}
+      />
     </>
   );
 };

@@ -1,12 +1,12 @@
-import { ApiResponse, Conditions } from './api-interface';
+import { ApiResponse } from './api-interface';
 
 const PATH = `https://stapi.co/api/v1/rest/medicalCondition/search`;
 
 const fetchDataConditions = async (
   search: string,
-  pageNumber = 0,
-  pageSize = 15,
-): Promise<Conditions[] | null> => {
+  pageSize: number,
+  pageNumber: number,
+): Promise<ApiResponse | null> => {
   const url = `${PATH}?pageNumber=${pageNumber}&pageSize=${pageSize}`;
   try {
     const result: Response = await fetch(url, {
@@ -18,7 +18,7 @@ const fetchDataConditions = async (
     if (!result.ok) return null;
 
     const response: ApiResponse = await result.json();
-    return response.medicalConditions;
+    return response;
   } catch (error) {
     console.error('Error fetching data: ', error);
     return null;

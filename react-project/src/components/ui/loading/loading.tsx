@@ -4,22 +4,9 @@ const Loading = () => {
   return (
     <section className={styles.rectSpinner}>
       <div className={styles.loadingContainer}>
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
-        <div className={styles.rect} />
+        {[...Array(16)].map((_, index) => (
+          <div key={`${index}-rect`} className={styles.rect} />
+        ))}
       </div>
     </section>
   );

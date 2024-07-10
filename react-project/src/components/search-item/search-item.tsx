@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './search-item.module.css';
 
 interface SearchItemProps {
@@ -10,12 +11,16 @@ interface SearchItemProps {
 }
 
 const SearchItem: React.FC<SearchItemProps> = ({ condition }) => (
-  <div className={styles.conditionBlock}>
+  <Link
+    className={styles.conditionBlock}
+    key={condition.uid}
+    to={`item/${condition.uid}`}
+  >
     <span className={styles.name}>{condition.name}</span>
     <span className={styles.conditionTitle}>
-      {`it's ${condition.psychologicalCondition ? '' : 'not'} psychological condition`}
+      {`It's ${condition.psychologicalCondition ? '' : 'not'} a psychological condition`}
     </span>
-  </div>
+  </Link>
 );
 
 export default SearchItem;

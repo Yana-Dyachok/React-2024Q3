@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { ApiResponse } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
@@ -71,6 +72,7 @@ const MainContent: React.FC = () => {
           <SearchResult searchData={data!} searchQuery={searchQuery} />
         )}
       </div>
+      <Outlet />
     </div>
   );
 };

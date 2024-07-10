@@ -62,12 +62,13 @@ const SearchResult: React.FC<SearchResultProps> = ({
 
   return (
     <>
-      <SearchList conditions={conditionsToRender} />
+      {' '}
       <Pagination
         totalPages={totalPages}
         currentPage={page}
         onPageChange={handleChange}
       />
+      <SearchList conditions={conditionsToRender} />
     </>
   );
 };

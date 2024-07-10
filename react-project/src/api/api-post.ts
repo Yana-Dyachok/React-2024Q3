@@ -1,34 +1,27 @@
-const fetchDataConditions = async (searchQuery: string) => {
+import { ApiResponse, Conditions } from './api-interface';
+
+const PATH = `https://stapi.co/api/v1/rest/medicalCondition/search`;
+
+const fetchDataConditions = async (
+  search: string,
+  pageNumber = 0,
+  pageSize = 15,
+): Promise<Conditions[] | null> => {
+  const url = `${PATH}?pageNumber=${pageNumber}&pageSize=${pageSize}`;
   try {
-    const apiUrl = 'https://stapi.co/api/v1/rest/medicalCondition/search';
-    const params = new URLSearchParams({
-      sort: 'name,ASC',
-    });
-
-    const bodyData = {
-      name: searchQuery,
-      psychologicalCondition: 'true',
-    };
-
-    const response = await fetch(`${apiUrl}?${params.toString()}`, {
+    const result: Response = await fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams(bodyData),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ name: search }),
     });
 
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch medical conditions: ${response.status} ${response.statusText}`,
-      );
-    }
+    if (!result.ok) return null;
 
-    const jsonData = await response.json();
-    return jsonData;
+    const response: ApiResponse = await result.json();
+    return response.medicalConditions;
   } catch (error) {
-    console.error('Error fetching medical conditions:', error);
-    throw error;
+    console.error('Error fetching data: ', error);
+    return null;
   }
 };
 

@@ -1,47 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { ApiResponse } from '../../api/api-interface';
+import { Conditions } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
-import { getFromLocalStorage } from '../../utils/local-storage/ls-handler';
+import useSearchQuery from '../../utils/hooks/ls-hook';
 import fetchDataConditions from '../../api/api-post';
 import styles from './main-content.module.css';
 
 const MainContent: React.FC = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(
-    getFromLocalStorage('searchQuery') || '',
-  );
+  const [data, setData] = useState<Conditions[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
 
   useEffect(() => {
-    if (searchQuery || searchQuery === '') {
-      fetchData(searchQuery);
-    }
+    const fetchData = async () => {
+      setLoading(true);
+      const apiResult: Conditions[] | null =
+        await fetchDataConditions(searchQuery);
+      if (apiResult) {
+        setData(apiResult);
+      } else {
+        setData([]);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
   }, [searchQuery]);
 
-  const fetchData = async (query: string) => {
+  const handleSearchChange = async (search: string) => {
     setLoading(true);
-    try {
-      const jsonData = await fetchDataConditions(query);
-      setData(jsonData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
+    const searchValue = search.trim();
+    setSearchQuery(searchValue);
+    const result: Conditions[] | null = await fetchDataConditions(searchValue);
+    if (result) {
+      setData(result);
+    } else {
+      setData([]);
     }
-  };
-
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query);
+    setLoading(false);
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainContent}>
         <SearchInput onSearchChange={handleSearchChange} />
-        {data && <SearchResult medicalConditions={data.medicalConditions} />}
-        {loading && <Loading />}
+        {loading ? <Loading /> : <SearchResult medicalConditions={data} />}
       </div>
     </div>
   );

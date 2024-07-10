@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  getFromLocalStorage,
-  saveToLocalStorage,
-} from '../../utils/local-storage/ls-handler';
+import React from 'react';
+import useSearchQuery from '../../utils/hooks/ls-hook';
 import styles from './search-input.module.css';
 
 interface SearchInputProps {
@@ -10,19 +7,11 @@ interface SearchInputProps {
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    const savedQuery = getFromLocalStorage('searchQuery');
-    if (savedQuery) {
-      setSearchQuery(savedQuery);
-    }
-  }, []);
+  const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim();
     setSearchQuery(query);
-    saveToLocalStorage('searchQuery', query);
   };
 
   const handleSearchClick = () => {

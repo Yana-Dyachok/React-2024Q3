@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import fetchMedicalConditionById from '../../api/api-get';
 import { Conditions } from '../../api/api-interface';
-import Loading from '../ui/loading/loading';
+import Loading from '../../components/ui/loading/loading';
 
 import styles from './description-item.module.css';
 
@@ -16,8 +16,10 @@ const DescriptionItem: React.FC = () => {
     if (itemId) {
       const fetchData = async () => {
         try {
-          const apiResult: Conditions | null =
-            await fetchMedicalConditionById(itemId);
+          const delay = new Promise((resolve) => setTimeout(resolve, 1000));
+          const apiResultPromise = fetchMedicalConditionById(itemId);
+
+          const [apiResult] = await Promise.all([apiResultPromise, delay]);
           setCondition(apiResult);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -33,19 +35,25 @@ const DescriptionItem: React.FC = () => {
     }
   }, [itemId]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <div className={styles.descriptionBlock}>
-      <Link to={`..${search}`}>
-        <button className={styles.closeButton} />
-      </Link>
-      <span className={styles.name}>{condition?.name}</span>
-      <span className={styles.descriptionTitle}>
-        {`It's ${condition?.psychologicalCondition ? '' : 'not'} a psychological condition`}
-      </span>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Link to={`..${search}`}>
+            <button className={styles.closeButton} />
+          </Link>
+          <div className={styles.descriptionContainer}>
+            <span>Condition:</span>
+            <span className={styles.name}>{condition?.name}</span>
+            <span className={styles.descriptionTitle}>
+              {`It's ${condition?.psychologicalCondition ? '' : 'not'} a psychological condition`}
+            </span>
+            <div className={styles.medicalIcon}></div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

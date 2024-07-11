@@ -31,3 +31,6 @@ Tsconfig                  | compiles files and builds the app:     | npm run bui
 - press o + enter to open in browser
 - press c + enter to clear console
 - press q + enter to quit
+
+### RESTfull [api](https://editor.swagger.io/?url=https://stapi.co/api/v1/rest/common/download/stapi.yaml) which supports search and pagination
+### [Tasks](https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/tasks)

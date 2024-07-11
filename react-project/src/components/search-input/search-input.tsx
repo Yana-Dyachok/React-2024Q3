@@ -26,7 +26,10 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
   };
 
   return (
-    <section className={styles.searchInputBlock}>
+    <section
+      className={styles.searchInputBlock}
+      onClick={(event) => event.stopPropagation()}
+    >
       <input
         className={styles.searchInput}
         type="text"

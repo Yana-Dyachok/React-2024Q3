@@ -12,13 +12,15 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-  const handlePrevious = () => {
+  const handlePrevious = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handleNext = () => {
+  const handleNext = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }

@@ -6,12 +6,20 @@ import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import fetchDataConditions from '../../api/api-post';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './main-content.module.css';
 
 const MainContent: React.FC = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const closeDescription = () => {
+    if (pathname !== '/') {
+      navigate(`/${search}`);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +73,7 @@ const MainContent: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <div className={styles.mainContent}>
+        <div className={styles.mainContent} onClick={closeDescription}>
           <SearchInput onSearchChange={handleSearchChange} />
           {loading ? (
             <Loading />

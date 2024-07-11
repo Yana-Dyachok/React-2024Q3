@@ -17,6 +17,14 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"],
+      "@api/*": ["api/*"],
+      "@styles/*": ["styles/*"]
+    },
 
     /* Linting */
     "strict": true,
@@ -25,5 +33,6 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true
   },
-  "include": ["src"]
+  // "include": ["src", "jest.setup.js"]
+  "include": ["./src/**/*", "styled.d.ts"]
 }

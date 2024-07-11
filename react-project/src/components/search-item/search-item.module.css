@@ -1,6 +1,6 @@
 .conditionBlock {
   width: 15rem;
-  height: 12rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .name {
-  height: 8rem;
+  height: 6.5rem;
   color: var(--c-red);
 }
 

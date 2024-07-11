@@ -29,7 +29,7 @@
 
 @media (max-width: 580px) {
   .container {
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     gap: 2rem;
   }
 }

@@ -19,8 +19,8 @@ const MainContent: React.FC = () => {
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
 
-  const closeDescription = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget && pathname !== '/') {
+  const closeDescription = () => {
+    if (pathname !== '/') {
       navigate(`/${search}`);
     }
   };
@@ -69,7 +69,8 @@ const MainContent: React.FC = () => {
     setLoading(true);
     const searchValue = search.trim();
     setSearchQuery(searchValue);
-
+    setPage(1);
+    navigate(`${pathname}?pageSize=${pageSize}&page=${1}`);
     try {
       const response: ApiResponse | null = await fetchDataConditions(
         searchValue,

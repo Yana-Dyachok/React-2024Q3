@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
 import { ApiResponse } from '../../api/api-interface';
 import SearchInput from '../search-input/search-input';
 import SearchResult from '../search-result/search-result';
 import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import fetchDataConditions from '../../api/api-post';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import styles from './main-content.module.css';
 
 const MainContent: React.FC = () => {

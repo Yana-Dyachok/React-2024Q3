@@ -5,6 +5,8 @@ import fetchData from '../../api/api-get-search';
 import fetchDataConditions from '../../api/api-post';
 import Pagination from '../ui/pagination/pagination';
 import SearchList from '../search-list/search-list';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 interface SearchResultProps {
   searchData: ApiResponse;
   searchQuery: string;
@@ -18,6 +20,19 @@ const SearchResult: React.FC<SearchResultProps> = ({
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(15);
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(search);
+    const initialPage = urlParams.get('page');
+    if (initialPage && !isNaN(Number(initialPage))) {
+      setPage(Number(initialPage));
+    } else {
+      setPage(1);
+      navigate(`/?pageSize=${pageSize}&page=1`, { replace: true });
+    }
+  }, [search, navigate, pageSize]);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -44,7 +59,7 @@ const SearchResult: React.FC<SearchResultProps> = ({
   }, [page, pageSize, searchQuery]);
 
   const handleChange = (value: number) => {
-    setPage(value);
+    navigate(`${pathname}?pageSize=${pageSize}&page=${value}`);
   };
 
   if (loading) {
@@ -62,7 +77,6 @@ const SearchResult: React.FC<SearchResultProps> = ({
 
   return (
     <>
-      {' '}
       <Pagination
         totalPages={totalPages}
         currentPage={page}

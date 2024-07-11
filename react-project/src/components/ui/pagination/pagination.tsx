@@ -98,7 +98,12 @@ const Pagination: React.FC<PaginationProps> = ({
         onClick={handlePrevious}
         disabled={currentPage === 1}
       ></button>
-      <div className={styles.numbersBlock}>{renderPageNumbers()}</div>
+      <div
+        className={styles.numbersBlock}
+        onClick={(event) => event.stopPropagation()}
+      >
+        {renderPageNumbers()}
+      </div>
       <button
         className={`${styles.sliderBtn} ${styles.next}`}
         onClick={handleNext}

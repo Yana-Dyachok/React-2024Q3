@@ -15,11 +15,12 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => (
     className={styles.conditionBlock}
     key={condition.uid}
     to={`item/${condition.uid}`}
+    onClick={(event) => event.stopPropagation()}
   >
     <span className={styles.name}>{condition.name}</span>
-    <span className={styles.conditionTitle}>
-      {`It's ${condition.psychologicalCondition ? '' : 'not'} a psychological condition`}
-    </span>
+    <div
+      className={`${styles.condition} ${condition.psychologicalCondition ? '' : styles.notCondition}`}
+    ></div>
   </Link>
 );
 

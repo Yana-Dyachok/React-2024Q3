@@ -1,7 +1,8 @@
 .searchInputBlock {
   display: flex;
   padding: 0.5rem;
-  min-width: 100%;
+  max-width: 50rem;
+  min-width: 40rem;
   box-sizing: border-box;
   background-color: var(--c-grey-900);
   border: 0.17rem solid var(--c-white);
@@ -36,8 +37,26 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1080px) {
   .searchInputBlock {
-    width: 15rem;
+    min-width: 30rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .searchInputBlock {
+    min-width: 25rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .searchInputBlock {
+    min-width: 15rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .searchInputBlock {
+    min-width: 10rem;
   }
 }

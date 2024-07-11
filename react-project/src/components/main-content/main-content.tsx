@@ -64,15 +64,17 @@ const MainContent: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.mainContent}>
-        <SearchInput onSearchChange={handleSearchChange} />
-        {loading ? (
-          <Loading />
-        ) : (
-          <SearchResult searchData={data!} searchQuery={searchQuery} />
-        )}
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <SearchInput onSearchChange={handleSearchChange} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <SearchResult searchData={data!} searchQuery={searchQuery} />
+          )}
+        </div>
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 };

@@ -7,7 +7,7 @@ const fetchDataConditions = async (
   pageSize: number,
   pageNumber: number,
 ): Promise<ApiResponse | null> => {
-  const url = `${PATH}?pageNumber=${pageNumber}&pageSize=${pageSize}`;
+  const url = `${PATH}?pageNumber=${pageNumber - 1}&pageSize=${pageSize}`;
   try {
     const result: Response = await fetch(url, {
       method: 'POST',

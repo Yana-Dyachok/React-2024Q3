@@ -13,26 +13,23 @@ const DescriptionItem: React.FC = () => {
   const { search } = useLocation();
 
   useEffect(() => {
-    if (itemId) {
-      const fetchData = async () => {
-        try {
-          const delay = new Promise((resolve) => setTimeout(resolve, 1000));
-          const apiResultPromise = fetchMedicalConditionById(itemId);
-
-          const [apiResult] = await Promise.all([apiResultPromise, delay]);
+    const fetchData = async () => {
+      try {
+        if (itemId) {
+          const apiResult = await fetchMedicalConditionById(itemId);
           setCondition(apiResult);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          setCondition(null);
-        } finally {
-          setLoading(false);
         }
-      };
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setCondition(null);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }
+    };
 
-      fetchData();
-    } else {
-      setLoading(false);
-    }
+    fetchData();
   }, [itemId]);
 
   return (
@@ -57,5 +54,4 @@ const DescriptionItem: React.FC = () => {
     </div>
   );
 };
-
 export default DescriptionItem;

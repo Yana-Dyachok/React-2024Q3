@@ -12,7 +12,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "prepare": "cd .. && husky react-project/.husky",
-    "test": "jest"
+    "test": "jest  --coverage"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.5",

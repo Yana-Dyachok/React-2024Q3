@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/item/:uid"
+  to = "/?pageSize=:pageSize&page=:page"
+  status = 200
+  query = { pageSize = ":pageSize", page = ":page" }

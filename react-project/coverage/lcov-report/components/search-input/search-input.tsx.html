@@ -25,9 +25,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">25% </span>
+            <span class="strong">87.5% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">4/16</span>
+            <span class="fraction">14/16</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -37,15 +37,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">80% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/5</span>
+            <span class="fraction">4/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">25% </span>
+            <span class="strong">87.5% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">4/16</span>
+            <span class="fraction">14/16</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,36 +114,36 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,7 +164,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import styles from './search-input.module.css';
@@ -173,29 +173,29 @@ interface SearchInputProps {
   onSearchChange: (search: string) =&gt; void;
 }
 &nbsp;
-const SearchInput: React.FC&lt;SearchInputProps&gt; = <span class="fstat-no" title="function not covered" >({</span> onSearchChange }) =&gt; {
-  const [searchQuery, setSearchQuery] = <span class="cstat-no" title="statement not covered" >useSearchQuery('searchQuery');</span>
+const SearchInput: React.FC&lt;SearchInputProps&gt; = ({ onSearchChange }) =&gt; {
+  const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
 &nbsp;
-  const handleSearchChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {</span>
-    const query = <span class="cstat-no" title="statement not covered" >event.target.value.trim();</span>
-<span class="cstat-no" title="statement not covered" >    setSearchQuery(query);</span>
+  const handleSearchChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    const query = event.target.value.trim();
+    setSearchQuery(query);
   };
 &nbsp;
-  const handleSearchClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-    const trimmedQuery = <span class="cstat-no" title="statement not covered" >searchQuery.trim();</span>
-<span class="cstat-no" title="statement not covered" >    onSearchChange(trimmedQuery);</span>
+  const handleSearchClick = () =&gt; {
+    const trimmedQuery = searchQuery.trim();
+    onSearchChange(trimmedQuery);
   };
 &nbsp;
-  const handleKeyPress = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {</span>
+  const handleKeyPress = <span class="fstat-no" title="function not covered" >(e</span>vent: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (event.key === 'Enter') {</span>
 <span class="cstat-no" title="statement not covered" >      handleSearchClick();</span>
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;section
       className={styles.searchInputBlock}
-      onClick={<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; <span class="cstat-no" title="statement not covered" >event.stopPropagation()}</span>
+      onClick={(event) =&gt; event.stopPropagation()}
     &gt;
       &lt;input
         className={styles.searchInput}
@@ -231,7 +231,7 @@ export default SearchInput;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-12T16:03:41.309Z
+      at 2024-07-12T22:17:58.064Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

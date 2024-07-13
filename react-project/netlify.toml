@@ -4,9 +4,9 @@
 
 [[redirects]]
   from = "/item/:uid"
-  to = "/?pageSize=:pageSize&page=:page"
+  to = "/?page=:page"
   status = 200
-  query = { pageSize = ":pageSize", page = ":page" }
+  query = {page = ":page" }
 
 [[redirects]]
   from = "/*"

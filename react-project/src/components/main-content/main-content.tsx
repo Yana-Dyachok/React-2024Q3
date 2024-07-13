@@ -32,7 +32,7 @@ const MainContent: React.FC = () => {
       setPage(Number(initialPage));
     } else {
       setPage(1);
-      navigate(`/?pageSize=${pageSize}&page=1`, { replace: true });
+      navigate(`/?page=1`, { replace: true });
     }
   }, [search, navigate, pageSize]);
 
@@ -62,7 +62,7 @@ const MainContent: React.FC = () => {
 
   const handleChange = (value: number) => {
     setPage(value);
-    navigate(`${pathname}?pageSize=${pageSize}&page=${value}`);
+    navigate(`${pathname}?page=${value}`);
   };
 
   const handleSearchChange = async (search: string) => {
@@ -70,7 +70,7 @@ const MainContent: React.FC = () => {
     const searchValue = search.trim();
     setSearchQuery(searchValue);
     setPage(1);
-    navigate(`${pathname}?pageSize=${pageSize}&page=${1}`);
+    navigate(`${pathname}?page=${1}`);
     try {
       const response: ApiResponse | null = await fetchDataConditions(
         searchValue,

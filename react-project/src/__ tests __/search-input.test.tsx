@@ -17,7 +17,7 @@ describe('SearchInput component', () => {
       <SearchInput onSearchChange={() => {}} />,
     );
 
-    const input = getByPlaceholderText('Search');
+    const input = getByPlaceholderText('Search') as HTMLInputElement;
     const searchButton = getByRole('button', { name: '' });
 
     fireEvent.change(input, { target: { value: 'test query' } });
@@ -33,8 +33,8 @@ describe('SearchInput component', () => {
       <SearchInput onSearchChange={() => {}} />,
     );
 
-    const input = getByPlaceholderText('Search');
+    const input = getByPlaceholderText('Search') as HTMLInputElement;
 
-    expect(input).toHaveValue('test value');
+    expect(input.value).toBe('test value');
   });
 });

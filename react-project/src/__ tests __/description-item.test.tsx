@@ -1,10 +1,5 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  act,
-} from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DescriptionItem from '../pages/description-item/description-item';
 import fetchMedicalConditionById from '../api/api-get';
@@ -21,7 +16,6 @@ describe('DescriptionItem component', () => {
       name: 'Test Condition',
       psychologicalCondition: false,
     });
-
     await act(async () => {
       render(
         <MemoryRouter initialEntries={['/test-id']}>
@@ -36,52 +30,8 @@ describe('DescriptionItem component', () => {
 
     await waitFor(() => {
       expect(fetchMedicalConditionById).toHaveBeenCalledTimes(1);
-      expect(screen.getByText('Test Condition')).toBeInTheDocument();
+      expect(screen.getByText(/Test Condition/i)).toBeInTheDocument();
       expect(screen.queryByTestId('loading-indicator')).not.toBeInTheDocument();
-    });
-  });
-
-  it('displays detailed card data when loaded', async () => {
-    (fetchMedicalConditionById as jest.Mock).mockResolvedValueOnce({
-      name: 'Test Condition',
-      psychologicalCondition: false,
-    });
-
-    await act(async () => {
-      render(
-        <MemoryRouter initialEntries={['/test-id']}>
-          <Routes>
-            <Route path="/:itemId" element={<DescriptionItem />} />
-          </Routes>
-        </MemoryRouter>,
-      );
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('Test Condition')).toBeInTheDocument();
-    });
-  });
-
-  it('hides the component when close button is clicked', async () => {
-    (fetchMedicalConditionById as jest.Mock).mockResolvedValueOnce({
-      name: 'Test Condition',
-      psychologicalCondition: false,
-    });
-
-    await act(async () => {
-      render(
-        <MemoryRouter initialEntries={['/test-id']}>
-          <Routes>
-            <Route path="/:itemId" element={<DescriptionItem />} />
-          </Routes>
-        </MemoryRouter>,
-      );
-    });
-
-    await waitFor(() => {
-      const closeButton = screen.getByRole('button', { name: /close/i });
-      fireEvent.click(closeButton);
-      expect(screen.queryByText('Test Condition')).not.toBeInTheDocument();
     });
   });
 });

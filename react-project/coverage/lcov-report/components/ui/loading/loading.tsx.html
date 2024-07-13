@@ -74,27 +74,28 @@
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styles from './loading.module.css';
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import styles from './loading.module.css';
 &nbsp;
-const Loading = () =&gt; {
+const Loading: React.FC = () =&gt; {
   return (
     &lt;section className={styles.rectSpinner}&gt;
-      &lt;div className={styles.loadingContainer}&gt;
+      &lt;div data-testid="loading-indicator" className={styles.loadingContainer}&gt;
         {[...Array(16)].map((_, index) =&gt; (
           &lt;div key={`${index}-rect`} className={styles.rect} /&gt;
         ))}
@@ -103,8 +104,7 @@ const Loading = () =&gt; {
   );
 };
 &nbsp;
-export default Loading;
-&nbsp;</pre></td></tr></table></pre>
+export default Loading;</pre></td></tr></table></pre>
 
       <div class="push"></div>
       <!-- for sticky footer -->
@@ -118,7 +118,7 @@ export default Loading;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-13T14:11:16.703Z
+      at 2024-07-13T19:52:48.368Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

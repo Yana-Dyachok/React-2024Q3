@@ -17,7 +17,7 @@ describe('SearchItem component', () => {
     );
 
     const conditionNameElement = getByText('Test Condition');
-    expect(conditionNameElement).toBeInTheDocument();
+    expect(conditionNameElement).toBeTruthy();
   });
 
   it('should render condition with correct URL', () => {
@@ -27,13 +27,15 @@ describe('SearchItem component', () => {
       psychologicalCondition: true,
     };
 
-    const { getByText } = render(
+    const { container } = render(
       <MemoryRouter>
         <SearchItem condition={condition} />
       </MemoryRouter>,
     );
 
-    const conditionLinkElement = getByText('Another Condition');
-    expect(conditionLinkElement).toHaveAttribute('href', '/item/456');
+    const conditionLinkElement = container.querySelector(
+      `a[href="/item/${condition.uid}"]`,
+    );
+    expect(conditionLinkElement).toBeTruthy();
   });
 });

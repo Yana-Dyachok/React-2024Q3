@@ -21,6 +21,7 @@ describe('fetchData', () => {
       page: { totalPages: 1 },
       medicalConditions: [{ id: 1, name: 'Condition 1' }],
     };
+
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => mockResponse,
@@ -39,17 +40,19 @@ describe('fetchData', () => {
   });
 
   it('handles non-OK response', async () => {
-    mockFetch.mockResolvedValueOnce({
+    const mockErrorResponse = {
       ok: false,
       status: 500,
       statusText: 'Internal Server Error',
-    } as Response);
+    };
+
+    mockFetch.mockResolvedValueOnce(mockErrorResponse as Response);
 
     const page = 1;
     const pageSize = 15;
 
     await expect(fetchData(page, pageSize)).rejects.toThrow(
-      'Failed to fetch medical conditions: 500 Internal Server Error',
+      `Failed to fetch medical conditions: ${mockErrorResponse.status} ${mockErrorResponse.statusText}`,
     );
   });
 

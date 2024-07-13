@@ -7,3 +7,9 @@
   to = "/?pageSize=:pageSize&page=:page"
   status = 200
   query = { pageSize = ":pageSize", page = ":page" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+

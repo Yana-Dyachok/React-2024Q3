@@ -9,9 +9,12 @@ import DescriptionItem from '../pages/description-item/description-item';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainPage />} errorElement={<NotFoundPage />}>
-      <Route path="item/:itemId" element={<DescriptionItem />} />
-    </Route>,
+    <>
+      <Route path="/" element={<MainPage />}>
+        <Route path="item/:itemId" element={<DescriptionItem />} />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </>,
   ),
 );
 

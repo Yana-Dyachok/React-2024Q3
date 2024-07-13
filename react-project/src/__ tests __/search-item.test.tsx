@@ -27,15 +27,16 @@ describe('SearchItem component', () => {
       psychologicalCondition: true,
     };
 
-    const { container } = render(
+    const { getByRole } = render(
       <MemoryRouter>
         <SearchItem condition={condition} />
       </MemoryRouter>,
     );
 
-    const conditionLinkElement = container.querySelector(
-      `a[href="/item/${condition.uid}"]`,
+    const conditionLinkElement = getByRole('link', { name: condition.name });
+    expect(conditionLinkElement).toHaveAttribute(
+      'href',
+      `/item/${condition.uid}`,
     );
-    expect(conditionLinkElement).toBeTruthy();
   });
 });

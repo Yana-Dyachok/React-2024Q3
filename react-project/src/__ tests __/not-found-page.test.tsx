@@ -6,7 +6,7 @@ test('demo', () => {
   expect(true).toBe(true);
 });
 
-test('Renders the main page', () => {
+test('Renders the not found page', () => {
   render(<NotFoundPage />);
   expect(true).toBeTruthy();
 });

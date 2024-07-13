@@ -13,7 +13,7 @@
     "format:fix": "prettier --write .",
     "prepare": "cd .. && husky react-project/.husky",
     "test": "jest  --coverage",
-    "prepush": "npm test"
+    "prepush": "npm run test"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.5",

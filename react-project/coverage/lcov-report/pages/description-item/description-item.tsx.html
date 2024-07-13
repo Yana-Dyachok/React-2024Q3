@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">30.43% </span>
+            <span class="strong">91.3% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">7/23</span>
+            <span class="fraction">21/23</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">80% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/5</span>
+            <span class="fraction">4/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/4</span>
+            <span class="fraction">4/4</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">30.43% </span>
+            <span class="strong">91.3% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">7/23</span>
+            <span class="fraction">21/23</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -127,32 +127,32 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,33 +183,33 @@ import Loading from '../../components/ui/loading/loading';
 &nbsp;
 import styles from './description-item.module.css';
 &nbsp;
-const DescriptionItem: React.FC = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-  const { itemId } = <span class="cstat-no" title="statement not covered" >useParams&lt;{ itemId: string }&gt;();</span>
-  const [condition, setCondition] = <span class="cstat-no" title="statement not covered" >useState&lt;Conditions | null&gt;(null);</span>
-  const [loading, setLoading] = <span class="cstat-no" title="statement not covered" >useState&lt;boolean&gt;(true);</span>
-  const { search } = <span class="cstat-no" title="statement not covered" >useLocation();</span>
+const DescriptionItem: React.FC = () =&gt; {
+  const { itemId } = useParams&lt;{ itemId: string }&gt;();
+  const [condition, setCondition] = useState&lt;Conditions | null&gt;(null);
+  const [loading, setLoading] = useState&lt;boolean&gt;(true);
+  const { search } = useLocation();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-    const fetchData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async </span>() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      try {</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (itemId) {</span>
-          const apiResult = <span class="cstat-no" title="statement not covered" >await fetchMedicalConditionById(itemId);</span>
-<span class="cstat-no" title="statement not covered" >          setCondition(apiResult);</span>
+  useEffect(() =&gt; {
+    const fetchData = async () =&gt; {
+      try {
+        if (itemId) {
+          const apiResult = await fetchMedicalConditionById(itemId);
+          setCondition(apiResult);
         }
       } catch (error) {
 <span class="cstat-no" title="statement not covered" >        console.error('Error fetching data:', error);</span>
 <span class="cstat-no" title="statement not covered" >        setCondition(null);</span>
       } finally {
-<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >          setLoading(false);</span>
+        setTimeout(() =&gt; {
+          setLoading(false);
         }, 1000);
       }
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    fetchData();</span>
+    fetchData();
   }, [itemId]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.descriptionBlock}&gt;
       {loading ? (
         &lt;Loading /&gt;
@@ -222,7 +222,7 @@ const DescriptionItem: React.FC = <span class="fstat-no" title="function not cov
             &lt;span&gt;Condition:&lt;/span&gt;
             &lt;span className={styles.name}&gt;{condition?.name}&lt;/span&gt;
             &lt;span className={styles.descriptionTitle}&gt;
-              {`It's ${condition?.psychologicalCondition ? '' : 'not'} a psychological condition`}
+              {`It's ${condition?.psychologicalCondition ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: 'not'} a psychological condition`}
             &lt;/span&gt;
             &lt;div className={styles.medicalIcon}&gt;&lt;/div&gt;
           &lt;/div&gt;
@@ -246,7 +246,7 @@ export default DescriptionItem;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-13T07:55:09.194Z
+      at 2024-07-13T14:11:16.703Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

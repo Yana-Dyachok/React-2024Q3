@@ -1,5 +1,11 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router-dom';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DescriptionItem from '../pages/description-item/description-item';
 import fetchMedicalConditionById from '../api/api-get';
 
@@ -16,13 +22,15 @@ describe('DescriptionItem component', () => {
       psychologicalCondition: false,
     });
 
-    render(
-      <MemoryRouter initialEntries={['/test-id']}>
-        <Route path="/:itemId">
-          <DescriptionItem />
-        </Route>
-      </MemoryRouter>,
-    );
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={['/test-id']}>
+          <Routes>
+            <Route path="/:itemId" element={<DescriptionItem />} />
+          </Routes>
+        </MemoryRouter>,
+      );
+    });
 
     expect(screen.getByTestId('loading-indicator')).toBeInTheDocument();
 
@@ -39,13 +47,15 @@ describe('DescriptionItem component', () => {
       psychologicalCondition: false,
     });
 
-    render(
-      <MemoryRouter initialEntries={['/test-id']}>
-        <Route path="/:itemId">
-          <DescriptionItem />
-        </Route>
-      </MemoryRouter>,
-    );
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={['/test-id']}>
+          <Routes>
+            <Route path="/:itemId" element={<DescriptionItem />} />
+          </Routes>
+        </MemoryRouter>,
+      );
+    });
 
     await waitFor(() => {
       expect(screen.getByText('Test Condition')).toBeInTheDocument();
@@ -58,13 +68,15 @@ describe('DescriptionItem component', () => {
       psychologicalCondition: false,
     });
 
-    render(
-      <MemoryRouter initialEntries={['/test-id']}>
-        <Route path="/:itemId">
-          <DescriptionItem />
-        </Route>
-      </MemoryRouter>,
-    );
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={['/test-id']}>
+          <Routes>
+            <Route path="/:itemId" element={<DescriptionItem />} />
+          </Routes>
+        </MemoryRouter>,
+      );
+    });
 
     await waitFor(() => {
       const closeButton = screen.getByRole('button', { name: /close/i });

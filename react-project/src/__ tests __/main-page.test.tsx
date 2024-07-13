@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
 
-test('demo', () => {
-  expect(true).toBe(true);
-});
-
 test('Renders the main page', () => {
-  render(<MainPage />);
+  render(
+    <MemoryRouter>
+      <MainPage />
+    </MemoryRouter>,
+  );
   expect(true).toBeTruthy();
 });

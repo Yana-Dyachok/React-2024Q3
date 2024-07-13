@@ -40,7 +40,9 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={1}
-          className={`${styles.pageNumber} ${1 === currentPage ? styles.active : ''}`}
+          className={`${styles.pageNumber} ${
+            1 === currentPage ? styles.active : ''
+          }`}
           onClick={() => onPageChange(1)}
         >
           1
@@ -60,7 +62,9 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={i}
-          className={`${styles.pageNumber} ${i === currentPage ? styles.active : ''}`}
+          className={`${styles.pageNumber} ${
+            i === currentPage ? styles.active : ''
+          }`}
           onClick={() => onPageChange(i)}
         >
           {i}
@@ -80,7 +84,9 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={totalPages}
-          className={`${styles.pageNumber} ${totalPages === currentPage ? styles.active : ''}`}
+          className={`${styles.pageNumber} ${
+            totalPages === currentPage ? styles.active : ''
+          }`}
           onClick={() => onPageChange(totalPages)}
         >
           {totalPages}
@@ -94,6 +100,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className={styles.pagination}>
       <button
+        data-testid="prev-button"
         className={`${styles.sliderBtn} ${styles.prev}`}
         onClick={handlePrevious}
         disabled={currentPage === 1}
@@ -105,6 +112,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {renderPageNumbers()}
       </div>
       <button
+        data-testid="next-button"
         className={`${styles.sliderBtn} ${styles.next}`}
         onClick={handleNext}
         disabled={currentPage === totalPages}

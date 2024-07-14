@@ -22,7 +22,7 @@ describe('SearchItem component', () => {
 
   it('should render condition with correct URL', () => {
     const condition = {
-      uid: '456',
+      uid: 'MEMA0000162645',
       name: 'Another Condition',
       psychologicalCondition: true,
     };

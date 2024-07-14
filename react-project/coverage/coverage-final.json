@@ -181,8 +181,8 @@
       }
     },
     "s": {
-      "0": 2,
-      "1": 2,
+      "0": 1,
+      "1": 1,
       "2": 3,
       "3": 3,
       "4": 3,
@@ -193,7 +193,7 @@
       "9": 1,
       "10": 1,
       "11": 1,
-      "12": 2
+      "12": 1
     },
     "f": { "0": 3 },
     "b": { "0": [1] }
@@ -1590,8 +1590,8 @@
       }
     },
     "branchMap": {},
-    "s": { "0": 3, "1": 3, "2": 6, "3": 96, "4": 3 },
-    "f": { "0": 6, "1": 96 },
+    "s": { "0": 2, "1": 2, "2": 4, "3": 64, "4": 2 },
+    "f": { "0": 4, "1": 64 },
     "b": {}
   },
   "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\components\\ui\\pagination\\pagination.tsx": {
@@ -1603,7 +1603,7 @@
       },
       "1": {
         "start": { "line": 10, "column": 46 },
-        "end": { "line": 123, "column": 1 }
+        "end": { "line": 120, "column": 1 }
       },
       "2": {
         "start": { "line": 15, "column": 25 },
@@ -1726,16 +1726,16 @@
         "end": { "line": 97, "column": 23 }
       },
       "32": {
-        "start": { "line": 101, "column": 2 },
-        "end": { "line": 122, "column": 4 }
+        "start": { "line": 100, "column": 2 },
+        "end": { "line": 119, "column": 4 }
       },
       "33": {
-        "start": { "line": 111, "column": 28 },
-        "end": { "line": 111, "column": 51 }
+        "start": { "line": 109, "column": 28 },
+        "end": { "line": 109, "column": 51 }
       },
       "34": {
-        "start": { "line": 125, "column": 0 },
-        "end": { "line": 125, "column": 26 }
+        "start": { "line": 122, "column": 0 },
+        "end": { "line": 122, "column": 26 }
       }
     },
     "fnMap": {
@@ -1747,7 +1747,7 @@
         },
         "loc": {
           "start": { "line": 14, "column": 5 },
-          "end": { "line": 123, "column": 1 }
+          "end": { "line": 120, "column": 1 }
         }
       },
       "1": {
@@ -1819,12 +1819,12 @@
       "7": {
         "name": "(anonymous_8)",
         "decl": {
-          "start": { "line": 111, "column": 17 },
-          "end": { "line": 111, "column": 18 }
+          "start": { "line": 109, "column": 17 },
+          "end": { "line": 109, "column": 18 }
         },
         "loc": {
-          "start": { "line": 111, "column": 28 },
-          "end": { "line": 111, "column": 51 }
+          "start": { "line": 109, "column": 28 },
+          "end": { "line": 109, "column": 51 }
         }
       }
     },
@@ -2022,225 +2022,6 @@
       "8": [0],
       "9": [0, 0]
     }
-  },
-  "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\pages\\description-item\\description-item.tsx": {
-    "path": "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\pages\\description-item\\description-item.tsx",
-    "statementMap": {
-      "0": {
-        "start": { "line": 1, "column": 0 },
-        "end": { "line": 1, "column": 51 }
-      },
-      "1": {
-        "start": { "line": 2, "column": 0 },
-        "end": { "line": 2, "column": 64 }
-      },
-      "2": {
-        "start": { "line": 3, "column": 0 },
-        "end": { "line": 3, "column": 58 }
-      },
-      "3": {
-        "start": { "line": 5, "column": 0 },
-        "end": { "line": 5, "column": 58 }
-      },
-      "4": {
-        "start": { "line": 7, "column": 0 },
-        "end": { "line": 7, "column": 51 }
-      },
-      "5": {
-        "start": { "line": 9, "column": 34 },
-        "end": { "line": 58, "column": 1 }
-      },
-      "6": {
-        "start": { "line": 10, "column": 21 },
-        "end": { "line": 10, "column": 52 }
-      },
-      "7": {
-        "start": { "line": 11, "column": 36 },
-        "end": { "line": 11, "column": 69 }
-      },
-      "8": {
-        "start": { "line": 12, "column": 32 },
-        "end": { "line": 12, "column": 55 }
-      },
-      "9": {
-        "start": { "line": 13, "column": 21 },
-        "end": { "line": 13, "column": 34 }
-      },
-      "10": {
-        "start": { "line": 15, "column": 2 },
-        "end": { "line": 33, "column": 15 }
-      },
-      "11": {
-        "start": { "line": 16, "column": 22 },
-        "end": { "line": 30, "column": 5 }
-      },
-      "12": {
-        "start": { "line": 17, "column": 6 },
-        "end": { "line": 29, "column": 7 }
-      },
-      "13": {
-        "start": { "line": 18, "column": 8 },
-        "end": { "line": 21, "column": 9 }
-      },
-      "14": {
-        "start": { "line": 19, "column": 28 },
-        "end": { "line": 19, "column": 67 }
-      },
-      "15": {
-        "start": { "line": 20, "column": 10 },
-        "end": { "line": 20, "column": 34 }
-      },
-      "16": {
-        "start": { "line": 23, "column": 8 },
-        "end": { "line": 23, "column": 53 }
-      },
-      "17": {
-        "start": { "line": 24, "column": 8 },
-        "end": { "line": 24, "column": 27 }
-      },
-      "18": {
-        "start": { "line": 26, "column": 8 },
-        "end": { "line": 28, "column": 17 }
-      },
-      "19": {
-        "start": { "line": 27, "column": 10 },
-        "end": { "line": 27, "column": 28 }
-      },
-      "20": {
-        "start": { "line": 32, "column": 4 },
-        "end": { "line": 32, "column": 16 }
-      },
-      "21": {
-        "start": { "line": 35, "column": 2 },
-        "end": { "line": 57, "column": 4 }
-      },
-      "22": {
-        "start": { "line": 60, "column": 0 },
-        "end": { "line": 60, "column": 31 }
-      }
-    },
-    "fnMap": {
-      "0": {
-        "name": "(anonymous_1)",
-        "decl": {
-          "start": { "line": 9, "column": 34 },
-          "end": { "line": 9, "column": 37 }
-        },
-        "loc": {
-          "start": { "line": 9, "column": 39 },
-          "end": { "line": 58, "column": 1 }
-        }
-      },
-      "1": {
-        "name": "(anonymous_2)",
-        "decl": {
-          "start": { "line": 15, "column": 12 },
-          "end": { "line": 15, "column": 15 }
-        },
-        "loc": {
-          "start": { "line": 15, "column": 17 },
-          "end": { "line": 33, "column": 3 }
-        }
-      },
-      "2": {
-        "name": "(anonymous_3)",
-        "decl": {
-          "start": { "line": 16, "column": 22 },
-          "end": { "line": 16, "column": 27 }
-        },
-        "loc": {
-          "start": { "line": 16, "column": 33 },
-          "end": { "line": 30, "column": 5 }
-        }
-      },
-      "3": {
-        "name": "(anonymous_4)",
-        "decl": {
-          "start": { "line": 26, "column": 19 },
-          "end": { "line": 26, "column": 22 }
-        },
-        "loc": {
-          "start": { "line": 26, "column": 24 },
-          "end": { "line": 28, "column": 9 }
-        }
-      }
-    },
-    "branchMap": {
-      "0": {
-        "loc": {
-          "start": { "line": 18, "column": 8 },
-          "end": { "line": 21, "column": 9 }
-        },
-        "type": "if",
-        "locations": [
-          {
-            "start": { "line": 18, "column": 8 },
-            "end": { "line": 21, "column": 9 }
-          }
-        ]
-      },
-      "1": {
-        "loc": {
-          "start": { "line": 37, "column": 7 },
-          "end": { "line": 54, "column": null }
-        },
-        "type": "cond-expr",
-        "locations": [
-          {
-            "start": { "line": 38, "column": 8 },
-            "end": { "line": 38, "column": 19 }
-          },
-          {
-            "start": { "line": 40, "column": 8 },
-            "end": { "line": 53, "column": null }
-          }
-        ]
-      },
-      "2": {
-        "loc": {
-          "start": { "line": 49, "column": 16 },
-          "end": { "line": 49, "column": null }
-        },
-        "type": "cond-expr",
-        "locations": [
-          {
-            "start": { "line": 49, "column": 52 },
-            "end": { "line": 49, "column": 54 }
-          },
-          {
-            "start": { "line": 49, "column": 57 },
-            "end": { "line": 49, "column": null }
-          }
-        ]
-      }
-    },
-    "s": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 1,
-      "6": 2,
-      "7": 2,
-      "8": 2,
-      "9": 2,
-      "10": 2,
-      "11": 1,
-      "12": 1,
-      "13": 1,
-      "14": 1,
-      "15": 1,
-      "16": 0,
-      "17": 0,
-      "18": 1,
-      "19": 0,
-      "20": 1,
-      "21": 2,
-      "22": 1
-    },
-    "f": { "0": 2, "1": 1, "2": 1, "3": 0 },
-    "b": { "0": [1], "1": [2, 0], "2": [0, 0] }
   },
   "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\pages\\main-page\\main-page.tsx": {
     "path": "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\pages\\main-page\\main-page.tsx",
@@ -2470,21 +2251,21 @@
       "0": 4,
       "1": 4,
       "2": 4,
-      "3": 13,
-      "4": 13,
-      "5": 13,
-      "6": 6,
-      "7": 6,
+      "3": 15,
+      "4": 15,
+      "5": 15,
+      "6": 7,
+      "7": 7,
       "8": 0,
-      "9": 6,
-      "10": 13,
-      "11": 7,
-      "12": 7,
-      "13": 13,
+      "9": 7,
+      "10": 15,
+      "11": 9,
+      "12": 9,
+      "13": 15,
       "14": 4
     },
-    "f": { "0": 13, "1": 6, "2": 7 },
-    "b": { "0": [13, 12], "1": [0], "2": [7] }
+    "f": { "0": 15, "1": 7, "2": 9 },
+    "b": { "0": [15, 14], "1": [0], "2": [9] }
   },
   "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\utils\\local-storage\\ls-handler.ts": {
     "path": "C:\\Users\\Яна\\Desktop\\react\\React-2024Q3\\react-project\\src\\utils\\local-storage\\ls-handler.ts",
@@ -2553,8 +2334,8 @@
         ]
       }
     },
-    "s": { "0": 3, "1": 3, "2": 4, "3": 14, "4": 14 },
-    "f": { "0": 4, "1": 14 },
-    "b": { "0": [14, 6] }
+    "s": { "0": 3, "1": 3, "2": 6, "3": 17, "4": 17 },
+    "f": { "0": 6, "1": 17 },
+    "b": { "0": [17, 8] }
   }
 }

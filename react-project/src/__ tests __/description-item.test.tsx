@@ -1,5 +1,4 @@
-import '../setupTests';
-import '@testing-library/jest-dom';
+import { createElement } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DescriptionItem from '../pages/description-item/description-item';
@@ -13,42 +12,38 @@ describe('DescriptionItem component', () => {
   });
 
   it('displays loading indicator while fetching data', async () => {
-    (fetchMedicalConditionById as jest.Mock).mockResolvedValueOnce({
+    const mockData = {
       name: 'Test Condition',
       psychologicalCondition: false,
-    });
-
+    };
+    (fetchMedicalConditionById as jest.Mock).mockResolvedValueOnce(mockData);
     render(
-      <MemoryRouter initialEntries={['/test-id']}>
-        <Routes>
-          <Route path="/:itemId" element={<DescriptionItem />} />
-        </Routes>
-      </MemoryRouter>,
+      createElement(
+        MemoryRouter,
+        { initialEntries: ['/test-id'] },
+        createElement(
+          Routes,
+          null,
+          createElement(Route, {
+            path: '/:itemId',
+            element: createElement(DescriptionItem),
+          }),
+        ),
+      ),
     );
+    const loadingIndicator = screen.getByRole('loader');
+    expect(loadingIndicator).toBeInTheDocument();
 
     await waitFor(() => {
-      const loadingIndicator = screen.getByRole('spiner');
-      expect(loadingIndicator).toBeInTheDocument();
-    });
-    await waitFor(() => {
-      console.log('After loading:', screen.debug());
       expect(fetchMedicalConditionById).toHaveBeenCalledTimes(1);
     });
 
     await waitFor(() => {
-      console.log('After fetch:', screen.debug());
-      const conditionElement = screen.getByText((_, element) => {
-        if (!element) return false;
-        const hasText = (node: Node) => node.textContent === 'Test Condition';
-        const nodeHasText = hasText(element);
-        const childrenDontHaveText = Array.from(element.children).every(
-          (child) => !hasText(child),
-        );
-        return nodeHasText && childrenDontHaveText;
-      });
-      expect(conditionElement).toBeInTheDocument();
+      const conditionElement = screen.queryByText(mockData.name);
+      expect(conditionElement).toBeTruthy();
     });
-    const loadingIndicatorRemoved = screen.queryByRole('spiner');
+
+    const loadingIndicatorRemoved = screen.queryByRole('loader');
     expect(loadingIndicatorRemoved).toBeNull();
   });
 });

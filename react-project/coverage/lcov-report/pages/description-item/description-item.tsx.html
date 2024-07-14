@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">86.95% </span>
+            <span class="strong">91.3% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">20/23</span>
+            <span class="fraction">21/23</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">40% </span>
+            <span class="strong">80% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">2/5</span>
+            <span class="fraction">4/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">75% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">3/4</span>
+            <span class="fraction">4/4</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">86.95% </span>
+            <span class="strong">91.3% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">20/23</span>
+            <span class="fraction">21/23</span>
           </div>
         </div>
         <p class="quiet">
@@ -130,12 +130,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -147,7 +147,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,7 +155,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,8 +206,8 @@ const DescriptionItem: React.FC = () =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.error('Error fetching data:', error);</span>
 <span class="cstat-no" title="statement not covered" >        setCondition(null);</span>
       } finally {
-        setTimeout(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >          setLoading(false);</span>
+        setTimeout(() =&gt; {
+          setLoading(false);
         }, 1000);
       }
     };
@@ -220,7 +220,7 @@ const DescriptionItem: React.FC = () =&gt; {
       {loading ? (
         &lt;Loading /&gt;
       ) : (
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;&gt;</span>
+        &lt;&gt;
           &lt;Link to={`..${search}`}&gt;
             &lt;button aria-label="close" className={styles.closeButton} /&gt;
           &lt;/Link&gt;
@@ -229,7 +229,7 @@ const DescriptionItem: React.FC = () =&gt; {
             &lt;span className={styles.name}&gt;{condition?.name}&lt;/span&gt;
             &lt;span className={styles.descriptionTitle}&gt;
               {`It's ${
-                condition?.psychologicalCondition ? '' : 'not'
+                condition?.psychologicalCondition ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: 'not'
               } a psychological condition`}
             &lt;/span&gt;
             &lt;div className={styles.medicalIcon}&gt;&lt;/div&gt;
@@ -255,7 +255,7 @@ export default DescriptionItem;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-14T09:07:08.729Z
+      at 2024-07-14T12:04:15.277Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

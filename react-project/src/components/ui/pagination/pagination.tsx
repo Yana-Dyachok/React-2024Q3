@@ -103,6 +103,7 @@ const Pagination: React.FC<PaginationProps> = ({
         className={`${styles.sliderBtn} ${styles.prev}`}
         onClick={handlePrevious}
         disabled={currentPage === 1}
+        aria-label="prev-page"
       ></button>
       <div
         className={styles.numbersBlock}
@@ -114,6 +115,7 @@ const Pagination: React.FC<PaginationProps> = ({
         className={`${styles.sliderBtn} ${styles.next}`}
         onClick={handleNext}
         disabled={currentPage === totalPages}
+        aria-label="next-page"
       ></button>
     </div>
   );

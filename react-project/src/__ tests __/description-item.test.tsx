@@ -1,4 +1,4 @@
-import './setupTests';
+import '../setupTests';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -25,15 +25,30 @@ describe('DescriptionItem component', () => {
         </Routes>
       </MemoryRouter>,
     );
+
     await waitFor(() => {
       const loadingIndicator = screen.getByRole('spiner');
       expect(loadingIndicator).toBeInTheDocument();
     });
     await waitFor(() => {
+      console.log('After loading:', screen.debug());
       expect(fetchMedicalConditionById).toHaveBeenCalledTimes(1);
-      expect(screen.getByText(/Test Condition/i)).toBeInTheDocument();
-      const loadingIndicatorRemoved = screen.queryByRole('spiner');
-      expect(loadingIndicatorRemoved).toBeNull();
     });
+
+    await waitFor(() => {
+      console.log('After fetch:', screen.debug());
+      const conditionElement = screen.getByText((_, element) => {
+        if (!element) return false;
+        const hasText = (node: Node) => node.textContent === 'Test Condition';
+        const nodeHasText = hasText(element);
+        const childrenDontHaveText = Array.from(element.children).every(
+          (child) => !hasText(child),
+        );
+        return nodeHasText && childrenDontHaveText;
+      });
+      expect(conditionElement).toBeInTheDocument();
+    });
+    const loadingIndicatorRemoved = screen.queryByRole('spiner');
+    expect(loadingIndicatorRemoved).toBeNull();
   });
 });

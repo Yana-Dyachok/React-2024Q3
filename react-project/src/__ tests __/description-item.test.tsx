@@ -1,4 +1,3 @@
-import { createElement } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DescriptionItem from '../pages/description-item/description-item';
@@ -17,20 +16,15 @@ describe('DescriptionItem component', () => {
       psychologicalCondition: false,
     };
     (fetchMedicalConditionById as jest.Mock).mockResolvedValueOnce(mockData);
+
     render(
-      createElement(
-        MemoryRouter,
-        { initialEntries: ['/test-id'] },
-        createElement(
-          Routes,
-          null,
-          createElement(Route, {
-            path: '/:itemId',
-            element: createElement(DescriptionItem),
-          }),
-        ),
-      ),
+      <MemoryRouter initialEntries={['/test-id']}>
+        <Routes>
+          <Route path="/:itemId" element={<DescriptionItem />} />
+        </Routes>
+      </MemoryRouter>,
     );
+
     const loadingIndicator = screen.getByRole('loader');
     expect(loadingIndicator).toBeInTheDocument();
 
@@ -38,9 +32,22 @@ describe('DescriptionItem component', () => {
       expect(fetchMedicalConditionById).toHaveBeenCalledTimes(1);
     });
 
+    screen.debug();
+
     await waitFor(() => {
-      const conditionElement = screen.queryByText(mockData.name);
-      expect(conditionElement).toBeTruthy();
+      const conditionElement = screen.queryByText((_, element) => {
+        const hasText = (node: HTMLElement) =>
+          node.textContent === mockData.name;
+        const elementHasText = hasText(element as HTMLElement);
+        const childrenDontHaveText = Array.from(element?.children || []).every(
+          (child) => !hasText(child as HTMLElement),
+        );
+        return elementHasText && childrenDontHaveText;
+      });
+
+      console.log('Condition element:', conditionElement);
+
+      expect(conditionElement).toBeInTheDocument();
     });
 
     const loadingIndicatorRemoved = screen.queryByRole('loader');

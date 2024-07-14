@@ -11,7 +11,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(249, 248, 248, 0.7);
   z-index: 1001;
 }
 
@@ -42,7 +41,7 @@
 
 .loader::after {
   inset: var(--loader-bar-width);
-  background: rgba(249, 248, 248, 0.7);
+  background: var(--c-green-910);
 }
 
 @keyframes spin {

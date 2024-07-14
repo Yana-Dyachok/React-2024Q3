@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720962326531" clover="3.2.0">
-  <project timestamp="1720962326531" name="All files">
-    <metrics statements="245" coveredstatements="201" conditionals="58" coveredconditionals="32" methods="47" coveredmethods="34" elements="350" coveredelements="267" complexity="0" loc="245" ncloc="245" packages="14" files="17" classes="17"/>
+<coverage generated="1720970067089" clover="3.2.0">
+  <project timestamp="1720970067089" name="All files">
+    <metrics statements="245" coveredstatements="201" conditionals="58" coveredconditionals="34" methods="47" coveredmethods="34" elements="350" coveredelements="269" complexity="0" loc="245" ncloc="245" packages="14" files="17" classes="17"/>
     <package name="api">
       <metrics statements="35" coveredstatements="35" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="api-get-search.ts" path="C:\Users\Яна\Desktop\react\React-2024Q3\react-project\src\api\api-get-search.ts">
@@ -259,20 +259,20 @@
       </file>
     </package>
     <package name="pages.description-item">
-      <metrics statements="23" coveredstatements="21" conditionals="5" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <metrics statements="23" coveredstatements="21" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="4"/>
       <file name="description-item.tsx" path="C:\Users\Яна\Desktop\react\React-2024Q3\react-project\src\pages\description-item\description-item.tsx">
-        <metrics statements="23" coveredstatements="21" conditionals="5" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="23" coveredstatements="21" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -283,7 +283,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
       </file>
     </package>

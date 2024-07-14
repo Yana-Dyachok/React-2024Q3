@@ -15,8 +15,10 @@
 }
 
 .mainContent {
+  min-height: 40rem;
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 1rem;
   padding: 0.5rem;
   background-color: var(--c-green-910);

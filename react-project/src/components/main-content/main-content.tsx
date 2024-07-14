@@ -53,7 +53,9 @@ const MainContent: React.FC = () => {
         console.error('Error fetching data:', error);
         setData(null);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       }
     };
 

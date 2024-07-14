@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720970067089" clover="3.2.0">
-  <project timestamp="1720970067089" name="All files">
-    <metrics statements="245" coveredstatements="201" conditionals="58" coveredconditionals="34" methods="47" coveredmethods="34" elements="350" coveredelements="269" complexity="0" loc="245" ncloc="245" packages="14" files="17" classes="17"/>
+<coverage generated="1720971631837" clover="3.2.0">
+  <project timestamp="1720971631837" name="All files">
+    <metrics statements="246" coveredstatements="201" conditionals="58" coveredconditionals="34" methods="48" coveredmethods="34" elements="352" coveredelements="269" complexity="0" loc="246" ncloc="246" packages="14" files="17" classes="17"/>
     <package name="api">
       <metrics statements="35" coveredstatements="35" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="api-get-search.ts" path="C:\Users\Яна\Desktop\react\React-2024Q3\react-project\src\api\api-get-search.ts">
@@ -56,7 +56,7 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
@@ -81,9 +81,9 @@
       </file>
     </package>
     <package name="components.main-content">
-      <metrics statements="60" coveredstatements="40" conditionals="19" coveredconditionals="8" methods="7" coveredmethods="4"/>
+      <metrics statements="61" coveredstatements="40" conditionals="19" coveredconditionals="8" methods="8" coveredmethods="4"/>
       <file name="main-content.tsx" path="C:\Users\Яна\Desktop\react\React-2024Q3\react-project\src\components\main-content\main-content.tsx">
-        <metrics statements="60" coveredstatements="40" conditionals="19" coveredconditionals="8" methods="7" coveredmethods="4"/>
+        <metrics statements="61" coveredstatements="40" conditionals="19" coveredconditionals="8" methods="8" coveredmethods="4"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -95,7 +95,7 @@
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="14" count="8" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
         <line num="16" count="6" type="stmt"/>
         <line num="17" count="6" type="stmt"/>
@@ -123,27 +123,28 @@
         <line num="53" count="2" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
         <line num="56" count="2" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="63" count="6" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="68" count="6" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="65" count="6" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="6" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
-        <line num="80" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="81" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="83" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
-        <line num="93" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="95" count="6" type="stmt"/>
-        <line num="125" count="2" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="95" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="97" count="6" type="stmt"/>
+        <line num="127" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.search-input">
@@ -294,7 +295,7 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
     </package>

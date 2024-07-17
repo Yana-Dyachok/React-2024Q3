@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../app/store/store';
+import { addSearchInput } from '../../app/slices/search-slice';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import styles from './search-input.module.css';
 
@@ -8,10 +11,12 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim();
     setSearchQuery(query);
+    dispatch(addSearchInput(query));
   };
 
   const handleSearchClick = () => {

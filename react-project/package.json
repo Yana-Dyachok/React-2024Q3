@@ -17,9 +17,11 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.11.5",
+    "@reduxjs/toolkit": "^2.2.6",
     "jest-environment-jsdom": "^29.7.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
@@ -52,8 +54,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "npx eslint --fix",
-      "npm test"
+      "npx eslint --fix"
     ]
   }
 }

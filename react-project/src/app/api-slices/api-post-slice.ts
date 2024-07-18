@@ -3,7 +3,7 @@ import { ApiResponse } from '../../types/api-interface';
 import { PATH_SEARCH } from '../../utils/const/const';
 
 export const apiPostSearchSlice = createApi({
-  reducerPath: 'api',
+  reducerPath: 'apiPostSearch',
   baseQuery: fetchBaseQuery({ baseUrl: PATH_SEARCH }),
   endpoints: (builder) => ({
     fetchPost: builder.query<

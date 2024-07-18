@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-// import { useFetchGetQuery } from '../../app/api-slices/api-get-search-slice';
+import { useFetchGetQuery } from '../../app/api-slices/api-get-search-slice';
 import { useFetchPostQuery } from '../../app/api-slices/api-post-slice';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
@@ -22,14 +22,16 @@ const MainContent: React.FC = () => {
     }
   };
 
-  // const { data, error, isLoading } = searchQuery
-  //   ? useFetchPostQuery({searchQuery, pageSize,  page })
-  //   : useFetchGetQuery({ page, pageSize });
-  const { data, error, isLoading } = useFetchPostQuery({
-    searchQuery,
-    pageSize,
-    page,
-  });
+  let data, error, isLoading;
+  const fetchPostQuery = useFetchPostQuery({ searchQuery, pageSize, page });
+  const fetchGetQuery = useFetchGetQuery({ page, pageSize });
+
+  if (searchQuery) {
+    ({ data, error, isLoading } = fetchPostQuery);
+  } else {
+    ({ data, error, isLoading } = fetchGetQuery);
+  }
+
   useEffect(() => {
     const urlParams = new URLSearchParams(search);
     const initialPage = urlParams.get('page');

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>
-      Code coverage report for components/search-list/search-list.tsx
+      Code coverage report for app/api-slices/api-get-search-slice.ts
     </title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
@@ -21,31 +21,31 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">components/search-list</a> search-list.tsx
+          <a href="index.html">app/api-slices</a> api-get-search-slice.ts
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">62.5% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">6/6</span>
+            <span class="fraction">5/8</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">0/0</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">33.33% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">1/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">62.5% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">6/6</span>
+            <span class="fraction">5/8</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line medium"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,50 +83,56 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import SearchItem from '../search-item/search-item';
-import { Conditions } from '../../types/api-interface';
-import styles from './search-list.module.css';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ApiResponse } from '../../types/api-interface';
+import { PATH_SEARCH } from '../../utils/const/const';
 &nbsp;
-interface SearchListProps {
-  conditions: Conditions[];
-}
+export const apiGetSearchSlice = createApi({
+  reducerPath: 'api',
+  baseQuery: fetchBaseQuery({ baseUrl: PATH_SEARCH }),
+  endpoints: (builder) =&gt; ({
+    fetchGet: builder.query&lt;ApiResponse, { page: number; pageSize: number }&gt;({
+      query: <span class="fstat-no" title="function not covered" >({</span> page, pageSize }) =&gt; {
+        const params = <span class="cstat-no" title="statement not covered" >new URLSearchParams({</span>
+          pageNumber: (page - 1).toString(),
+          pageSize: pageSize.toString(),
+        }).toString();
+<span class="cstat-no" title="statement not covered" >        return `${PATH_SEARCH}?${params.toString()}`;</span>
+      },
+      transformResponse: <span class="fstat-no" title="function not covered" >(r</span>esponse: ApiResponse): ApiResponse =&gt; {
+<span class="cstat-no" title="statement not covered" >        return response as ApiResponse;</span>
+      },
+    }),
+  }),
+});
 &nbsp;
-const SearchList: React.FC&lt;SearchListProps&gt; = ({ conditions }) =&gt; (
-  &lt;section className={styles.searchResultBlock}&gt;
-    {conditions.length === 0 ? (
-      &lt;p&gt;No data found&lt;/p&gt;
-    ) : (
-      conditions.map((condition: Conditions) =&gt; (
-        &lt;SearchItem key={condition.uid} condition={condition} /&gt;
-      ))
-    )}
-  &lt;/section&gt;
-);
-&nbsp;
-export default SearchList;
+export const { useFetchGetQuery } = apiGetSearchSlice;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -141,7 +147,7 @@ export default SearchList;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-18T13:56:08.236Z
+      at 2024-07-18T10:00:22.589Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

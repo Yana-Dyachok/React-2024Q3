@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { useFetchMedicalConditionByIdQuery } from '../../app/api-slices/api-get-slices';
+import { useFetchByIdQuery } from '../../app/api-slices/api-get-slices';
 import Loading from '../../components/ui/loading/loading';
 
 import styles from './description-item.module.css';
@@ -9,11 +9,7 @@ const DescriptionItem: React.FC = () => {
   const { itemId } = useParams<{ itemId: string }>();
   const { search } = useLocation();
 
-  const {
-    data: condition,
-    error,
-    isLoading,
-  } = useFetchMedicalConditionByIdQuery(itemId ?? '');
+  const { data: condition, error, isLoading } = useFetchByIdQuery(itemId ?? '');
   return (
     <div className={styles.descriptionBlock}>
       {isLoading ? (

@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchItem from '../search-item/search-item';
-import { Conditions } from '../../api/api-interface';
+import { Conditions } from '../../types/api-interface';
 import styles from './search-list.module.css';
 
 interface SearchListProps {

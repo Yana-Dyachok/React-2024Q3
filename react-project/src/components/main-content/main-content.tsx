@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { ApiResponse } from '../../api/api-interface';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+// import { useFetchGetQuery } from '../../app/api-slices/api-get-search-slice';
+import { useFetchPostQuery } from '../../app/api-slices/api-post-slice';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
 import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import fetchDataConditions from '../../api/api-post';
-import fetchData from '../../api/api-get-search';
 import styles from './main-content.module.css';
 
 const MainContent: React.FC = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const [page, setPage] = useState(1);
   const [pageSize] = useState(15);
@@ -25,6 +22,14 @@ const MainContent: React.FC = () => {
     }
   };
 
+  // const { data, error, isLoading } = searchQuery
+  //   ? useFetchPostQuery({searchQuery, pageSize,  page })
+  //   : useFetchGetQuery({ page, pageSize });
+  const { data, error, isLoading } = useFetchPostQuery({
+    searchQuery,
+    pageSize,
+    page,
+  });
   useEffect(() => {
     const urlParams = new URLSearchParams(search);
     const initialPage = urlParams.get('page');
@@ -36,60 +41,16 @@ const MainContent: React.FC = () => {
     }
   }, [search, navigate, pageSize]);
 
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      setLoading(true);
-      try {
-        const apiResult =
-          searchQuery === ''
-            ? await fetchData(page, pageSize)
-            : await fetchDataConditions(searchQuery, pageSize, page);
-        if (apiResult !== null) {
-          setData(apiResult);
-        } else {
-          setData(null);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setData(null);
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }
-    };
-
-    fetchDataAsync();
-  }, [page, pageSize, searchQuery]);
-
   const handleChange = (value: number) => {
     setPage(value);
     navigate(`${pathname}?page=${value}`);
   };
 
-  const handleSearchChange = async (search: string) => {
-    setLoading(true);
+  const handleSearchChange = (search: string) => {
     const searchValue = search.trim();
     setSearchQuery(searchValue);
     setPage(1);
-    navigate(`${pathname}?page=${1}`);
-    try {
-      const response: ApiResponse | null = await fetchDataConditions(
-        searchValue,
-        pageSize,
-        page,
-      );
-      if (response !== null) {
-        setData(response);
-      } else {
-        setData(null);
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
+    navigate(`${pathname}?page=1`);
   };
 
   const totalPages = data?.page.totalPages || 1;
@@ -99,8 +60,10 @@ const MainContent: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.mainContent} onClick={closeDescription}>
           <SearchInput onSearchChange={handleSearchChange} />
-          {loading ? (
+          {isLoading ? (
             <Loading />
+          ) : error ? (
+            <div>Error fetching data</div>
           ) : (
             <div className={styles.searchResult}>
               {data?.medicalConditions.length === 0 ? (

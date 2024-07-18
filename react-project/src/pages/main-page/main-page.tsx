@@ -1,12 +1,12 @@
 import MainContent from '../../components/main-content/main-content';
 import ErrorBoundary from '../../components/error-boundary/error-boundary';
-import ErrorButton from '../../components/error-boundary/error-button';
+import Header from '../../components/header/header';
 function MainPage() {
   return (
     <>
       {' '}
       <ErrorBoundary>
-        <ErrorButton />
+        <Header />
         <MainContent />
       </ErrorBoundary>
     </>

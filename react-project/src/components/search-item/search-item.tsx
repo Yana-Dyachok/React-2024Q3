@@ -1,5 +1,5 @@
 import React from 'react';
-import { Conditions } from '../../api/api-interface';
+import { Conditions } from '../../types/api-interface';
 import { Link, useSearchParams } from 'react-router-dom';
 import styles from './search-item.module.css';
 
@@ -18,7 +18,9 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
     >
       <span className={styles.name}>{condition.name}</span>
       <div
-        className={`${styles.condition} ${condition.psychologicalCondition ? '' : styles.notCondition}`}
+        className={`${styles.condition} ${
+          condition.psychologicalCondition ? '' : styles.notCondition
+        }`}
       ></div>
     </Link>
   );

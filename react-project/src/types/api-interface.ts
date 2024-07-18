@@ -23,3 +23,10 @@ export interface ApiResponse {
   sort: Sort;
   medicalConditions: Conditions[];
 }
+
+export interface PaginatedResponse {
+  medicalConditions: Conditions[];
+  page: number;
+  pageSize: number;
+  totalRecords: number;
+}

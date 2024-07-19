@@ -1,0 +1,20 @@
+:root {
+  --background-color: var(--c-white);
+  --color: var(--c-blue-700);
+}
+
+.lightTheme {
+  --background-color: var(--c-white);
+  --color: var(--c-blue-700);
+}
+
+.darkTheme {
+  --background-color: var(--c-green-900);
+  --color: var(--c-white);
+}
+
+.container {
+  background-color: var(--background-color);
+  color: var(--color);
+  min-height: 100vh;
+}

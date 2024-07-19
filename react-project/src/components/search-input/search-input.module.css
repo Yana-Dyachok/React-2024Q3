@@ -1,24 +1,42 @@
+:root {
+  --background-color: var(--c-grey-900);
+  --border: var(--c-white);
+  --border-button: var(--c-red);
+}
+
+.lightTheme {
+  --background-color: var(--c-blue-300);
+  --border: var(--c-blue-700);
+  --border-button: var(--c-blue-700);
+}
+
+.darkTheme {
+  --background-color: var(--c-grey-900);
+  --border: var(--c-white);
+  --border-button: var(--c-red);
+}
+
 .searchInputBlock {
   display: flex;
   padding: 0.5rem;
   max-width: 50rem;
   min-width: 40rem;
   box-sizing: border-box;
-  background-color: var(--c-grey-900);
-  border: 0.17rem solid var(--c-white);
+  background-color: var(--background-color);
+  border: 0.17rem solid var(--border);
   border-radius: 0.2rem;
 }
 
 .searchInputBlock:focus {
-  border: 0.2rem solid var(--c-red);
+  border: 0.2rem solid var(--border-button);
 }
 
 .searchInput {
   width: 100%;
   border: 0;
   outline: 0;
-  color: var(--c-white);
-  background-color: var(--c-grey-900);
+  color: var(--border);
+  background-color: var(--background-color);
 }
 
 .searchBtn {
@@ -27,7 +45,7 @@
   mask-repeat: no-repeat;
   mask-size: cover;
   mask-position: center;
-  background-color: var(--c-red);
+  background-color: var(--border-button);
   mask-image: url('../../assets/svg-icons/search.svg');
   cursor: pointer;
 }

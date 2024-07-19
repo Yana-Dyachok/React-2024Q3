@@ -1,5 +1,7 @@
+import { RootState } from '../../../app/store/store';
+import { lightTheme } from '../../../toggle-theme/theme';
+import { useSelector } from 'react-redux';
 import styles from './button.module.css';
-
 type ButtonProps = {
   btnType: 'button' | 'submit';
   children: string;
@@ -23,10 +25,14 @@ const Button = ({
       onClick();
     }
   };
-
+  const currentTheme = useSelector(
+    (state: RootState) => state.theme.currentTheme,
+  );
+  const themeClass =
+    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
   return (
     <button
-      className={styles.btn}
+      className={`${styles.button} ${themeClass}`}
       type={btnType === 'button' ? 'button' : 'submit'}
       onClick={handleClick}
       disabled={disabled}

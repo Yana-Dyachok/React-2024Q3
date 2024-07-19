@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../app/store/store';
 import { addSearchInput } from '../../app/slices/search-slice';
 import useSearchQuery from '../../utils/hooks/ls-hook';
+import { RootState } from '../../app/store/store';
+import { lightTheme } from '../../toggle-theme/theme';
+import { useSelector } from 'react-redux';
 import styles from './search-input.module.css';
 
 interface SearchInputProps {
@@ -12,7 +15,11 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const dispatch = useDispatch<AppDispatch>();
-
+  const currentTheme = useSelector(
+    (state: RootState) => state.theme.currentTheme,
+  );
+  const themeClass =
+    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim();
     setSearchQuery(query);
@@ -32,11 +39,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
 
   return (
     <section
-      className={styles.searchInputBlock}
+      className={`${styles.searchInputBlock} ${themeClass}`}
       onClick={(event) => event.stopPropagation()}
     >
       <input
-        className={styles.searchInput}
+        className={`${styles.searchInput} ${themeClass}`}
         type="text"
         placeholder="Search"
         pattern="[a-zA-Z]*"
@@ -47,7 +54,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
       />
       <button
         type="button"
-        className={styles.searchBtn}
+        className={`${styles.searchBtn} ${themeClass}`}
         onClick={handleSearchClick}
       />
     </section>

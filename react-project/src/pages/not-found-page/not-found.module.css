@@ -1,3 +1,11 @@
+.lightTheme {
+  --color: var(--c-blue-700);
+}
+
+.darkTheme {
+  --color: var(--c-red);
+}
+
 .errorBlock {
   height: 90vh;
   display: flex;
@@ -23,7 +31,7 @@
   display: inline-block;
   line-height: 0.7;
   position: relative;
-  color: var(--c-red);
+  color: var(--color);
 }
 
 .digitFirst,

@@ -1,3 +1,15 @@
+.lightTheme {
+  --background-color: var(--c-blue-300);
+  --color: var(--c-blue-700);
+  --hover: var(--c-blue-500);
+}
+
+.darkTheme {
+  --background-color: var(--c-grey-900);
+  --color: var(--c-red);
+  --hover: var(--c-white);
+}
+
 .descriptionBlock {
   width: 20rem;
   height: 40rem;
@@ -14,7 +26,7 @@
   text-align: center;
   padding: 1rem;
   gap: 1rem;
-  background-color: var(--c-grey-900);
+  background-color: var(--background-color);
 }
 
 .descriptionTitle {
@@ -23,7 +35,7 @@
 }
 
 .name {
-  color: var(--c-red);
+  color: var(--color);
 }
 
 .closeButton {
@@ -36,11 +48,11 @@
   mask-size: contain;
   mask-position: center;
   mask-image: url('../../assets/svg-icons/cross-circle-svgrepo-com.svg');
-  background-color: var(--c-red);
+  background-color: var(--color);
 }
 
 .closeButton:hover {
-  background-color: var(--c-white);
+  background-color: var(--hover);
 }
 
 .medicalIcon {
@@ -50,5 +62,5 @@
   mask-size: contain;
   mask-position: center;
   mask-image: url('../../assets/svg-icons/med-sign.svg');
-  background-color: var(--c-red);
+  background-color: var(--color);
 }

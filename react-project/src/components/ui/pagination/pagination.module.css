@@ -1,3 +1,20 @@
+:root {
+  --background-color: var(--c-white);
+  --hover: var(--c-red);
+  --hover-background: var(--c-grey-900);
+}
+
+.lightTheme {
+  --background-color: var(--c-blue-700);
+  --hover: var(--c-blue-500);
+  --hover-background: var(--c-blue-300);
+}
+
+.darkTheme {
+  --background-color: var(--c-white);
+  --hover: var(--c-red);
+  --hover-background: var(--c-grey-900);
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -11,7 +28,7 @@
   mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;
-  background-color: var(--c-white);
+  background-color: var(--background-color);
 }
 
 .prev {
@@ -29,13 +46,13 @@
 }
 
 .pageNumber:hover {
-  color: var(--c-gray);
-  background-color: var(--c-grey-700);
+  color: var(--c-white);
+  background-color: var(--hover-background);
   border-radius: 50%;
 }
 
 .active {
-  color: var(--c-red);
+  color: var(--hover);
 }
 
 .ellipsis {
@@ -52,7 +69,7 @@
 
 @media (hover: hover) and (pointer: fine) and (pointer: fine) {
   .sliderBtn:hover:not([disabled]) {
-    background-color: var(--c-red);
+    background-color: var(--hover);
   }
 }
 

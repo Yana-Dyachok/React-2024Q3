@@ -3,10 +3,11 @@ import searchInputSlice from '../slices/search-slice';
 import { apiGetByIdSlice } from '../api-slices/api-get-slices';
 import { apiGetSearchSlice } from '../api-slices/api-get-search-slice';
 import { apiPostSearchSlice } from '../api-slices/api-post-slice';
-
+import themeSlice from '../slices/theme-slice';
 const store = configureStore({
   reducer: {
     searchInput: searchInputSlice,
+    theme: themeSlice,
     [apiGetByIdSlice.reducerPath]: apiGetByIdSlice.reducer,
     [apiGetSearchSlice.reducerPath]: apiGetSearchSlice.reducer,
     [apiPostSearchSlice.reducerPath]: apiPostSearchSlice.reducer,

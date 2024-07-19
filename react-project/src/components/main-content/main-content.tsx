@@ -65,7 +65,7 @@ const MainContent: React.FC = () => {
           {isLoading ? (
             <Loading />
           ) : error ? (
-            <div>Error fetching data</div>
+            <div>No data found</div>
           ) : (
             <div className={styles.searchResult}>
               {data?.medicalConditions.length === 0 ? (

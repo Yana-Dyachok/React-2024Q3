@@ -21,7 +21,6 @@
   position: relative;
   gap: 1rem;
   padding: 0.5rem;
-  background-color: var(--c-green-910);
 }
 
 @media (max-width: 1080px) {

@@ -23,27 +23,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">66.66% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">4/4</span>
+            <span class="fraction">6/9</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/0</span>
+            <span class="fraction">0/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">50% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/1</span>
+            <span class="fraction">1/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">66.66% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">4/4</span>
+            <span class="fraction">6/9</span>
           </div>
         </div>
         <p class="quiet">
@@ -57,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line medium"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -71,11 +71,27 @@
 <a name='L10'></a><a href='#L10'>10</a>
 <a name='L11'></a><a href='#L11'>11</a>
 <a name='L12'></a><a href='#L12'>12</a>
-<a name='L13'></a><a href='#L13'>13</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -84,12 +100,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { RootState } from '../../../app/store/store';
+import { lightTheme } from '../../../toggle-theme/theme';
+import { useSelector } from 'react-redux';
 import styles from './loading.module.css';
 &nbsp;
 const Loading: React.FC = () =&gt; {
-  return (
+  const currentTheme = useSelector(
+<span class="fstat-no" title="function not covered" >    (s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.theme.currentTheme,</span>
+  );
+  const themeClass =
+<span class="cstat-no" title="statement not covered" >    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;section className={styles.loaderContainer}&gt;
-      &lt;div className={styles.loader} role="loader"&gt;&lt;/div&gt;
+      &lt;div className={`${styles.loader}${themeClass}`} role="loader"&gt;&lt;/div&gt;
     &lt;/section&gt;
   );
 };
@@ -109,7 +133,7 @@ export default Loading;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-18T13:56:08.236Z
+      at 2024-07-19T09:09:41.570Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

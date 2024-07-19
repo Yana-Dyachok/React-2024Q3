@@ -1,4 +1,7 @@
 import React from 'react';
+import { RootState } from '../../../app/store/store';
+import { lightTheme } from '../../../toggle-theme/theme';
+import { useSelector } from 'react-redux';
 import styles from './pagination.module.css';
 
 interface PaginationProps {
@@ -12,6 +15,11 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
+  const currentTheme = useSelector(
+    (state: RootState) => state.theme.currentTheme,
+  );
+  const themeClass =
+    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
   const handlePrevious = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     if (currentPage > 1) {
@@ -40,7 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={1}
-          className={`${styles.pageNumber} ${
+          className={`${styles.pageNumber} ${themeClass}${
             1 === currentPage ? styles.active : ''
           }`}
           onClick={() => onPageChange(1)}
@@ -62,7 +70,7 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={i}
-          className={`${styles.pageNumber} ${
+          className={`${styles.pageNumber} ${themeClass} ${
             i === currentPage ? styles.active : ''
           }`}
           onClick={() => onPageChange(i)}
@@ -84,7 +92,7 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <button
           key={totalPages}
-          className={`${styles.pageNumber} ${
+          className={`${styles.pageNumber} ${themeClass}${
             totalPages === currentPage ? styles.active : ''
           }`}
           onClick={() => onPageChange(totalPages)}
@@ -100,7 +108,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className={styles.pagination}>
       <button
-        className={`${styles.sliderBtn} ${styles.prev}`}
+        className={`${styles.sliderBtn} ${themeClass} ${styles.prev}`}
         onClick={handlePrevious}
         disabled={currentPage === 1}
         aria-label="prev-page"
@@ -112,7 +120,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {renderPageNumbers()}
       </div>
       <button
-        className={`${styles.sliderBtn} ${styles.next}`}
+        className={`${styles.sliderBtn} ${themeClass} ${styles.next}`}
         onClick={handleNext}
         disabled={currentPage === totalPages}
         aria-label="next-page"

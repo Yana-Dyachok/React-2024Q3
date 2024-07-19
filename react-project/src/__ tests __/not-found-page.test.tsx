@@ -1,12 +1,22 @@
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { lightTheme } from '../toggle-theme/theme';
+import { renderWithRedux } from '../utils/const/render-with-redux';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 
 test('demo', () => {
   expect(true).toBe(true);
 });
 
-test('Renders the not found page', () => {
-  render(<NotFoundPage />);
-  expect(true).toBeTruthy();
+describe('NotFoundPage', () => {
+  it('renders NotFoundPage', () => {
+    const initialState = {
+      theme: {
+        currentTheme: lightTheme,
+      },
+    };
+
+    const { getByText } = renderWithRedux(<NotFoundPage />, { initialState });
+    expect(getByText('Ooops... Page not found')).toBeInTheDocument();
+    expect(getByText('Back to main')).toBeInTheDocument();
+  });
 });

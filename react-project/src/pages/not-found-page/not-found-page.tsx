@@ -17,8 +17,12 @@ function NotFoundPage() {
         <span className={`${styles.spanError} ${themeClass}`}>
           <span className={styles.digitFirst}>4</span>
         </span>
-        <span className={`${styles.spanError} ${styles.digitSecond}`}>0</span>
-        <span className={styles.spanError}>
+        <span
+          className={`${styles.spanError} ${styles.digitSecond} ${themeClass}`}
+        >
+          0
+        </span>
+        <span className={`${styles.spanError} ${themeClass}`}>
           <span className={styles.digitThird}>4</span>
         </span>
       </section>

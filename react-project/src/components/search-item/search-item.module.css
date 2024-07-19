@@ -13,7 +13,7 @@
 }
 .conditionBlock {
   width: 15rem;
-  height: 10rem;
+  height: 11rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,4 +44,43 @@
 
 .notCondition {
   mask-image: url('../../assets/svg-icons/not-condition.svg');
+}
+
+.itemFooter {
+  display: flex;
+  justify-content: space-around;
+}
+
+.detailsLink {
+  padding: 0 0.2rem;
+  border: 0.1rem solid var(--color-text);
+}
+
+.detailsLink:hover {
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--color-text);
+}
+
+.inputCheckbox {
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid var(--border);
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.inputCheckbox:checked {
+  background-color: var(--border);
+}
+
+.inputCheckbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: solid var(--color-text);
+  border-width: 0 0.2rem 0.2rem 0;
+  transform: translate(-50%, -50%) rotate(45deg);
 }

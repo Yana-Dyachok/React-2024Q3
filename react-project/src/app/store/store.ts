@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import searchInputSlice from '../slices/search-slice';
+import checkedItemSlice from '../slices/checked-item-slice';
 import { apiGetByIdSlice } from '../api-slices/api-get-slices';
 import { apiGetSearchSlice } from '../api-slices/api-get-search-slice';
 import { apiPostSearchSlice } from '../api-slices/api-post-slice';
@@ -8,6 +9,7 @@ const store = configureStore({
   reducer: {
     searchInput: searchInputSlice,
     theme: themeSlice,
+    checked: checkedItemSlice,
     [apiGetByIdSlice.reducerPath]: apiGetByIdSlice.reducer,
     [apiGetSearchSlice.reducerPath]: apiGetSearchSlice.reducer,
     [apiPostSearchSlice.reducerPath]: apiPostSearchSlice.reducer,

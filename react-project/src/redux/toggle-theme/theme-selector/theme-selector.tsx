@@ -1,15 +1,13 @@
 import React from 'react';
 import { setDarkTheme, setLightTheme } from '../../slices/theme-slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import { lightTheme } from '../theme';
+import { selectCurrentTheme } from '../../slices/theme-slice';
 import styles from './toggle-theme-indicator.module.css';
 
 const ThemeSelector: React.FC = () => {
   const dispatch = useDispatch();
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
+  const currentTheme = useSelector(selectCurrentTheme);
 
   const handleClick = () => {
     if (currentTheme === lightTheme) {

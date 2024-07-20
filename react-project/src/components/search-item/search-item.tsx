@@ -4,7 +4,10 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleComplete } from '../../redux/slices/checked-item-slice';
+import {
+  toggleComplete,
+  makeSelectIsCompleted,
+} from '../../redux/slices/checked-item-slice';
 import styles from './search-item.module.css';
 
 interface SearchItemProps {
@@ -20,9 +23,8 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
 
-  const isCompleted = useSelector(
-    (state: RootState) =>
-      state.checked.checkedItem[condition.uid]?.checked || false,
+  const isCompleted = useSelector((state: RootState) =>
+    makeSelectIsCompleted(condition.uid)(state),
   );
 
   const handleCheckboxChange = () => {

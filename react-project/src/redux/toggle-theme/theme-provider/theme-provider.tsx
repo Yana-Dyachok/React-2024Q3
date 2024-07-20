@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import ThemeContext from '../theme-context';
 import { Theme, lightTheme } from '../theme';
+import { selectCurrentTheme } from '../../slices/theme-slice';
 import styles from './theme-provider.module.css';
 
 type ThemeProviderProps = {
@@ -10,9 +10,7 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const theme: Theme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
+  const theme: Theme = useSelector(selectCurrentTheme);
 
   const themeClass =
     theme === lightTheme ? styles.lightTheme : styles.darkTheme;

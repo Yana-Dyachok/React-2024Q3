@@ -4,6 +4,8 @@ import {
   getFromLocalStorage,
   saveToLocalStorage,
 } from '../../utils/local-storage/ls-handler';
+import { createSelector } from 'reselect';
+import { RootState } from '../store/store';
 
 const getThemeFromLocalStorage = (key: string) => {
   const theme = getFromLocalStorage(key);
@@ -30,5 +32,11 @@ const themeSlice = createSlice({
 });
 
 export const { setLightTheme, setDarkTheme } = themeSlice.actions;
-
 export default themeSlice.reducer;
+
+const selectThemeState = (state: RootState) => state.theme;
+
+export const selectCurrentTheme = createSelector(
+  [selectThemeState],
+  (themeState) => themeState.currentTheme,
+);

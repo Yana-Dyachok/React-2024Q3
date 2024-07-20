@@ -31,19 +31,19 @@
           <div class="fl pad1y space-right2">
             <span class="strong">0% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/1</span>
+            <span class="fraction">0/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">16.66% </span>
+            <span class="strong">20% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/6</span>
+            <span class="fraction">1/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">37.5% </span>
+            <span class="strong">36% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">9/24</span>
+            <span class="fraction">9/25</span>
           </div>
         </div>
         <p class="quiet">
@@ -113,10 +113,22 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -124,12 +136,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -138,20 +146,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,7 +186,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
-import { unselectAll } from '../../redux/slices/checked-item-slice';
+import {
+  unselectAll,
+  selectSelectedItems,
+  selectConditionsArray,
+} from '../../redux/slices/checked-item-slice';
 import Button from '../ui/button/button';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
@@ -178,29 +198,32 @@ import styles from './flyout.module.css';
 &nbsp;
 const Flyout: React.FC = () =&gt; {
   const dispatch = useDispatch();
-  const selectedItems = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >    Object.keys(state.checked.checkedItem).filter(</span>
-<span class="fstat-no" title="function not covered" >      (u</span>id) =&gt; <span class="cstat-no" title="statement not covered" >state.checked.checkedItem[uid].checked,</span>
-    ),
-  );
 &nbsp;
-  const conditions = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.checked)</span>;</span>
+  const selectedItems = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    selectSelectedItems(state),</span>
+  );
+  const conditionsArray = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    selectConditionsArray(state),</span>
+  );
 &nbsp;
   const handleUnselectAll = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(unselectAll());</span>
   };
 &nbsp;
   const handleDownload = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-    const conditionsArray = <span class="cstat-no" title="statement not covered" >Object.values(conditions.checkedItem);</span>
-    const worksheet = <span class="cstat-no" title="statement not covered" >XLSX.utils.json_to_sheet(conditionsArray);</span>
-    const workbook = <span class="cstat-no" title="statement not covered" >XLSX.utils.book_new();</span>
-<span class="cstat-no" title="statement not covered" >    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');</span>
-    const csvData = <span class="cstat-no" title="statement not covered" >XLSX.write(workbook, { bookType: 'csv', type: 'array' });</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+      const worksheet = <span class="cstat-no" title="statement not covered" >XLSX.utils.json_to_sheet(conditionsArray);</span>
+      const workbook = <span class="cstat-no" title="statement not covered" >XLSX.utils.book_new();</span>
+<span class="cstat-no" title="statement not covered" >      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');</span>
+      const csvData = <span class="cstat-no" title="statement not covered" >XLSX.write(workbook, { bookType: 'csv', type: 'array' });</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    saveAs(</span>
-      new Blob([csvData], { type: 'text/csv;charset=utf-8;' }),
-      `${selectedItems.length}_conditions.csv`,
-    );
+<span class="cstat-no" title="statement not covered" >      saveAs(</span>
+        new Blob([csvData], { type: 'text/csv;charset=utf-8;' }),
+        `${selectedItems.length}_conditions.csv`,
+      );
+    } catch (error) {
+<span class="cstat-no" title="statement not covered" >      console.error('Error while generating or downloading the file:', error);</span>
+    }
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (selectedItems.length === 0) <span class="cstat-no" title="statement not covered" >return null;</span></span>
@@ -208,7 +231,8 @@ const Flyout: React.FC = () =&gt; {
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className={styles.flyout}&gt;
       &lt;p className={styles.flyoutText}&gt;
-        {selectedItems.length} items are selected
+        {selectedItems.length} item{selectedItems.length &gt; 1 ? 's' : ''}{' '}
+        selected
       &lt;/p&gt;
       &lt;Button btnType="button" onClick={handleUnselectAll}&gt;
         Unselect all
@@ -235,7 +259,7 @@ export default Flyout;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-20T15:37:24.256Z
+      at 2024-07-20T20:31:58.085Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

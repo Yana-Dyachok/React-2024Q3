@@ -63,33 +63,12 @@
 <a name='L2'></a><a href='#L2'>2</a>
 <a name='L3'></a><a href='#L3'>3</a>
 <a name='L4'></a><a href='#L4'>4</a>
-<a name='L5'></a><a href='#L5'>5</a>
-<a name='L6'></a><a href='#L6'>6</a>
-<a name='L7'></a><a href='#L7'>7</a>
-<a name='L8'></a><a href='#L8'>8</a>
-<a name='L9'></a><a href='#L9'>9</a>
-<a name='L10'></a><a href='#L10'>10</a>
-<a name='L11'></a><a href='#L11'>11</a>
-<a name='L12'></a><a href='#L12'>12</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L5'></a><a href='#L5'>5</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const lightTheme = {
-  backgroundColor: 'var(--c-white)',
-  color: 'var(--c-blue-700)',
-};
-&nbsp;
-export const darkTheme = {
-  backgroundColor: 'var(--c-green-900)',
-  color: 'var(--c-white)',
-};
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const lightTheme = 'lightTheme' as const;
+export const darkTheme = 'darkTheme' as const;
 &nbsp;
 export type Theme = typeof lightTheme | typeof darkTheme;
 &nbsp;</pre></td></tr></table></pre>
@@ -106,7 +85,7 @@ export type Theme = typeof lightTheme | typeof darkTheme;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-20T15:37:24.256Z
+      at 2024-07-20T20:58:20.616Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

@@ -7,7 +7,7 @@ interface CheckedConditions extends Conditions {
   checked: boolean;
 }
 
-interface CheckedItemState {
+export interface CheckedItemState {
   checkedItem: Record<string, CheckedConditions>;
 }
 

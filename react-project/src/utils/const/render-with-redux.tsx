@@ -3,9 +3,11 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { lightTheme, darkTheme } from '../../redux/toggle-theme/theme';
 import themeSlice from '../../redux/slices/theme-slice';
+
 type ThemeState = {
   currentTheme: typeof lightTheme | typeof darkTheme;
 };
+
 export const renderWithRedux = (
   component: React.ReactNode,
   {

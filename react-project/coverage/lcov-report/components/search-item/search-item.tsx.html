@@ -33,7 +33,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">0% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/6</span>
+            <span class="fraction">0/4</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -124,13 +124,18 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,7 +152,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,7 +197,10 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleComplete } from '../../redux/slices/checked-item-slice';
+import {
+  toggleComplete,
+  makeSelectIsCompleted,
+} from '../../redux/slices/checked-item-slice';
 import styles from './search-item.module.css';
 &nbsp;
 interface SearchItemProps {
@@ -209,9 +216,8 @@ const SearchItem: React.FC&lt;SearchItemProps&gt; = ({ condition }) =&gt; {
   const themeClass =
 <span class="cstat-no" title="statement not covered" >    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;</span>
 &nbsp;
-  const isCompleted = <span class="cstat-no" title="statement not covered" >useSelector(</span>
-<span class="fstat-no" title="function not covered" >    (s</span>tate: RootState) =&gt;
-<span class="cstat-no" title="statement not covered" >      state.checked.checkedItem[condition.uid]?.checked || false,</span>
+  const isCompleted = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    makeSelectIsCompleted(condition.uid)(state),</span>
   );
 &nbsp;
   const handleCheckboxChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
@@ -264,7 +270,7 @@ export default SearchItem;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-20T15:37:24.256Z
+      at 2024-07-20T20:31:58.085Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

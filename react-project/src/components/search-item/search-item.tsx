@@ -21,7 +21,8 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
 
   const isCompleted = useSelector(
-    (state: RootState) => state.checked.checkedItem[condition.uid] || false,
+    (state: RootState) =>
+      state.checked.checkedItem[condition.uid]?.checked || false,
   );
 
   const handleCheckboxChange = () => {

@@ -7,7 +7,7 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["node", "jest", "msw"]
+    "types": ["node", "jest"]
   },
   "include": ["vite.config.ts"]
 }

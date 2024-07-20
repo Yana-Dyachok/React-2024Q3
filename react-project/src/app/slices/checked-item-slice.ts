@@ -1,21 +1,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Conditions } from '../../types/api-interface';
-interface CheckedItemState {
-  checkedItem: Record<string, boolean>;
+
+interface CheckedConditions extends Conditions {
+  checked: boolean;
 }
+
+interface CheckedItemState {
+  checkedItem: Record<string, CheckedConditions>;
+}
+
+const initialState: CheckedItemState = {
+  checkedItem: {},
+};
 
 const checkedItemSlice = createSlice({
   name: 'checked',
-  initialState: {
-    checkedItem: {},
-  } as CheckedItemState,
+  initialState,
   reducers: {
     toggleComplete(state, action: PayloadAction<{ condition: Conditions }>) {
       const id = action.payload.condition.uid;
-      state.checkedItem[id] = !state.checkedItem[id];
+      if (state.checkedItem[id]) {
+        state.checkedItem[id].checked = !state.checkedItem[id].checked;
+      } else {
+        state.checkedItem[id] = { ...action.payload.condition, checked: true };
+      }
+    },
+    unselectAll(state) {
+      state.checkedItem = {};
     },
   },
 });
 
-export const { toggleComplete } = checkedItemSlice.actions;
+export const { toggleComplete, unselectAll } = checkedItemSlice.actions;
 export default checkedItemSlice.reducer;

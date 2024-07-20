@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { lightTheme, darkTheme } from '../../toggle-theme/theme';
-import themeSlice from '../../app/slices/theme-slice';
+import { lightTheme, darkTheme } from '../../redux/toggle-theme/theme';
+import themeSlice from '../../redux/slices/theme-slice';
 type ThemeState = {
   currentTheme: typeof lightTheme | typeof darkTheme;
 };

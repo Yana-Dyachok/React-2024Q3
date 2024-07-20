@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../app/store/store';
-import { unselectAll } from '../../app/slices/checked-item-slice';
+import { RootState } from '../../redux/store/store';
+import { unselectAll } from '../../redux/slices/checked-item-slice';
 import Button from '../ui/button/button';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';

@@ -1,9 +1,3 @@
-:root {
-  --loader-bar-width: 3vmin;
-  --background: var(--c-green-910);
-  --loader-color: var(--c-red);
-}
-
 .lightTheme {
   --background: var(--c-blue-100);
   --loader-color: var(--c-blue-700);

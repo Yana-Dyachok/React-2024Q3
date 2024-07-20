@@ -27,7 +27,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">6/6</span>
+            <span class="fraction">7/7</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -45,7 +45,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">6/6</span>
+            <span class="fraction">7/7</span>
           </div>
         </div>
         <p class="quiet">
@@ -83,17 +83,21 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,26 +108,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import SearchItem from '../search-item/search-item';
 import { Conditions } from '../../types/api-interface';
 import styles from './search-list.module.css';
-&nbsp;
+import Flyout from '../flyout/flyout';
 interface SearchListProps {
   conditions: Conditions[];
 }
 &nbsp;
 const SearchList: React.FC&lt;SearchListProps&gt; = ({ conditions }) =&gt; (
-  &lt;section className={styles.searchResultBlock}&gt;
-    {conditions.length === 0 ? (
-      &lt;p&gt;No data found&lt;/p&gt;
-    ) : (
-      conditions.map((condition: Conditions) =&gt; (
-        &lt;SearchItem key={condition.uid} condition={condition} /&gt;
-      ))
-    )}
-  &lt;/section&gt;
+  &lt;&gt;
+    &lt;section className={styles.searchResultBlock}&gt;
+      {conditions.length === 0 ? (
+        &lt;p&gt;No data found&lt;/p&gt;
+      ) : (
+        conditions.map((condition: Conditions) =&gt; (
+          &lt;SearchItem key={condition.uid} condition={condition} /&gt;
+        ))
+      )}
+    &lt;/section&gt;
+    &lt;Flyout /&gt;
+  &lt;/&gt;
 );
 &nbsp;
 export default SearchList;
@@ -141,7 +150,7 @@ export default SearchList;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-19T16:23:47.757Z
+      at 2024-07-20T15:37:24.256Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

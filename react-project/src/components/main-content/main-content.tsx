@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { useFetchGetQuery } from '../../app/api-slices/api-get-search-slice';
-import { useFetchPostQuery } from '../../app/api-slices/api-post-slice';
+import { useFetchGetQuery } from '../../redux/api-slices/api-get-search-slice';
+import { useFetchPostQuery } from '../../redux/api-slices/api-post-slice';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';

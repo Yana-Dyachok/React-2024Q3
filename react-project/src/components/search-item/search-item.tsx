@@ -1,10 +1,10 @@
 import React from 'react';
 import { Conditions } from '../../types/api-interface';
 import { Link, useSearchParams } from 'react-router-dom';
-import { RootState } from '../../app/store/store';
-import { lightTheme } from '../../toggle-theme/theme';
+import { RootState } from '../../redux/store/store';
+import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleComplete } from '../../app/slices/checked-item-slice';
+import { toggleComplete } from '../../redux/slices/checked-item-slice';
 import styles from './search-item.module.css';
 
 interface SearchItemProps {

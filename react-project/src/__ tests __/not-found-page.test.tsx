@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { lightTheme } from '../toggle-theme/theme';
+import { lightTheme } from '../redux/toggle-theme/theme';
 import { renderWithRedux } from '../utils/const/render-with-redux';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 

@@ -1,5 +1,5 @@
 import ErrorButton from '../../components/error-boundary/error-button';
-import ThemeSelector from '../../toggle-theme/theme-selector/theme-selector';
+import ThemeSelector from '../../redux/toggle-theme/theme-selector/theme-selector';
 import styles from './header.module.css';
 function Header() {
   return (

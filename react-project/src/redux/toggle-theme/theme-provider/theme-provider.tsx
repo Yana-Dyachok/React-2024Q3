@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store/store';
+import { RootState } from '../../store/store';
 import ThemeContext from '../theme-context';
 import { Theme, lightTheme } from '../theme';
 import styles from './theme-provider.module.css';

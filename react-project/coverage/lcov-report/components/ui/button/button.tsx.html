@@ -29,9 +29,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">42.85% </span>
+            <span class="strong">28.57% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">3/7</span>
+            <span class="fraction">2/7</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -105,9 +105,9 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,7 +116,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,9 +148,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { RootState } from '../../../app/store/store';
-import { lightTheme } from '../../../toggle-theme/theme';
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { RootState } from '../../../redux/store/store';
+import { lightTheme } from '../../../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
 import styles from './button.module.css';
 type ButtonProps = {
@@ -180,7 +180,7 @@ const Button = ({
     (state: RootState) =&gt; state.theme.currentTheme,
   );
   const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+    currentTheme === lightTheme ? styles.lightTheme : <span class="branch-1 cbranch-no" title="branch not covered" >styles.darkTheme;</span>
   return (
     &lt;button
       className={`${styles.button} ${themeClass}`}
@@ -208,7 +208,7 @@ export default Button;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-19T16:23:47.757Z
+      at 2024-07-20T15:37:24.256Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

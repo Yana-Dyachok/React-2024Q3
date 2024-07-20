@@ -1,5 +1,5 @@
 import { renderWithRedux } from '../utils/const/render-with-redux';
-import { lightTheme } from '../toggle-theme/theme';
+import { lightTheme } from '../redux/toggle-theme/theme';
 import Loading from '../components/ui/loading/loading';
 
 describe('Loading', () => {

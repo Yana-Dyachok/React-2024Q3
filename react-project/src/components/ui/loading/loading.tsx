@@ -1,6 +1,6 @@
 import React from 'react';
-import { RootState } from '../../../app/store/store';
-import { lightTheme } from '../../../toggle-theme/theme';
+import { RootState } from '../../../redux/store/store';
+import { lightTheme } from '../../../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
 import styles from './loading.module.css';
 

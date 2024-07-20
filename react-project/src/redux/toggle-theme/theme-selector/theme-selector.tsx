@@ -1,7 +1,7 @@
 import React from 'react';
-import { setDarkTheme, setLightTheme } from '../../app/slices/theme-slice';
+import { setDarkTheme, setLightTheme } from '../../slices/theme-slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../app/store/store';
+import { RootState } from '../../store/store';
 import { lightTheme } from '../theme';
 import styles from './toggle-theme-indicator.module.css';
 

@@ -1,9 +1,3 @@
-:root {
-  --background-color: var(--c-white);
-  --hover: var(--c-red);
-  --hover-background: var(--c-grey-900);
-}
-
 .lightTheme {
   --background-color: var(--c-blue-700);
   --hover: var(--c-blue-500);

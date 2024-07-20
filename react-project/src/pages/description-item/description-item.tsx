@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { useFetchByIdQuery } from '../../app/api-slices/api-get-slices';
-import { RootState } from '../../app/store/store';
-import { lightTheme } from '../../toggle-theme/theme';
+import { useFetchByIdQuery } from '../../redux/api-slices/api-get-slices';
+import { RootState } from '../../redux/store/store';
+import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
 import Loading from '../../components/ui/loading/loading';
 

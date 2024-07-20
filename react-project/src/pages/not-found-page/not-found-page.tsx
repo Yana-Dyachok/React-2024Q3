@@ -1,6 +1,6 @@
 import Button from '../../components/ui/button/button';
-import { RootState } from '../../app/store/store';
-import { lightTheme } from '../../toggle-theme/theme';
+import { RootState } from '../../redux/store/store';
+import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
 import styles from './not-found.module.css';
 

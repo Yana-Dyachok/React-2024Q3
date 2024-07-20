@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../app/store/store';
-import { addSearchInput } from '../../app/slices/search-slice';
+import { AppDispatch } from '../../redux/store/store';
+import { addSearchInput } from '../../redux/slices/search-slice';
 import useSearchQuery from '../../utils/hooks/ls-hook';
-import { RootState } from '../../app/store/store';
-import { lightTheme } from '../../toggle-theme/theme';
+import { RootState } from '../../redux/store/store';
+import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
 import styles from './search-input.module.css';
 

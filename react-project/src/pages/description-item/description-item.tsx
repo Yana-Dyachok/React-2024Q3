@@ -5,6 +5,7 @@ import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDescriptionLoading } from '../../redux/slices/loading-slice';
+import { setSelectedItem } from '../../redux/slices/description-slice';
 import Loading from '../../components/ui/loading/loading';
 import styles from './description-item.module.css';
 
@@ -22,7 +23,16 @@ const DescriptionItem: React.FC = () => {
 
   useEffect(() => {
     dispatch(setDescriptionLoading(isLoading));
-  }, [isLoading, dispatch]);
+    if (condition) {
+      dispatch(
+        setSelectedItem({
+          id: itemId || null,
+          name: condition.name,
+          psychologicalCondition: condition.psychologicalCondition,
+        }),
+      );
+    }
+  }, [isLoading, dispatch, condition, itemId]);
 
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;

@@ -113,7 +113,7 @@ const Loading: React.FC = () =&gt; {
     currentTheme === lightTheme ? styles.lightTheme : <span class="branch-1 cbranch-no" title="branch not covered" >styles.darkTheme;</span>
   return (
     &lt;section className={styles.loaderContainer}&gt;
-      &lt;div className={`${styles.loader}${themeClass}`} role="loader"&gt;&lt;/div&gt;
+      &lt;div className={`${styles.loader} ${themeClass} `} role="loader"&gt;&lt;/div&gt;
     &lt;/section&gt;
   );
 };
@@ -133,7 +133,7 @@ export default Loading;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-21T13:25:35.426Z
+      at 2024-07-21T20:50:36.854Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

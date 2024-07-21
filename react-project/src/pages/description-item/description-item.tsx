@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { useFetchByIdQuery } from '../../redux/api-slices/api-get-slices';
 import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDescriptionLoading } from '../../redux/slices/loading-slice';
 import Loading from '../../components/ui/loading/loading';
-
 import styles from './description-item.module.css';
 
 const DescriptionItem: React.FC = () => {
@@ -15,18 +15,28 @@ const DescriptionItem: React.FC = () => {
   const currentTheme = useSelector(
     (state: RootState) => state.theme.currentTheme,
   );
+  const descriptionLoading = useSelector(
+    (state: RootState) => state.loading.descriptionLoading,
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setDescriptionLoading(isLoading));
+  }, [isLoading, dispatch]);
+
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>
-      {isLoading ? (
+      {descriptionLoading ? (
         <Loading />
       ) : (
         <>
           <Link to={`..${search}`}>
             <button
               aria-label="close"
-              className={`${styles.closeButton}  ${themeClass}`}
+              className={`${styles.closeButton} ${themeClass}`}
             />
           </Link>
           {error ? (

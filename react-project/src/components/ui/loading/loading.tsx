@@ -12,7 +12,7 @@ const Loading: React.FC = () => {
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
   return (
     <section className={styles.loaderContainer}>
-      <div className={`${styles.loader}${themeClass}`} role="loader"></div>
+      <div className={`${styles.loader} ${themeClass} `} role="loader"></div>
     </section>
   );
 };

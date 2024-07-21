@@ -6,12 +6,14 @@ import { apiGetSearchSlice } from '../api-slices/api-get-search-slice';
 import { apiPostSearchSlice } from '../api-slices/api-post-slice';
 import themeSlice from '../slices/theme-slice';
 import searchResultSlice from '../slices/search-result-slice';
+import loadingSlice from '../slices/loading-slice';
 const store = configureStore({
   reducer: {
     searchInput: searchInputSlice,
     theme: themeSlice,
     checked: checkedItemSlice,
     searchResult: searchResultSlice,
+    loading: loadingSlice,
     [apiGetByIdSlice.reducerPath]: apiGetByIdSlice.reducer,
     [apiGetSearchSlice.reducerPath]: apiGetSearchSlice.reducer,
     [apiPostSearchSlice.reducerPath]: apiPostSearchSlice.reducer,

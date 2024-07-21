@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721509100648" clover="3.2.0">
-  <project timestamp="1721509100648" name="All files">
-    <metrics statements="149" coveredstatements="128" conditionals="39" coveredconditionals="23" methods="34" coveredmethods="23" elements="222" coveredelements="174" complexity="0" loc="149" ncloc="149" packages="10" files="11" classes="11"/>
+<coverage generated="1721555938077" clover="3.2.0">
+  <project timestamp="1721555938077" name="All files">
+    <metrics statements="158" coveredstatements="136" conditionals="39" coveredconditionals="23" methods="37" coveredmethods="25" elements="234" coveredelements="184" complexity="0" loc="158" ncloc="158" packages="11" files="13" classes="13"/>
     <package name="components.search-input">
       <metrics statements="25" coveredstatements="23" conditionals="3" coveredconditionals="1" methods="6" coveredmethods="5"/>
       <file name="search-input.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\search-input\search-input.tsx">
@@ -128,6 +128,19 @@
         <line num="36" count="1" type="stmt"/>
       </file>
     </package>
+    <package name="redux.api-slices">
+      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="api-post-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\api-slices\api-post-slice.ts">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="redux.slices">
       <metrics statements="25" coveredstatements="19" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="1"/>
       <file name="search-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\search-slice.ts">
@@ -171,7 +184,12 @@
       </file>
     </package>
     <package name="utils.const">
-      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="const.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\const.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
       <file name="render-with-redux.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\render-with-redux.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>

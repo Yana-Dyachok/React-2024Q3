@@ -22,7 +22,11 @@ const checkedItemSlice = createSlice({
     toggleComplete(state, action: PayloadAction<{ condition: Conditions }>) {
       const id = action.payload.condition.uid;
       if (state.checkedItem[id]) {
-        state.checkedItem[id].checked = !state.checkedItem[id].checked;
+        if (state.checkedItem[id].checked) {
+          delete state.checkedItem[id];
+        } else {
+          state.checkedItem[id].checked = true;
+        }
       } else {
         state.checkedItem[id] = { ...action.payload.condition, checked: true };
       }
@@ -41,7 +45,19 @@ const selectCheckedItemState = (state: RootState): CheckedItemState =>
 
 export const selectCheckedItems = createSelector(
   [selectCheckedItemState],
-  (checkedItemState) => checkedItemState.checkedItem,
+  (checkedItemState) => {
+    const items = checkedItemState.checkedItem;
+    const filteredItems = Object.keys(items).reduce(
+      (result, key) => {
+        if (items[key].checked) {
+          result[key] = items[key];
+        }
+        return result;
+      },
+      {} as { [uid: string]: { name: string; checked: boolean } },
+    );
+    return filteredItems;
+  },
 );
 
 export const selectSelectedItems = createSelector(

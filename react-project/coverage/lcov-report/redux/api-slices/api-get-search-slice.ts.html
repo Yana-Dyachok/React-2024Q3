@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>
-      Code coverage report for components/search-list/search-list.tsx
+      Code coverage report for redux/api-slices/api-get-search-slice.ts
     </title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
@@ -21,31 +21,31 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">components/search-list</a> search-list.tsx
+          <a href="index.html">redux/api-slices</a> api-get-search-slice.ts
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">7/7</span>
+            <span class="fraction">8/8</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">0/0</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">7/7</span>
+            <span class="fraction">8/8</span>
           </div>
         </div>
         <p class="quiet">
@@ -85,57 +85,54 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import SearchItem from '../search-item/search-item';
-import { Conditions } from '../../types/api-interface';
-import styles from './search-list.module.css';
-import Flyout from '../flyout/flyout';
-interface SearchListProps {
-  conditions: Conditions[];
-}
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ApiResponse } from '../../types/api-interface';
+import { PATH_SEARCH } from '../../utils/const/const';
 &nbsp;
-const SearchList: React.FC&lt;SearchListProps&gt; = ({ conditions }) =&gt; (
-  &lt;&gt;
-    &lt;section className={styles.searchResultBlock}&gt;
-      {conditions.length === 0 ? (
-        &lt;p&gt;No data found&lt;/p&gt;
-      ) : (
-        conditions.map((condition: Conditions) =&gt; (
-          &lt;SearchItem key={condition.uid} condition={condition} /&gt;
-        ))
-      )}
-    &lt;/section&gt;
-    &lt;Flyout /&gt;
-  &lt;/&gt;
-);
+export const apiGetSearchSlice = createApi({
+  reducerPath: 'apiGetSearch',
+  baseQuery: fetchBaseQuery({ baseUrl: PATH_SEARCH }),
+  endpoints: (builder) =&gt; ({
+    fetchGet: builder.query&lt;ApiResponse, { page: number; pageSize: number }&gt;({
+      query: ({ page, pageSize }) =&gt; {
+        const params = new URLSearchParams({
+          pageNumber: (page - 1).toString(),
+          pageSize: pageSize.toString(),
+        }).toString();
+        return `${PATH_SEARCH}?${params.toString()}`;
+      },
+      transformResponse: (response: ApiResponse): ApiResponse =&gt; {
+        return response as ApiResponse;
+      },
+    }),
+  }),
+});
 &nbsp;
-export default SearchList;
+export const { useFetchGetQuery } = apiGetSearchSlice;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -150,7 +147,7 @@ export default SearchList;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-21T08:49:45.970Z
+      at 2024-07-20T21:18:53.476Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

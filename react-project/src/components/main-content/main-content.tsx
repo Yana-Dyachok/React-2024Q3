@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useFetchGetQuery } from '../../redux/api-slices/api-get-search-slice';
 import { useFetchPostQuery } from '../../redux/api-slices/api-post-slice';
+import { useDispatch } from 'react-redux';
+import { setSearchResults } from '../../redux/slices/search-result-slice';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
@@ -9,12 +11,13 @@ import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import styles from './main-content.module.css';
 
-const MainContent: React.FC = () => {
+const MainContent = () => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const [page, setPage] = useState(1);
   const [pageSize] = useState(15);
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
+  const dispatch = useDispatch();
 
   const closeDescription = () => {
     if (pathname !== '/') {
@@ -42,6 +45,18 @@ const MainContent: React.FC = () => {
       navigate(`/?page=1`, { replace: true });
     }
   }, [search, navigate, pageSize]);
+
+  useEffect(() => {
+    if (data && !isLoading && !error) {
+      dispatch(
+        setSearchResults({
+          items: data.medicalConditions,
+          totalPages: data.page.totalPages,
+          currentPage: page,
+        }),
+      );
+    }
+  }, [data, isLoading, error, dispatch, page]);
 
   const handleChange = (value: number) => {
     setPage(value);

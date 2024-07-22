@@ -23,9 +23,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">85.71% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">6/7</span>
+            <span class="fraction">7/7</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -35,15 +35,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">66.66% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">2/3</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">85.71% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">6/7</span>
+            <span class="fraction">7/7</span>
           </div>
         </div>
         <p class="quiet">
@@ -97,14 +97,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,8 +129,8 @@ export const apiPostSearchSlice = createApi({
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ name: searchQuery }),
       }),
-      transformResponse: <span class="fstat-no" title="function not covered" >(r</span>esponse: ApiResponse): ApiResponse =&gt; {
-<span class="cstat-no" title="statement not covered" >        return response as ApiResponse;</span>
+      transformResponse: (response: ApiResponse): ApiResponse =&gt; {
+        return response as ApiResponse;
       },
     }),
   }),
@@ -151,7 +151,7 @@ export const { useFetchPostQuery } = apiPostSearchSlice;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-21T09:58:58.040Z
+      at 2024-07-22T11:49:55.757Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

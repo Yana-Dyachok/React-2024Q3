@@ -25,9 +25,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">62.5% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">5/8</span>
+            <span class="fraction">8/8</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -37,15 +37,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">33.33% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/3</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">62.5% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">5/8</span>
+            <span class="fraction">8/8</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line medium"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,14 +95,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,15 +118,15 @@ export const apiGetSearchSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: PATH_SEARCH }),
   endpoints: (builder) =&gt; ({
     fetchGet: builder.query&lt;ApiResponse, { page: number; pageSize: number }&gt;({
-      query: <span class="fstat-no" title="function not covered" >({</span> page, pageSize }) =&gt; {
-        const params = <span class="cstat-no" title="statement not covered" >new URLSearchParams({</span>
+      query: ({ page, pageSize }) =&gt; {
+        const params = new URLSearchParams({
           pageNumber: (page - 1).toString(),
           pageSize: pageSize.toString(),
         }).toString();
-<span class="cstat-no" title="statement not covered" >        return `${PATH_SEARCH}?${params.toString()}`;</span>
+        return `${PATH_SEARCH}?${params.toString()}`;
       },
-      transformResponse: <span class="fstat-no" title="function not covered" >(r</span>esponse: ApiResponse): ApiResponse =&gt; {
-<span class="cstat-no" title="statement not covered" >        return response as ApiResponse;</span>
+      transformResponse: (response: ApiResponse): ApiResponse =&gt; {
+        return response as ApiResponse;
       },
     }),
   }),
@@ -147,7 +147,7 @@ export const { useFetchGetQuery } = apiGetSearchSlice;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-22T06:27:34.493Z
+      at 2024-07-22T11:49:55.757Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

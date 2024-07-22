@@ -1,48 +1,41 @@
-// import { render, screen } from '@testing-library/react';
+// import { configureStore } from '@reduxjs/toolkit';
 // import { Provider } from 'react-redux';
-// import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
-// import DescriptionItem from '../pages/description-item/description-item';
-// import { apiGetByIdSlice } from '../app/api-slices/api-get-slices';
+// import { renderHook, waitFor } from '@testing-library/react';
+// import { apiGetByIdSlice,useFetchByIdQuery } from '../redux/api-slices/api-get-slices';
+// import { mockGetByIdResponse } from '../utils/const/mock-response';
 
-// // Mocked data for useFetchMedicalConditionByIdQuery
-// const mockedMedicalCondition = {
-//   medicalCondition: {
-//     uid: '1',
-//     name: 'Test Condition',
-//     description: 'Test Description',
-//   },
-// };
+// jest.mock('@reduxjs/toolkit/query/react', () => {
+//   const actual = jest.requireActual('@reduxjs/toolkit/query/react');
+//   return {
+//     ...actual,
+//     fetchBaseQuery: () => async () => ({
+//       data: mockGetByIdResponse,
+//     }),
+//   };
+// });
 
-// describe('DescriptionItem', () => {
-//   let store: EnhancedStore;
-
-//   beforeEach(() => {
-//     store = configureStore({
+// describe('apiGetByIdSlice', () => {
+//   it('fetches and transforms data correctly', async () => {
+//     const store = configureStore({
 //       reducer: {
 //         [apiGetByIdSlice.reducerPath]: apiGetByIdSlice.reducer,
 //       },
 //       middleware: (getDefaultMiddleware) =>
 //         getDefaultMiddleware().concat(apiGetByIdSlice.middleware),
 //     });
-//   });
 
-//   it('renders medical condition details correctly', () => {
-//     // Mocking useFetchByIdQuery inside the test itself
-//     jest.mock('@reduxjs/toolkit/query/react', () => ({
-//       ...jest.requireActual('@reduxjs/toolkit/query/react'),
-//       useFetchByIdQuery: jest.fn().mockReturnValue(mockedMedicalCondition),
-//     }));
-
-//     render(
-//       <Provider store={store}>
-//         <DescriptionItem />
-//       </Provider>
+//     const wrapper = ({ children }: { children: React.ReactNode }) => (
+//       <Provider store={store}>{children}</Provider>
 //     );
-
-//     // Assert that the rendered medical condition details are present
-//     expect(screen.getByText('Test Condition')).toBeInTheDocument();
-//     expect(screen.getByText('Test Description')).toBeInTheDocument();
+//     const uid = '2';
+//     const { result } = renderHook(
+//       () => useFetchByIdQuery(uid),
+//       { wrapper }
+//     );
+//     await waitFor(() => {
+//       expect(result.current.isLoading).toBeFalsy();
+//       expect(result.current.isError).toBeFalsy();
+//       expect(result.current.data).toEqual(mockGetByIdResponse);
+//     });
 //   });
-
-//   // Add more test cases as needed
 // });

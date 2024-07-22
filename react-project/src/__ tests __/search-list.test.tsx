@@ -1,33 +1,21 @@
-// import { render } from '@testing-library/react';
-// import { MemoryRouter } from 'react-router-dom';
+// import { render, screen } from '@testing-library/react';
 // import SearchList from '../components/search-list/search-list';
+// import { Conditions } from '../types/api-interface';
 
-// describe('SearchList component', () => {
-//   it('should render "No data found" message when conditions array is empty', () => {
-//     const { getByText } = render(
-//       <MemoryRouter>
-//         <SearchList conditions={[]} />
-//       </MemoryRouter>,
-//     );
-//     const noDataMessage = getByText('No data found');
-//     expect(noDataMessage).toBeTruthy();
+// describe('SearchList', () => {
+//   test('displays "No data found" when conditions array is empty', () => {
+//     render(<SearchList conditions={[]} />);
+//     expect(screen.getByText('No data found')).toBeInTheDocument();
 //   });
 
-//   it('should render SearchItem for each condition in conditions array', () => {
-//     const conditions = [
-//       { uid: '1', name: 'Condition 1', psychologicalCondition: true },
-//       { uid: '2', name: 'Condition 2', psychologicalCondition: false },
+//   test('renders SearchItem components when conditions are provided', () => {
+//     const conditions: Conditions[] = [
+//       { uid: '1', name: 'Condition 1', psychologicalCondition:false },
+//       { uid: '2', name: 'Condition 2', psychologicalCondition:false}
 //     ];
 
-//     const { getByText } = render(
-//       <MemoryRouter>
-//         <SearchList conditions={conditions} />
-//       </MemoryRouter>,
-//     );
-
-//     conditions.forEach((condition) => {
-//       const conditionNameElement = getByText(condition.name);
-//       expect(conditionNameElement).toBeTruthy();
-//     });
+//     render(<SearchList conditions={conditions} />);
+//     expect(screen.getByText('Condition 1')).toBeInTheDocument();
+//     expect(screen.getByText('Condition 2')).toBeInTheDocument();
 //   });
 // });

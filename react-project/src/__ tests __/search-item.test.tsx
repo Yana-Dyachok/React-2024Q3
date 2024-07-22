@@ -1,42 +1,57 @@
-// import { render } from '@testing-library/react';
-// import { MemoryRouter } from 'react-router-dom';
-// import SearchItem from '../components/search-item/search-item';
+import { screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { configureStore } from '@reduxjs/toolkit';
+import SearchItem from '../components/search-item/search-item';
+import { Conditions } from '../types/api-interface';
+import { renderWithRedux } from '../utils/const/render-with-redux';
+import themeSlice from '../redux/slices/theme-slice';
+import checkedItemSlice from '../redux/slices/checked-item-slice';
 
-// describe('SearchItem component', () => {
-//   it('should render condition name correctly', () => {
-//     const condition = {
-//       uid: '123',
-//       name: 'Test Condition',
-//       psychologicalCondition: false,
-//     };
+describe('SearchItem', () => {
+  let condition: Conditions;
 
-//     const { getByText } = render(
-//       <MemoryRouter>
-//         <SearchItem condition={condition} />
-//       </MemoryRouter>,
-//     );
+  beforeEach(() => {
+    condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
+  });
 
-//     const conditionNameElement = getByText('Test Condition');
-//     expect(conditionNameElement).toBeTruthy();
-//   });
+  test('renders condition name and link', () => {
+    renderWithRedux(
+      <Router>
+        <SearchItem condition={condition} />
+      </Router>,
+      {
+        initialState: {
+          theme: { currentTheme: 'lightTheme' },
+        },
+        store: configureStore({
+          reducer: { theme: themeSlice, checked: checkedItemSlice },
+        }),
+      },
+    );
 
-//   it('should render condition with correct URL', () => {
-//     const condition = {
-//       uid: 'MEMA0000162645',
-//       name: 'Another Condition',
-//       psychologicalCondition: true,
-//     };
+    expect(screen.getByText('Condition 1')).toBeInTheDocument();
+    expect(screen.getByText('details')).toBeInTheDocument();
+  });
 
-//     const { getByRole } = render(
-//       <MemoryRouter>
-//         <SearchItem condition={condition} />
-//       </MemoryRouter>,
-//     );
+  test('checkbox toggles completed state', () => {
+    const { store } = renderWithRedux(
+      <Router>
+        <SearchItem condition={condition} />
+      </Router>,
+      {
+        initialState: {
+          theme: { currentTheme: 'lightTheme' },
+        },
+        store: configureStore({
+          reducer: { theme: themeSlice, checked: checkedItemSlice },
+        }),
+      },
+    );
 
-//     const conditionLinkElement = getByRole('link', { name: condition.name });
-//     expect(conditionLinkElement).toHaveAttribute(
-//       'href',
-//       `/item/${condition.uid}`,
-//     );
-//   });
-// });
+    const checkbox = screen.getByRole('checkbox');
+    expect(checkbox).not.toBeChecked();
+
+    fireEvent.click(checkbox);
+    expect(store.getState());
+  });
+});

@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">50% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">9/18</span>
-          </div>
-
-          <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
-            <span class="quiet">Branches</span>
-            <span class="fraction">0/4</span>
-          </div>
-
-          <div class="fl pad1y space-right2">
-            <span class="strong">20% </span>
-            <span class="quiet">Functions</span>
-            <span class="fraction">1/5</span>
+            <span class="fraction">18/18</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">50% </span>
+            <span class="quiet">Branches</span>
+            <span class="fraction">2/4</span>
+          </div>
+
+          <div class="fl pad1y space-right2">
+            <span class="strong">100% </span>
+            <span class="quiet">Functions</span>
+            <span class="fraction">5/5</span>
+          </div>
+
+          <div class="fl pad1y space-right2">
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">9/18</span>
+            <span class="fraction">18/18</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line medium"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -143,27 +143,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,25 +210,25 @@ interface SearchItemProps {
 const SearchItem: React.FC&lt;SearchItemProps&gt; = ({ condition }) =&gt; {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const currentTheme = <span class="cstat-no" title="statement not covered" >useSelector(</span>
-<span class="fstat-no" title="function not covered" >    (s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.theme.currentTheme,</span>
+  const currentTheme = useSelector(
+    (state: RootState) =&gt; state.theme.currentTheme,
   );
   const themeClass =
-<span class="cstat-no" title="statement not covered" >    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;</span>
+    currentTheme === lightTheme ? styles.lightTheme : <span class="branch-1 cbranch-no" title="branch not covered" >styles.darkTheme;</span>
 &nbsp;
-  const isCompleted = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >    makeSelectIsCompleted(condition.uid)(state),</span>
+  const isCompleted = useSelector((state: RootState) =&gt;
+    makeSelectIsCompleted(condition.uid)(state),
   );
 &nbsp;
-  const handleCheckboxChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(toggleComplete({ condition: condition }));</span>
+  const handleCheckboxChange = () =&gt; {
+    dispatch(toggleComplete({ condition: condition }));
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div
       className={`${styles.conditionBlock} ${themeClass}`}
       key={condition.uid}
-      onClick={<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; <span class="cstat-no" title="statement not covered" >event.stopPropagation()}</span>
+      onClick={(event) =&gt; event.stopPropagation()}
     &gt;
       &lt;input
         className={`${styles.inputCheckbox} ${themeClass}`}
@@ -240,7 +240,7 @@ const SearchItem: React.FC&lt;SearchItemProps&gt; = ({ condition }) =&gt; {
       &lt;div className={styles.itemFooter}&gt;
         &lt;div
           className={`${styles.condition} ${themeClass} ${
-            condition.psychologicalCondition ? '' : styles.notCondition
+            condition.psychologicalCondition ? '' : <span class="branch-1 cbranch-no" title="branch not covered" >styles.notCondition</span>
           }`}
         &gt;&lt;/div&gt;
         &lt;Link
@@ -270,7 +270,7 @@ export default SearchItem;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-21T08:49:45.970Z
+      at 2024-07-22T06:46:48.727Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721665229498" clover="3.2.0">
-  <project timestamp="1721665229498" name="All files">
-    <metrics statements="263" coveredstatements="252" conditionals="56" coveredconditionals="44" methods="65" coveredmethods="58" elements="384" coveredelements="354" complexity="0" loc="263" ncloc="263" packages="16" files="24" classes="24"/>
+<coverage generated="1721666706363" clover="3.2.0">
+  <project timestamp="1721666706363" name="All files">
+    <metrics statements="270" coveredstatements="259" conditionals="56" coveredconditionals="44" methods="67" coveredmethods="60" elements="393" coveredelements="363" complexity="0" loc="270" ncloc="270" packages="16" files="25" classes="25"/>
     <package name="components.header">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="header.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\header\header.tsx">
@@ -222,7 +222,7 @@
       </file>
     </package>
     <package name="redux.slices">
-      <metrics statements="65" coveredstatements="62" conditionals="9" coveredconditionals="7" methods="18" coveredmethods="15"/>
+      <metrics statements="72" coveredstatements="69" conditionals="9" coveredconditionals="7" methods="20" coveredmethods="17"/>
       <file name="checked-item-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\checked-item-slice.ts">
         <metrics statements="29" coveredstatements="26" conditionals="7" coveredconditionals="6" methods="10" coveredmethods="7"/>
         <line num="1" count="2" type="stmt"/>
@@ -268,6 +268,16 @@
         <line num="27" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
+      </file>
+      <file name="loading-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\loading-slice.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
       </file>
       <file name="search-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\search-slice.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

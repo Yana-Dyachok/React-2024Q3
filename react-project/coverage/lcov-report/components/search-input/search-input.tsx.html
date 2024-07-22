@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">92% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">23/25</span>
+            <span class="fraction">25/25</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">33.33% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">1/3</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">83.33% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">5/6</span>
+            <span class="fraction">6/6</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">92% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">23/25</span>
+            <span class="fraction">25/25</span>
           </div>
         </div>
         <p class="quiet">
@@ -140,31 +140,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -210,7 +210,7 @@ const SearchInput: React.FC&lt;SearchInputProps&gt; = ({ onSearchChange }) =&gt;
     (state: RootState) =&gt; state.theme.currentTheme,
   );
   const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : <span class="branch-1 cbranch-no" title="branch not covered" >styles.darkTheme;</span>
+    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
   const handleSearchChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
     const query = event.target.value.trim();
     setSearchQuery(query);
@@ -222,9 +222,9 @@ const SearchInput: React.FC&lt;SearchInputProps&gt; = ({ onSearchChange }) =&gt;
     onSearchChange(trimmedQuery);
   };
 &nbsp;
-  const handleKeyPress = <span class="fstat-no" title="function not covered" >(e</span>vent: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (event.key === 'Enter') {</span>
-<span class="cstat-no" title="statement not covered" >      handleSearchClick();</span>
+  const handleKeyPress = (event: React.KeyboardEvent&lt;HTMLInputElement&gt;) =&gt; {
+    if (event.key === 'Enter') {
+      handleSearchClick();
     }
   };
 &nbsp;
@@ -267,7 +267,7 @@ export default SearchInput;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-22T06:46:48.727Z
+      at 2024-07-22T10:14:01.034Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

@@ -86,7 +86,8 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,34 +114,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ApiResponse, Conditions } from "../../types/api-interface";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ApiResponse, Conditions } from '../../types/api-interface';
 export const mockResponse: ApiResponse = {
-    page: {
-      pageNumber: 1,
-      pageSize: 10,
-      numberOfElements: 10,
-      totalElements: 15,
-      totalPages: 35,
-      firstPage: true,
-      lastPage: false,
+  page: {
+    pageNumber: 1,
+    pageSize: 10,
+    numberOfElements: 10,
+    totalElements: 15,
+    totalPages: 35,
+    firstPage: true,
+    lastPage: false,
+  },
+  sort: {
+    clauses: [['column', 'ASC']],
+  },
+  medicalConditions: [
+    {
+      uid: '2',
+      name: 'ty',
+      psychologicalCondition: false,
     },
-    sort: {
-      clauses: [['column', 'ASC']],
-    },
-    medicalConditions: [
-      {
-        uid: '2',
-        name: 'ty',
-        psychologicalCondition: false,
-      },
-    ],
-  };
+  ],
+};
 &nbsp;
-  export const mockGetByIdResponse: Conditions = {
-        uid: '2',
-        name: 'ty',
-        psychologicalCondition: false,
-  };</pre></td></tr></table></pre>
+export const mockGetByIdResponse: Conditions = {
+  uid: '2',
+  name: 'ty',
+  psychologicalCondition: false,
+};
+&nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
       <!-- for sticky footer -->
@@ -154,7 +157,7 @@ export const mockResponse: ApiResponse = {
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-22T11:49:55.757Z
+      at 2024-07-22T12:11:50.449Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721650310495" clover="3.2.0">
-  <project timestamp="1721650310495" name="All files">
-    <metrics statements="245" coveredstatements="234" conditionals="56" coveredconditionals="42" methods="60" coveredmethods="53" elements="361" coveredelements="329" complexity="0" loc="245" ncloc="245" packages="16" files="22" classes="22"/>
+<coverage generated="1721664653153" clover="3.2.0">
+  <project timestamp="1721664653153" name="All files">
+    <metrics statements="256" coveredstatements="245" conditionals="56" coveredconditionals="44" methods="62" coveredmethods="55" elements="374" coveredelements="344" complexity="0" loc="256" ncloc="256" packages="16" files="23" classes="23"/>
     <package name="components.header">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="header.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\header\header.tsx">
@@ -89,30 +89,30 @@
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="20" count="6" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
         <line num="21" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
         <line num="24" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="28" count="6" type="stmt"/>
-        <line num="29" count="12" type="stmt"/>
-        <line num="32" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="6" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="29" count="14" type="stmt"/>
+        <line num="32" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="7" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.ui.loading">
-      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="loading.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\ui\loading\loading.tsx">
-        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
       </file>
     </package>
@@ -173,17 +173,17 @@
       </file>
     </package>
     <package name="pages.not-found-page">
-      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="not-found-page.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\pages\not-found-page\not-found-page.tsx">
-        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
       </file>
     </package>
@@ -212,7 +212,7 @@
       </file>
     </package>
     <package name="redux.slices">
-      <metrics statements="54" coveredstatements="51" conditionals="9" coveredconditionals="7" methods="16" coveredmethods="13"/>
+      <metrics statements="65" coveredstatements="62" conditionals="9" coveredconditionals="7" methods="18" coveredmethods="15"/>
       <file name="checked-item-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\checked-item-slice.ts">
         <metrics statements="29" coveredstatements="26" conditionals="7" coveredconditionals="6" methods="10" coveredmethods="7"/>
         <line num="1" count="2" type="stmt"/>
@@ -244,6 +244,20 @@
         <line num="74" count="2" type="stmt"/>
         <line num="75" count="6" type="stmt"/>
         <line num="77" count="6" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="description-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\description-slice.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
       <file name="search-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\search-slice.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -281,15 +295,15 @@
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="theme-context.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\toggle-theme\theme-context.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="2" type="stmt"/>
       </file>
       <file name="theme.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\toggle-theme\theme.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
       </file>
     </package>
     <package name="redux.toggle-theme.theme-provider">
@@ -326,7 +340,7 @@
         <line num="3" count="5" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
-        <line num="24" count="13" type="stmt"/>
+        <line num="24" count="15" type="stmt"/>
       </file>
     </package>
     <package name="utils.hooks">

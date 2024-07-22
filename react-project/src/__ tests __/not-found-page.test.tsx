@@ -1,22 +1,44 @@
-import '@testing-library/jest-dom';
-import { lightTheme } from '../redux/toggle-theme/theme';
 import { renderWithRedux } from '../utils/const/render-with-redux';
+import { screen } from '@testing-library/react';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
+import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
 
-test('demo', () => {
-  expect(true).toBe(true);
-});
-
-describe('NotFoundPage', () => {
-  it('renders NotFoundPage', () => {
+describe('NotFoundPage Component', () => {
+  it('applies light theme correctly', () => {
     const initialState = {
       theme: {
         currentTheme: lightTheme,
       },
     };
 
-    const { getByText } = renderWithRedux(<NotFoundPage />, { initialState });
-    expect(getByText('Ooops... Page not found')).toBeInTheDocument();
-    expect(getByText('Back to main')).toBeInTheDocument();
+    renderWithRedux(<NotFoundPage />, { initialState });
+
+    const errorSpans = screen.getAllByText((_, element) => {
+      if (!element) return false;
+      return element.className.includes('spanError');
+    });
+
+    errorSpans.forEach((span) => {
+      expect(span).toHaveClass('lightTheme');
+    });
+  });
+
+  it('applies dark theme correctly', () => {
+    const initialState = {
+      theme: {
+        currentTheme: darkTheme,
+      },
+    };
+
+    renderWithRedux(<NotFoundPage />, { initialState });
+
+    const errorSpans = screen.getAllByText((_, element) => {
+      if (!element) return false;
+      return element.className.includes('spanError');
+    });
+
+    errorSpans.forEach((span) => {
+      expect(span).toHaveClass('darkTheme');
+    });
   });
 });

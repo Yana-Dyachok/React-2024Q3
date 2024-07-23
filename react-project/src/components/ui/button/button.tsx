@@ -34,11 +34,12 @@ const Button = ({
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
 
-  if (download && to) {
+  if (download) {
     return (
       <a
         href={to}
         className={`${styles.button} ${themeClass}`}
+        onClick={handleClick}
         download={download}
       >
         {children}

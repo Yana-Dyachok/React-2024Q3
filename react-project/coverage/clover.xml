@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721711919818" clover="3.2.0">
-  <project timestamp="1721711919818" name="All files">
-    <metrics statements="272" coveredstatements="267" conditionals="57" coveredconditionals="47" methods="67" coveredmethods="62" elements="396" coveredelements="376" complexity="0" loc="272" ncloc="272" packages="16" files="25" classes="25"/>
+<coverage generated="1721715178824" clover="3.2.0">
+  <project timestamp="1721715178824" name="All files">
+    <metrics statements="272" coveredstatements="267" conditionals="55" coveredconditionals="45" methods="67" coveredmethods="62" elements="394" coveredelements="374" complexity="0" loc="272" ncloc="272" packages="16" files="25" classes="25"/>
     <package name="components.header">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="header.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\header\header.tsx">
@@ -82,9 +82,9 @@
       </file>
     </package>
     <package name="components.ui.button">
-      <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
+      <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="3"/>
       <file name="button.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\ui\button\button.tsx">
-        <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="3"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -97,10 +97,10 @@
         <line num="31" count="9" type="stmt"/>
         <line num="32" count="18" type="stmt"/>
         <line num="35" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="37" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="37" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="38" count="1" type="stmt"/>
-        <line num="49" count="8" type="stmt"/>
-        <line num="61" count="2" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.ui.loading">

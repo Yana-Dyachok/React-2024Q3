@@ -29,9 +29,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">87.5% </span>
+            <span class="strong">83.33% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">7/8</span>
+            <span class="fraction">5/6</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -120,7 +120,8 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -158,6 +159,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,11 +219,12 @@ const Button = ({
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
 &nbsp;
-  if (download &amp;&amp; to) {
+  if (download) {
     return (
       &lt;a
         href={to}
         className={`${styles.button} ${themeClass}`}
+        onClick={handleClick}
         download={download}
       &gt;
         {children}
@@ -256,7 +259,7 @@ export default Button;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-23T05:18:39.765Z
+      at 2024-07-23T06:12:58.772Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

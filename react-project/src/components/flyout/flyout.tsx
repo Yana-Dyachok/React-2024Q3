@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import {
@@ -7,14 +7,8 @@ import {
   selectConditionsArray,
 } from '../../redux/slices/checked-item-slice';
 import Button from '../ui/button/button';
+import { CheckedConditions } from '../../redux/slices/checked-item-slice';
 import styles from './flyout.module.css';
-
-interface CheckedConditions {
-  uid: string;
-  name: string;
-  psychologicalCondition: string;
-  checked: boolean;
-}
 
 const convertToCSV = (data: CheckedConditions[]): string => {
   if (data.length === 0) {
@@ -26,22 +20,12 @@ const convertToCSV = (data: CheckedConditions[]): string => {
       .map((header) => `"${String(row[header]).replace(/"/g, '""')}"`)
       .join(';'),
   );
-  return [headers.join(';'), ...rows].join('\n\n');
-};
-
-const handleDownload = (conditionsArray: CheckedConditions[]): string | '' => {
-  try {
-    const csvContent = convertToCSV(conditionsArray);
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    return URL.createObjectURL(blob);
-  } catch (error) {
-    console.error('Error while generating or downloading the file:', error);
-    return '/';
-  }
+  return [headers.join(';'), ...rows].join('\n');
 };
 
 const Flyout: React.FC = () => {
   const dispatch = useDispatch();
+  const [csvData, setCsvData] = useState('');
 
   const selectedItems = useSelector((state: RootState) =>
     selectSelectedItems(state),
@@ -52,6 +36,16 @@ const Flyout: React.FC = () => {
 
   const handleUnselectAll = () => {
     dispatch(unselectAll());
+  };
+
+  const handleDownload = () => {
+    try {
+      const csvContent = convertToCSV(conditionsArray);
+      const encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent);
+      setCsvData(encodedUri);
+    } catch (error) {
+      console.error('Error while generating or downloading the file:', error);
+    }
   };
 
   if (selectedItems.length === 0) return null;
@@ -67,7 +61,8 @@ const Flyout: React.FC = () => {
       </Button>
       <Button
         btnType="button"
-        to={handleDownload(conditionsArray)}
+        to={csvData}
+        onClick={handleDownload}
         download={`${conditionsArray.length}_conditions.csv`}
       >
         Download

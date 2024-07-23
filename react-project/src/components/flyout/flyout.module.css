@@ -18,15 +18,16 @@
 }
 
 @media (max-width: 500px) {
-  .flyout > button {
+  .flyout > * {
     font-size: 1rem;
   }
 }
 
 @media (max-width: 420px) {
-  .flyout > button {
+  .flyout > * {
     font-size: 0.9rem;
     width: 5rem;
     height: 2.5rem;
+    align-content: center;
   }
 }

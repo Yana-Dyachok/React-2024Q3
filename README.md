@@ -7,6 +7,10 @@
    - Prettier
    - Husky
    - Vitest
+   - Jest
+   - Redux. Redux Toolkit
+   - RTK Query.
+   - Next.js
 
 ## Scripts
  Scripts                  |   instructions                         | Comands
@@ -19,6 +23,7 @@ Prettier                  | checks files:                          | npm run for
 //                        | formats files:                         | npm run format:fix
 Husky                     | setting up Git hooks:                  | npm run prepare
 Tsconfig                  | compiles files and builds the app:     | npm run build 
+Jest test                 | run the coverage test                  | npm  test 
 
 ## Instructions for setting up and running the project locally
 - git clone or download the repository

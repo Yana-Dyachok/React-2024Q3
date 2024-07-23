@@ -1,13 +1,15 @@
+import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store/store';
 import { lightTheme } from '../../../redux/toggle-theme/theme';
-import { useSelector } from 'react-redux';
 import styles from './button.module.css';
-type ButtonProps = {
+
+export type ButtonProps = {
   btnType: 'button' | 'submit';
   children: string;
   to?: string;
   disabled?: boolean;
   onClick?: () => void;
+  download?: string;
 };
 
 const Button = ({
@@ -16,6 +18,7 @@ const Button = ({
   onClick,
   to,
   disabled,
+  download,
 }: ButtonProps) => {
   const handleClick = () => {
     if (to) {
@@ -30,10 +33,23 @@ const Button = ({
   );
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+
+  if (download && to) {
+    return (
+      <a
+        href={to}
+        className={`${styles.button} ${themeClass}`}
+        download={download}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <button
       className={`${styles.button} ${themeClass}`}
-      type={btnType === 'button' ? 'button' : 'submit'}
+      type={btnType}
       onClick={handleClick}
       disabled={disabled}
     >

@@ -7,9 +7,38 @@ import {
   selectConditionsArray,
 } from '../../redux/slices/checked-item-slice';
 import Button from '../ui/button/button';
-import { saveAs } from 'file-saver';
-import * as XLSX from 'xlsx';
 import styles from './flyout.module.css';
+
+interface CheckedConditions {
+  uid: string;
+  name: string;
+  psychologicalCondition: string;
+  checked: boolean;
+}
+
+const convertToCSV = (data: CheckedConditions[]): string => {
+  if (data.length === 0) {
+    return '';
+  }
+  const headers = Object.keys(data[0]) as Array<keyof CheckedConditions>;
+  const rows = data.map((row) =>
+    headers
+      .map((header) => `"${String(row[header]).replace(/"/g, '""')}"`)
+      .join(';'),
+  );
+  return [headers.join(';'), ...rows].join('\n\n');
+};
+
+const handleDownload = (conditionsArray: CheckedConditions[]): string | '' => {
+  try {
+    const csvContent = convertToCSV(conditionsArray);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    return URL.createObjectURL(blob);
+  } catch (error) {
+    console.error('Error while generating or downloading the file:', error);
+    return '/';
+  }
+};
 
 const Flyout: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,26 +48,10 @@ const Flyout: React.FC = () => {
   );
   const conditionsArray = useSelector((state: RootState) =>
     selectConditionsArray(state),
-  );
+  ) as CheckedConditions[];
 
   const handleUnselectAll = () => {
     dispatch(unselectAll());
-  };
-
-  const handleDownload = () => {
-    try {
-      const worksheet = XLSX.utils.json_to_sheet(conditionsArray);
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-      const csvData = XLSX.write(workbook, { bookType: 'csv', type: 'array' });
-
-      saveAs(
-        new Blob([csvData], { type: 'text/csv;charset=utf-8;' }),
-        `${selectedItems.length}_conditions.csv`,
-      );
-    } catch (error) {
-      console.error('Error while generating or downloading the file:', error);
-    }
   };
 
   if (selectedItems.length === 0) return null;
@@ -52,7 +65,11 @@ const Flyout: React.FC = () => {
       <Button btnType="button" onClick={handleUnselectAll}>
         Unselect all
       </Button>
-      <Button btnType="button" onClick={handleDownload}>
+      <Button
+        btnType="button"
+        to={handleDownload(conditionsArray)}
+        download={`${conditionsArray.length}_conditions.csv`}
+      >
         Download
       </Button>
     </div>

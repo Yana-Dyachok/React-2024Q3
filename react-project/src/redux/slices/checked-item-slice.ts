@@ -3,7 +3,7 @@ import { Conditions } from '../../types/api-interface';
 import { createSelector } from 'reselect';
 import { RootState } from '../store/store';
 
-interface CheckedConditions extends Conditions {
+export interface CheckedConditions extends Conditions {
   checked: boolean;
 }
 

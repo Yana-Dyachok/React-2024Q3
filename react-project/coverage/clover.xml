@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721666706363" clover="3.2.0">
-  <project timestamp="1721666706363" name="All files">
-    <metrics statements="270" coveredstatements="259" conditionals="56" coveredconditionals="44" methods="67" coveredmethods="60" elements="393" coveredelements="363" complexity="0" loc="270" ncloc="270" packages="16" files="25" classes="25"/>
+<coverage generated="1721710316649" clover="3.2.0">
+  <project timestamp="1721710316650" name="All files">
+    <metrics statements="272" coveredstatements="267" conditionals="57" coveredconditionals="47" methods="67" coveredmethods="62" elements="396" coveredelements="376" complexity="0" loc="272" ncloc="272" packages="16" files="25" classes="25"/>
     <package name="components.header">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="header.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\header\header.tsx">
@@ -82,23 +82,25 @@
       </file>
     </package>
     <package name="components.ui.button">
-      <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="5" methods="3" coveredmethods="3"/>
+      <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
       <file name="button.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\ui\button\button.tsx">
-        <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="5" methods="3" coveredmethods="3"/>
-        <line num="2" count="2" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="20" count="7" type="stmt"/>
-        <line num="21" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="23" count="9" type="stmt"/>
         <line num="24" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="28" count="7" type="stmt"/>
-        <line num="29" count="14" type="stmt"/>
-        <line num="32" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="7" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="9" type="stmt"/>
+        <line num="32" count="18" type="stmt"/>
+        <line num="35" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="9" type="cond" truecount="3" falsecount="0"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="49" count="8" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.ui.loading">
@@ -117,46 +119,46 @@
       </file>
     </package>
     <package name="components.ui.pagination">
-      <metrics statements="39" coveredstatements="31" conditionals="15" coveredconditionals="10" methods="9" coveredmethods="5"/>
+      <metrics statements="39" coveredstatements="37" conditionals="15" coveredconditionals="12" methods="9" coveredmethods="7"/>
       <file name="pagination.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\ui\pagination\pagination.tsx">
-        <metrics statements="39" coveredstatements="31" conditionals="15" coveredconditionals="10" methods="9" coveredmethods="5"/>
+        <metrics statements="39" coveredstatements="37" conditionals="15" coveredconditionals="12" methods="9" coveredmethods="7"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
-        <line num="19" count="8" type="stmt"/>
-        <line num="22" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="37" count="4" type="stmt"/>
-        <line num="38" count="4" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="43" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="19" count="16" type="stmt"/>
+        <line num="22" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+        <line num="43" count="8" type="cond" truecount="1" falsecount="0"/>
         <line num="44" count="1" type="stmt"/>
-        <line num="47" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="47" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="5" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
-        <line num="60" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="70" count="20" type="stmt"/>
+        <line num="60" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="61" count="5" type="stmt"/>
+        <line num="69" count="8" type="stmt"/>
+        <line num="70" count="40" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
-        <line num="83" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="84" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="85" count="3" type="stmt"/>
-        <line num="92" count="3" type="stmt"/>
+        <line num="83" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="84" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="85" count="7" type="stmt"/>
+        <line num="92" count="7" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="105" count="4" type="stmt"/>
-        <line num="108" count="4" type="stmt"/>
+        <line num="105" count="8" type="stmt"/>
+        <line num="108" count="8" type="stmt"/>
         <line num="118" count="1" type="stmt"/>
         <line num="132" count="1" type="stmt"/>
       </file>
@@ -342,7 +344,7 @@
       </file>
     </package>
     <package name="utils.const">
-      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="const.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\const.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
@@ -354,13 +356,13 @@
         <line num="24" count="3" type="stmt"/>
       </file>
       <file name="render-with-redux.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\render-with-redux.tsx">
-        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
-        <line num="24" count="15" type="stmt"/>
+        <line num="24" count="21" type="stmt"/>
       </file>
     </package>
     <package name="utils.hooks">

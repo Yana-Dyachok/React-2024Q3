@@ -1,41 +1,46 @@
-# React-2024Q3
-## The technology stack used:
-   - TypeScript
-   - React
-   - Vite
-   - Eslint
-   - Prettier
-   - Husky
-   - Vitest
-   - Jest
-   - Redux. Redux Toolkit
-   - RTK Query.
-   - Next.js
+# React forms.
 
-## Scripts
- Scripts                  |   instructions                         | Comands
---------------------------|:---------------------------------------|:-----------------------------
-ESLint                    | check:                                 | npm run lint 
-//                        | fix:                                   | npm lint:fix
-Vite                      | compiles files and builds the app:     | npm run build 
-//                        | create a local server for development: | npm run dev 
-Prettier                  | checks files:                          | npm run format
-//                        | formats files:                         | npm run format:fix
-Husky                     | setting up Git hooks:                  | npm run prepare
-Tsconfig                  | compiles files and builds the app:     | npm run build 
-Jest test                 | run the coverage test                  | npm  test 
+## Technical Requirements
 
-## Instructions for setting up and running the project locally
-- git clone or download the repository
-- cd  react-project
-- npm i   
-- npm run dev
-- press h + enter to show help
-- press r + enter to restart the server
-- press u + enter to show server url
-- press o + enter to open in browser
-- press c + enter to clear console
-- press q + enter to quit
+1. Create a separate branch for this task. Branch name: "forms". For this task you will need to create a new application.
+2. Language Requirement
+   - Use **TypeScript** for the project.
+3. Project Setup
+   - Initialize the project using [Vite](https://vitejs.dev/guide/) with the [_react-ts_ template](https://vite.new/react-ts).
+4. Code Quality Tools
+   1. ESLint
+      - Set up ESLint to throw errors if TypeScript's _any_ type is used.
+   2. Prettier
+      - Integrate Prettier for code formatting.
+   3. Husky
+      - Add Husky and configure it to run linting on pre-commit.
+   4. package.json commands
+      - Add the following npm scripts:
+        - `lint`: For running the lint command.
+        - `format:fix`: For running Prettier's --write command.
+5. Add **React Hook Form**, **Yup**, **Redux Toolkit** and **React Router** to the application.
 
-### RESTfull [api](https://editor.swagger.io/?url=https://stapi.co/api/v1/rest/common/download/stapi.yaml) which supports search and pagination
-### [Tasks](https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/tasks)
+## Application Requirements
+
+1. Routing. There will be 3 routes:
+   - Main, should have links to other 2 routes
+   - Route for the form created using uncontrolled components approach
+   - Route for the similar form, but created using **React Hook Form**
+2. Redux. Use redux to store the data provided by both approaches on the Main route. You can use tiles to display data taken from each form.
+3. Forms
+   Both forms will collect the same data:
+   - name (validate for first uppercased letter)
+   - age (should be number, no negative values)
+   - email (validate for email)
+   - 2 passwords (should match, display the password strength: 1 number, 1 uppercased letter, 1 lowercased letter, 1 special character)
+   - gender (you can use radio buttons or select control)
+   - accept Terms and Conditions agreement (T&C, can be a checkbox)
+   - input control to upload picture (validate size and extension, allow png jpeg, save in redux store as base64)
+   - autocomplete control to select country (all countries should be stored in the Redux store)
+     Form should contain labels, which should be connected with inputs (look at **htmlFor**)
+4. Validation
+   Implement validation according to the inputs description from p. 3. Use **Yup** for validation. Show errors either above each component, or below (but stick with one approach everywhere). Block submitting the form before all the errors are fixed (disable submit button). Good UX assumes that there are no "jumps" when showing errors.
+   - Uncontrolled components should implement validation on submit
+   - Approach with **React Hook Form** should implement live validation
+5. After submitting the form
+   On successful form submission redirect user to the main route with all the previously entered data. Make an indication for a newly entered data on the main route (e.g. show border in a different color for a few seconds, or a different background color)

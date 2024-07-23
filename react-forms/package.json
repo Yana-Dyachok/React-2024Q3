@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "cd .. && husky react-forms/.husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.5",

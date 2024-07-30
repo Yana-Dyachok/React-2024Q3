@@ -7,7 +7,7 @@ import {
 import { createSelector } from 'reselect';
 import { RootState } from '../store/store';
 
-const getThemeFromLocalStorage = (key: string) => {
+const getThemeFromLocalStorage = (key: string): string => {
   const theme = getFromLocalStorage(key);
   return theme ? JSON.parse(theme) : lightTheme;
 };

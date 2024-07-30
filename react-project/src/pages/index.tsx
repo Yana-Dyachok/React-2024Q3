@@ -1,14 +1,16 @@
-import Head from 'next/head';
+import MainContent from '../components/main-content/main-content';
+import ErrorBoundary from '../components/error-boundary/error-boundary';
+import Header from '../components/header/header';
 
-export default function Home() {
+function MainPage() {
   return (
     <>
-      <Head>
-        <title>react project</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon-doc.ico" />
-      </Head>
-      <div id="root"></div>
+      <ErrorBoundary>
+        <Header />
+        <MainContent />
+      </ErrorBoundary>
     </>
   );
 }
+
+export default MainPage;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useFetchGetQuery } from '../../redux/api-slices/api-get-search-slice';
 import { useFetchPostQuery } from '../../redux/api-slices/api-post-slice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
 import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
+import DescriptionItem from '../../pages/item/[itemId]';
 import styles from './main-content.module.css';
 import type { RootState } from '../../redux/store/store';
 
@@ -17,8 +18,8 @@ const MainContent = () => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const [page, setPage] = useState(1);
   const [pageSize] = useState(15);
-  const navigate = useNavigate();
-  const { pathname, search } = useLocation();
+  const router = useRouter();
+  const { pathname, query } = router;
   const dispatch = useDispatch();
   const isLoadingGlobal = useSelector(
     (state: RootState) => state.loading.globalLoading,
@@ -26,7 +27,10 @@ const MainContent = () => {
 
   const closeDescription = () => {
     if (pathname !== '/') {
-      navigate(`/${search}`);
+      const queryParams = new URLSearchParams(
+        query as Record<string, string>,
+      ).toString();
+      router.push(`/?${queryParams}`);
     }
   };
 
@@ -41,15 +45,14 @@ const MainContent = () => {
   }
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(search);
-    const initialPage = urlParams.get('page');
-    if (initialPage && !isNaN(Number(initialPage))) {
-      setPage(Number(initialPage));
+    const initialPage = query.page ? parseInt(query.page as string, 10) : 1;
+    if (!isNaN(initialPage)) {
+      setPage(initialPage);
     } else {
       setPage(1);
-      navigate(`/?page=1`, { replace: true });
+      router.replace(`/?page=1`);
     }
-  }, [search, navigate, pageSize]);
+  }, [query, router, pageSize]);
 
   useEffect(() => {
     dispatch(setGlobalLoading(isLoading));
@@ -66,14 +69,14 @@ const MainContent = () => {
 
   const handleChange = (value: number) => {
     setPage(value);
-    navigate(`${pathname}?page=${value}`);
+    router.push(`${pathname}?page=${value}`);
   };
 
   const handleSearchChange = (search: string) => {
     const searchValue = search.trim();
     setSearchQuery(searchValue);
     setPage(1);
-    navigate(`${pathname}?page=1`);
+    router.push(`${pathname}?page=1`);
   };
 
   const totalPages = data?.page.totalPages || 1;
@@ -104,7 +107,7 @@ const MainContent = () => {
             </div>
           )}
         </div>
-        <Outlet />
+        <DescriptionItem />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Conditions } from '../../types/api-interface';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ interface SearchItemProps {
 }
 
 const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
-  const [searchParams] = useSearchParams();
+  const router = useRouter();
   const dispatch = useDispatch();
   const currentTheme = useSelector(
     (state: RootState) => state.theme.currentTheme,
@@ -29,6 +29,13 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
 
   const handleCheckboxChange = () => {
     dispatch(toggleComplete({ condition: condition }));
+  };
+
+  const handleDetailsClick = () => {
+    router.push({
+      pathname: `/item/${condition.uid}`,
+      query: router.query,
+    });
   };
 
   return (
@@ -50,13 +57,12 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
             condition.psychologicalCondition ? '' : styles.notCondition
           }`}
         ></div>
-        <Link
+        <button
           className={`${styles.detailsLink} ${themeClass}`}
-          key={condition.uid}
-          to={`item/${condition.uid}?${searchParams}`}
+          onClick={handleDetailsClick}
         >
           details
-        </Link>
+        </button>
       </div>
     </div>
   );

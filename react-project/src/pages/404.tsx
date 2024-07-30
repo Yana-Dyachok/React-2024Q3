@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { RootState } from '../redux/store/store';
 import { lightTheme } from '../redux/toggle-theme/theme';
 import { useSelector } from 'react-redux';
+import Button from '../components/ui/button/button';
 import styles from './not-found.module.css';
 
 const NotFoundPage = () => {
@@ -27,9 +27,9 @@ const NotFoundPage = () => {
           <span className={styles.digitThird}>4</span>
         </span>
       </section>
-      <Link href="/">
-        <a className={styles.button}>Back to main</a>
-      </Link>
+      <Button btnType="button" to="/">
+        Back to main
+      </Button>
     </div>
   );
 };

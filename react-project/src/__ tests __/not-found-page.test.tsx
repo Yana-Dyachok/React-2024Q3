@@ -1,6 +1,6 @@
 import { renderWithRedux } from '../utils/const/render-with-redux';
 import { screen } from '@testing-library/react';
-import NotFoundPage from '../pages/not-found-page/not-found-page';
+import NotFoundPage from '../pages/404';
 import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
 
 describe('NotFoundPage Component', () => {

@@ -3,6 +3,8 @@ export function saveToLocalStorage(key: string, query: string) {
 }
 
 export function getFromLocalStorage(key: string) {
-  const query = localStorage.getItem(key);
-  return query ?? '';
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem(key) ?? '';
+  }
+  return '';
 }

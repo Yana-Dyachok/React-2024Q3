@@ -1,4 +1,4 @@
-export default {
+const jestConfig = {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
@@ -12,3 +12,5 @@ export default {
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
 };
+
+export default jestConfig;

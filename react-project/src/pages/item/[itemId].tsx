@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useFetchByIdQuery } from '../../redux/api-slices/api-get-slices';
 import { RootState } from '../../redux/store/store';
 import { lightTheme } from '../../redux/toggle-theme/theme';
@@ -39,17 +40,27 @@ const DescriptionItem: React.FC = () => {
   const themeClass =
     currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
 
+  // Create a URLSearchParams object excluding the `itemId` parameter
+  const queryWithoutItemId = Object.fromEntries(
+    Object.entries(router.query).filter(([key]) => key !== 'itemId'),
+  );
+  const searchParams = new URLSearchParams(
+    queryWithoutItemId as Record<string, string>,
+  );
+  const backUrl = `/?${searchParams.toString()}`;
+
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>
       {descriptionLoading ? (
         <Loading />
       ) : (
         <>
-          <button
-            aria-label="close"
-            className={`${styles.closeButton} ${themeClass}`}
-            onClick={() => router.back()}
-          />
+          <Link href={backUrl} passHref>
+            <button
+              aria-label="close"
+              className={`${styles.closeButton} ${themeClass}`}
+            />
+          </Link>
           {error ? (
             <div>Error fetching data</div>
           ) : (

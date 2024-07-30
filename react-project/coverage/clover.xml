@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722358664688" clover="3.2.0">
-  <project timestamp="1722358664688" name="All files">
+<coverage generated="1722372574662" clover="3.2.0">
+  <project timestamp="1722372574662" name="All files">
     <metrics statements="82" coveredstatements="68" conditionals="17" coveredconditionals="7" methods="22" coveredmethods="12" elements="121" coveredelements="87" complexity="0" loc="82" ncloc="82" packages="3" files="6" classes="6"/>
     <package name="redux.slices">
       <metrics statements="65" coveredstatements="52" conditionals="13" coveredconditionals="4" methods="19" coveredmethods="9"/>

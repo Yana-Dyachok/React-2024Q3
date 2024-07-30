@@ -10,7 +10,6 @@ import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
 import Loading from '../ui/loading/loading';
 import useSearchQuery from '../../utils/hooks/ls-hook';
-import DescriptionItem from '../../pages/item/[itemId]';
 import styles from './main-content.module.css';
 import type { RootState } from '../../redux/store/store';
 
@@ -107,7 +106,6 @@ const MainContent = () => {
             </div>
           )}
         </div>
-        <DescriptionItem />
       </div>
     </div>
   );

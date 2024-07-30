@@ -53,6 +53,7 @@
 
 .detailsLink {
   padding: 0 0.2rem;
+  background-color: var(--background-color);
   border: 0.1rem solid var(--color-text);
 }
 

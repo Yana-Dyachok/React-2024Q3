@@ -45,12 +45,12 @@
     var(--loader-color) 50%,
     transparent 50%
   );
-  width: var(3vmin);
+  width: 3vmin;
   aspect-ratio: 1;
 }
 
 .loader::after {
-  inset: var(3vmin);
+  inset: 3vmin;
   background: var(--background);
 }
 

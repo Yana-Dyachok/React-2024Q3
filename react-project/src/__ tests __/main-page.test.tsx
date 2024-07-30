@@ -3,20 +3,26 @@ import MainPage from '../pages';
 import { render, screen } from '@testing-library/react';
 import { ReactNode } from 'react';
 
-jest.mock('../components/header/header', () => () => (
-  <div>Header Component</div>
-));
-jest.mock('../components/main-content/main-content', () => () => (
-  <div>Main Content Component</div>
-));
+const MockHeader = () => <div>Header Component</div>;
+MockHeader.displayName = 'MockHeader';
+jest.mock('../components/header/header', () => MockHeader);
+
+const MockMainContent = () => <div>Main Content Component</div>;
+MockMainContent.displayName = 'MockMainContent';
+jest.mock('../components/main-content/main-content', () => MockMainContent);
 
 type ErrorBoundaryProps = {
   children: ReactNode;
 };
 
-jest.mock('../components/error-boundary/error-boundary', () => {
-  return ({ children }: ErrorBoundaryProps) => <div>{children}</div>;
-});
+const MockErrorBoundary = ({ children }: ErrorBoundaryProps) => (
+  <div>{children}</div>
+);
+MockErrorBoundary.displayName = 'MockErrorBoundary';
+jest.mock(
+  '../components/error-boundary/error-boundary',
+  () => MockErrorBoundary,
+);
 
 describe('MainPage', () => {
   it('should render Header and MainContent components inside ErrorBoundary', () => {

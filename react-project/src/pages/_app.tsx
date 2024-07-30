@@ -1,14 +1,18 @@
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import store from '../redux/store/store';
+import { wrapper } from '../redux/store/store';
 import { ThemeProvider } from '../redux/toggle-theme/theme-provider/theme-provider';
+import '../index.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, ...rest }: AppProps) => {
+  const { store, props } = wrapper.useWrappedStore(rest);
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <Component {...pageProps} />
+        <Component {...props.pageProps} />
       </ThemeProvider>
     </Provider>
   );
-}
+};
+
+export default App;

@@ -3,15 +3,17 @@ import SearchList from '../components/search-list/search-list';
 import { Conditions } from '../types/api-interface';
 import '@testing-library/jest-dom';
 
-jest.mock(
-  '../components/search-item/search-item',
-  () =>
-    ({ condition }: { condition: Conditions }) => <div>{condition.name}</div>,
+const MockSearchItem = ({ condition }: { condition: Conditions }) => (
+  <div>{condition.name}</div>
 );
+MockSearchItem.displayName = 'MockSearchItem';
 
-jest.mock('../components/flyout/flyout', () => () => (
-  <div>Flyout Component</div>
-));
+jest.mock('../components/search-item/search-item', () => MockSearchItem);
+
+const MockFlyout = () => <div>Flyout Component</div>;
+MockFlyout.displayName = 'MockFlyout';
+
+jest.mock('../components/flyout/flyout', () => MockFlyout);
 
 describe('SearchList', () => {
   it('should display "No data found" when conditions array is empty', () => {

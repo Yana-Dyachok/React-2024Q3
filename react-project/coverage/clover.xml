@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722414689472" clover="3.2.0">
-  <project timestamp="1722414689472" name="All files">
-    <metrics statements="82" coveredstatements="68" conditionals="17" coveredconditionals="7" methods="22" coveredmethods="12" elements="121" coveredelements="87" complexity="0" loc="82" ncloc="82" packages="3" files="6" classes="6"/>
+<coverage generated="1722460754491" clover="3.2.0">
+  <project timestamp="1722460754491" name="All files">
+    <metrics statements="82" coveredstatements="68" conditionals="13" coveredconditionals="7" methods="22" coveredmethods="12" elements="117" coveredelements="87" complexity="0" loc="82" ncloc="82" packages="3" files="6" classes="6"/>
     <package name="redux.slices">
-      <metrics statements="65" coveredstatements="52" conditionals="13" coveredconditionals="4" methods="19" coveredmethods="9"/>
+      <metrics statements="65" coveredstatements="52" conditionals="9" coveredconditionals="4" methods="19" coveredmethods="9"/>
       <file name="checked-item-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\checked-item-slice.ts">
-        <metrics statements="29" coveredstatements="17" conditionals="11" coveredconditionals="3" methods="10" coveredmethods="2"/>
+        <metrics statements="29" coveredstatements="17" conditionals="7" coveredconditionals="3" methods="10" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
@@ -34,7 +34,7 @@
         <line num="71" count="0" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
-        <line num="77" count="0" type="cond" truecount="0" falsecount="6"/>
+        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
       <file name="description-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\redux\slices\description-slice.ts">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

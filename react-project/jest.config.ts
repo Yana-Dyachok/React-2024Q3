@@ -1,17 +1,15 @@
-/** @type {import('jest').Config} */
-const jestConfig = {
+export default {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.css$': 'jest-css-modules-transform',
+    '^.+\\.(ts|tsx)$': 'ts-jest', 
+    '^.+\\.(js|jsx)$': 'babel-jest', 
   },
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/(?!(some-library|another-library)/)'
+  ],
   moduleNameMapper: {
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
 };
-
-export default jestConfig;

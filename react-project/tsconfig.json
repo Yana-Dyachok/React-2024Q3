@@ -13,6 +13,14 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitAny": true,
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "types": ["@testing-library/jest-dom", "msw"],
+      "allowImportingTsExtensions": true,
+      /* Linting */
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
     "paths": {
       "@/*": ["../src/*"]
     }

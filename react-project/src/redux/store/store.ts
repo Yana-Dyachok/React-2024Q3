@@ -23,14 +23,15 @@ const combinedReducer = combineReducers({
 });
 
 const rootReducer = (
-  state: ReturnType<typeof combinedReducer>,
+  state: ReturnType<typeof combinedReducer> | undefined,
   action: AnyAction,
 ) => {
   if (action.type === HYDRATE) {
-    return {
+    const nextState = {
       ...state,
       ...action.payload,
     };
+    return nextState;
   } else {
     return combinedReducer(state, action);
   }

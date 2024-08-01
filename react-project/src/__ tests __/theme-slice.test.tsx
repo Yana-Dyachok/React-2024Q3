@@ -1,58 +1,40 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { RootState } from '../redux/store/store';
 import themeReducer, {
   setLightTheme,
   setDarkTheme,
+  selectCurrentTheme,
 } from '../redux/slices/theme-slice';
-import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
-import {
-  getFromLocalStorage,
-  saveToLocalStorage,
-} from '../utils/local-storage/ls-handler';
-import { RootState } from '../redux/store/store';
-
-jest.mock('../utils/local-storage/ls-handler', () => ({
-  getFromLocalStorage: jest.fn(),
-  saveToLocalStorage: jest.fn(),
-}));
+import { configureStore } from '@reduxjs/toolkit';
 
 describe('themeSlice', () => {
-  let store: ReturnType<typeof configureStore>;
+  const store = configureStore({
+    reducer: {
+      theme: themeReducer,
+    },
+  });
 
-  beforeEach(() => {
-    store = configureStore({
-      reducer: {
-        theme: themeReducer,
-      },
+  it('should return the initial state', () => {
+    expect(themeReducer(undefined, { type: '' })).toEqual({
+      currentTheme: 'dark',
     });
   });
 
   it('should handle setLightTheme', () => {
-    (getFromLocalStorage as jest.Mock).mockReturnValueOnce(
-      JSON.stringify(darkTheme),
-    );
-
-    store.dispatch(setLightTheme());
-    const state = store.getState() as RootState;
-
-    expect(state.theme.currentTheme).toEqual(lightTheme);
-    expect(saveToLocalStorage).toHaveBeenCalledWith(
-      'theme',
-      JSON.stringify(lightTheme),
-    );
+    const action = setLightTheme();
+    const state = themeReducer({ currentTheme: 'dark' }, action);
+    expect(state.currentTheme).toBe('light');
   });
 
   it('should handle setDarkTheme', () => {
-    (getFromLocalStorage as jest.Mock).mockReturnValueOnce(
-      JSON.stringify(lightTheme),
-    );
+    const action = setDarkTheme();
+    const state = themeReducer({ currentTheme: 'light' }, action);
+    expect(state.currentTheme).toBe('dark');
+  });
 
-    store.dispatch(setDarkTheme());
-    const state = store.getState() as RootState;
+  it('should select the current theme', () => {
+    store.dispatch(setLightTheme());
+    const selectedTheme = selectCurrentTheme(store.getState() as RootState);
 
-    expect(state.theme.currentTheme).toEqual(darkTheme);
-    expect(saveToLocalStorage).toHaveBeenCalledWith(
-      'theme',
-      JSON.stringify(darkTheme),
-    );
+    expect(selectedTheme).toBe('light');
   });
 });

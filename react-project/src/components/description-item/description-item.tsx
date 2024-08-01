@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useFetchByIdQuery } from '../../redux/api-slices/api-get-slices';
 import { RootState } from '../../redux/store/store';
-import { lightTheme } from '../../redux/toggle-theme/theme';
+import { useTheme } from '../../theme-context/theme-context';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDescriptionLoading } from '../../redux/slices/loading-slice';
 import { setSelectedItem } from '../../redux/slices/description-slice';
@@ -16,9 +16,6 @@ const DescriptionItem: React.FC = () => {
   const id = Array.isArray(itemId) ? itemId[0] : (itemId ?? '');
 
   const { data: condition, error, isLoading } = useFetchByIdQuery(id);
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
   );
@@ -37,8 +34,8 @@ const DescriptionItem: React.FC = () => {
     }
   }, [isLoading, dispatch, condition, id]);
 
-  const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+  const { theme } = useTheme();
+  const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
   const queryWithoutItemId = Object.fromEntries(
     Object.entries(router.query).filter(([key]) => key !== 'itemId'),

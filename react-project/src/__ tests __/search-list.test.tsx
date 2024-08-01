@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import SearchList from '../components/search-list/search-list';
 import { Conditions } from '../types/api-interface';
 import '@testing-library/jest-dom';
 
@@ -15,6 +14,7 @@ MockFlyout.displayName = 'MockFlyout';
 
 jest.mock('../components/flyout/flyout', () => MockFlyout);
 
+import SearchList from '../components/search-list/search-list';
 describe('SearchList', () => {
   it('should display "No data found" when conditions array is empty', () => {
     render(<SearchList conditions={[]} />);

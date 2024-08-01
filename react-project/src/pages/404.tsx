@@ -1,15 +1,10 @@
-import { RootState } from '../redux/store/store';
-import { lightTheme } from '../redux/toggle-theme/theme';
-import { useSelector } from 'react-redux';
+import { useTheme } from '../theme-context/theme-context';
 import Button from '../components/ui/button/button';
 import styles from './not-found.module.css';
 
 const NotFoundPage = () => {
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
-  const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+  const { theme } = useTheme();
+  const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
   return (
     <div className={styles.errorBlock}>

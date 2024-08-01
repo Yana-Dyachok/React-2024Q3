@@ -1,25 +1,32 @@
 import '@testing-library/jest-dom';
-import { renderWithRedux } from '../utils/const/render-with-redux';
+import { ThemeProvider } from '../theme-context/theme-provider';
 import Button from '../components/ui/button/button';
-import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
 import { ButtonProps } from '../components/ui/button/button';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { useTheme } from '../theme-context/theme-context';
+jest.mock('../theme-context/theme-context', () => ({
+  ...jest.requireActual('../theme-context/theme-context'),
+  useTheme: jest.fn(),
+}));
+
 const renderButtonWithTheme = (
-  theme: typeof lightTheme | typeof darkTheme,
+  theme: 'light' | 'dark',
   props: Partial<ButtonProps> = {},
 ) => {
-  return renderWithRedux(
-    <Button btnType="button" {...props}>
-      Test Button
-    </Button>,
-    {
-      initialState: { theme: { currentTheme: theme } },
-    },
+  (useTheme as jest.Mock).mockReturnValue({ theme });
+  return render(
+    <ThemeProvider>
+      <Button btnType="button" {...props}>
+        Test Button
+      </Button>
+    </ThemeProvider>,
   );
 };
 
 describe('Button', () => {
   it('should render with light theme', () => {
-    const { getByText } = renderButtonWithTheme(lightTheme);
+    const { getByText } = renderButtonWithTheme('light');
     const button = getByText('Test Button');
 
     expect(button).toBeInTheDocument();
@@ -28,7 +35,7 @@ describe('Button', () => {
   });
 
   it('should render with dark theme', () => {
-    const { getByText } = renderButtonWithTheme(darkTheme);
+    const { getByText } = renderButtonWithTheme('dark');
     const button = getByText('Test Button');
 
     expect(button).toBeInTheDocument();
@@ -38,7 +45,7 @@ describe('Button', () => {
 
   it('should handle button click', () => {
     const handleClick = jest.fn();
-    const { getByText } = renderButtonWithTheme(lightTheme, {
+    const { getByText } = renderButtonWithTheme('light', {
       onClick: handleClick,
     });
 
@@ -49,14 +56,14 @@ describe('Button', () => {
   });
 
   it('should handle button disabled state', () => {
-    const { getByText } = renderButtonWithTheme(lightTheme, { disabled: true });
+    const { getByText } = renderButtonWithTheme('light', { disabled: true });
 
     const button = getByText('Test Button');
     expect(button).toBeDisabled();
   });
 
   it('should render as an anchor element with download attribute when "download" and "to" props are provided', () => {
-    const { getByText } = renderButtonWithTheme(lightTheme, {
+    const { getByText } = renderButtonWithTheme('light', {
       download: 'file.txt',
       to: 'http://localhost/',
     });
@@ -68,7 +75,7 @@ describe('Button', () => {
   });
 
   it('should render as a button element when only "btnType" prop is provided', () => {
-    const { getByText } = renderButtonWithTheme(lightTheme, {
+    const { getByText } = renderButtonWithTheme('light', {
       btnType: 'submit',
     });
 
@@ -85,7 +92,7 @@ describe('Button', () => {
       writable: true,
     });
 
-    const { getByText } = renderButtonWithTheme(lightTheme, {
+    const { getByText } = renderButtonWithTheme('light', {
       to: 'http://localhost/',
     });
 

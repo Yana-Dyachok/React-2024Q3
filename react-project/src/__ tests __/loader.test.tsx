@@ -1,30 +1,25 @@
-import { renderWithRedux } from '../utils/const/render-with-redux';
-import { screen } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import Loading from '../components/ui/loading/loading';
-import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
+import { useTheme } from '../theme-context/theme-context';
+
+jest.mock('../theme-context/theme-context', () => ({
+  useTheme: jest.fn(),
+}));
 
 describe('Loading Component', () => {
   it('applies light theme correctly', () => {
-    const initialState = {
-      theme: {
-        currentTheme: lightTheme,
-      },
-    };
+    (useTheme as jest.Mock).mockReturnValue({ theme: 'light' });
 
-    renderWithRedux(<Loading />, { initialState });
+    render(<Loading />);
 
     const loaderDiv = screen.getByRole('loader');
     expect(loaderDiv).toHaveClass('lightTheme');
   });
 
   it('applies dark theme correctly', () => {
-    const initialState = {
-      theme: {
-        currentTheme: darkTheme,
-      },
-    };
+    (useTheme as jest.Mock).mockReturnValue({ theme: 'dark' });
 
-    renderWithRedux(<Loading />, { initialState });
+    render(<Loading />);
 
     const loaderDiv = screen.getByRole('loader');
     expect(loaderDiv).toHaveClass('darkTheme');

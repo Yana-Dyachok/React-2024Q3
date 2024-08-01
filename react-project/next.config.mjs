@@ -10,7 +10,7 @@ const nextConfig = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['next/babel'], 
+          presets: ['next/babel'],
         },
       },
     });
@@ -20,4 +20,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-

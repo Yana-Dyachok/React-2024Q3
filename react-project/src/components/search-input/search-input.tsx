@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/store/store';
 import { addSearchInput } from '../../redux/slices/search-slice';
 import useSearchQuery from '../../utils/hooks/ls-hook';
-import { RootState } from '../../redux/store/store';
-import { lightTheme } from '../../redux/toggle-theme/theme';
-import { useSelector } from 'react-redux';
+import { useTheme } from '../../theme-context/theme-context';
 import styles from './search-input.module.css';
 
 interface SearchInputProps {
@@ -15,11 +13,8 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const dispatch = useDispatch<AppDispatch>();
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
-  const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+  const { theme } = useTheme();
+  const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.trim();
     setSearchQuery(query);

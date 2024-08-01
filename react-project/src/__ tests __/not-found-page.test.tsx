@@ -1,17 +1,25 @@
-import { renderWithRedux } from '../utils/const/render-with-redux';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import NotFoundPage from '../pages/404';
-import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
+import { useTheme } from '../theme-context/theme-context';
+import { ThemeProvider } from '../theme-context/theme-provider';
+
+jest.mock('../theme-context/theme-context', () => ({
+  ...jest.requireActual('../theme-context/theme-context'),
+  useTheme: jest.fn(),
+}));
+
+const renderWithTheme = (theme: 'light' | 'dark') => {
+  (useTheme as jest.Mock).mockReturnValue({ theme });
+  return render(
+    <ThemeProvider>
+      <NotFoundPage />
+    </ThemeProvider>,
+  );
+};
 
 describe('NotFoundPage Component', () => {
   it('applies light theme correctly', () => {
-    const initialState = {
-      theme: {
-        currentTheme: lightTheme,
-      },
-    };
-
-    renderWithRedux(<NotFoundPage />, { initialState });
+    renderWithTheme('light');
 
     const errorSpans = screen.getAllByText((_, element) => {
       if (!element) return false;
@@ -24,13 +32,7 @@ describe('NotFoundPage Component', () => {
   });
 
   it('applies dark theme correctly', () => {
-    const initialState = {
-      theme: {
-        currentTheme: darkTheme,
-      },
-    };
-
-    renderWithRedux(<NotFoundPage />, { initialState });
+    renderWithTheme('dark');
 
     const errorSpans = screen.getAllByText((_, element) => {
       if (!element) return false;

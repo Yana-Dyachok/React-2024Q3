@@ -2,12 +2,12 @@ import React from 'react';
 import { Conditions } from '../../types/api-interface';
 import { useRouter } from 'next/router';
 import { RootState } from '../../redux/store/store';
-import { lightTheme } from '../../redux/toggle-theme/theme';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleComplete,
   makeSelectIsCompleted,
 } from '../../redux/slices/checked-item-slice';
+import { useTheme } from '../../theme-context/theme-context';
 import styles from './search-item.module.css';
 
 interface SearchItemProps {
@@ -17,11 +17,8 @@ interface SearchItemProps {
 const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
-  const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+  const { theme } = useTheme();
+  const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
   const isCompleted = useSelector((state: RootState) =>
     makeSelectIsCompleted(condition.uid)(state),

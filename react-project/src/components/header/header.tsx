@@ -1,11 +1,11 @@
 import ErrorButton from '../../components/error-boundary/error-button';
-import ThemeSelector from '../../redux/toggle-theme/theme-selector/theme-selector';
+import ToggleThemeComponent from '../toggle-theme-component/toggle-theme-component';
 import styles from './header.module.css';
 function Header() {
   return (
     <header className={styles.headerContainer}>
       <ErrorButton />
-      <ThemeSelector />
+      <ToggleThemeComponent />
     </header>
   );
 }

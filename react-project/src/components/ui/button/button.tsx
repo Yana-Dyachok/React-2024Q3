@@ -1,6 +1,4 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store/store';
-import { lightTheme } from '../../../redux/toggle-theme/theme';
+import { useTheme } from '../../../theme-context/theme-context';
 import styles from './button.module.css';
 import Link from 'next/link';
 
@@ -30,11 +28,8 @@ const Button = ({
     }
   };
 
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.currentTheme,
-  );
-  const themeClass =
-    currentTheme === lightTheme ? styles.lightTheme : styles.darkTheme;
+  const { theme } = useTheme();
+  const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
   if (download) {
     return (

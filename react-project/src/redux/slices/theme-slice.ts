@@ -1,19 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { lightTheme, darkTheme } from '../toggle-theme/theme';
-import {
-  getFromLocalStorage,
-  saveToLocalStorage,
-} from '../../utils/local-storage/ls-handler';
 import { createSelector } from 'reselect';
 import { RootState } from '../store/store';
 
-const getThemeFromLocalStorage = (key: string): string => {
-  const theme = getFromLocalStorage(key);
-  return theme ? JSON.parse(theme) : lightTheme;
-};
+type Theme = 'light' | 'dark';
 
-const initialState = {
-  currentTheme: getThemeFromLocalStorage('theme'),
+export interface ThemeState {
+  currentTheme: Theme;
+}
+
+const initialState: ThemeState = {
+  currentTheme: 'dark',
 };
 
 const themeSlice = createSlice({
@@ -21,12 +17,10 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     setLightTheme: (state) => {
-      state.currentTheme = lightTheme;
-      saveToLocalStorage('theme', JSON.stringify(lightTheme));
+      state.currentTheme = 'light';
     },
     setDarkTheme: (state) => {
-      state.currentTheme = darkTheme;
-      saveToLocalStorage('theme', JSON.stringify(darkTheme));
+      state.currentTheme = 'dark';
     },
   },
 });

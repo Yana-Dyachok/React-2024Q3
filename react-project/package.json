@@ -11,6 +11,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "prepare": "husky install",
+    "pretest": "node fix-tsconfig.js",
     "test": "jest  --coverage",
     "prepush": "npm test"
   },
@@ -25,6 +26,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.1.2",
+    "redux": "^5.0.1",
     "reselect": "^5.1.1"
   },
   "devDependencies": {

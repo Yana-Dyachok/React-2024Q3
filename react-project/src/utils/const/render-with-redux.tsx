@@ -1,23 +1,20 @@
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { lightTheme, darkTheme } from '../../redux/toggle-theme/theme';
-import themeSlice from '../../redux/slices/theme-slice';
-
-type ThemeState = {
-  currentTheme: typeof lightTheme | typeof darkTheme;
-};
+import checkedItemSlice, {
+  CheckedItemState,
+} from '../../redux/slices/checked-item-slice';
 
 export const renderWithRedux = (
   component: React.ReactNode,
   {
     initialState,
     store = configureStore({
-      reducer: { theme: themeSlice },
+      reducer: { checked: checkedItemSlice },
       preloadedState: initialState,
     }),
   } = {} as {
-    initialState?: { theme: ThemeState };
+    initialState?: { checked: CheckedItemState };
     store?: ReturnType<typeof configureStore>;
   },
 ) => {

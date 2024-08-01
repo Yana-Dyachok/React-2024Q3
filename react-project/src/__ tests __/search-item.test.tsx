@@ -1,57 +1,108 @@
-// import { screen, fireEvent } from '@testing-library/react';
-// import { BrowserRouter as Router } from 'react-router-dom';
-// import { configureStore } from '@reduxjs/toolkit';
+// import { render, screen, fireEvent } from '@testing-library/react';
+// import { Provider } from 'react-redux';
+// import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
+// import { useRouter } from 'next/router';
 // import SearchItem from '../components/search-item/search-item';
 // import { Conditions } from '../types/api-interface';
-// import { renderWithRedux } from '../utils/const/render-with-redux';
-// import themeSlice from '../redux/slices/theme-slice';
-// import checkedItemSlice from '../redux/slices/checked-item-slice';
+// import checkedItemSlice, {CheckedItemState} from '../redux/slices/checked-item-slice';
+// import { ThemeProvider } from '../theme-context/theme-provider';
+// import { RootState } from '../redux/store/store';
 
-// describe('SearchItem', () => {
-//   let condition: Conditions;
+// jest.mock('next/router', () => ({
+//     useRouter: jest.fn(),
+//   }));
 
-//   beforeEach(() => {
-//     condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
-//   });
+//   const mockUseRouter = useRouter as jest.Mock;
 
-//   test('renders condition name and link', () => {
-//     renderWithRedux(
-//       <Router>
-//         <SearchItem condition={condition} />
-//       </Router>,
-//       {
+//   interface RenderWithReduxOptions {
+//     initialState?: {
+//       checked: CheckedItemState;
+//     };
+//     store?: EnhancedStore<RootState>;
+//   }
+
+//   const renderWithRedux = (
+//     component: React.ReactNode,
+//     { initialState, store }: RenderWithReduxOptions = {}
+//   ) => {
+//     const mockStore = configureStore({
+//       reducer: { checked: checkedItemSlice },
+//       preloadedState: initialState,
+//     });
+
+//     return {
+//       ...render(
+//         <Provider store={store || mockStore}>
+//           <ThemeProvider>{component}</ThemeProvider>
+//         </Provider>
+//       ),
+//       store: store || mockStore,
+//     };
+//   };
+
+//   describe('SearchItem', () => {
+//     let condition: Conditions;
+
+//     beforeEach(() => {
+//       condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
+//       mockUseRouter.mockReturnValue({
+//         push: jest.fn(),
+//         query: {},
+//       });
+//     });
+
+//     test('renders condition name and link', () => {
+//       renderWithRedux(<SearchItem condition={condition} />, {
 //         initialState: {
-//           theme: { currentTheme: 'lightTheme' },
+//           checked: { checkedItem: {} },
 //         },
-//         store: configureStore({
-//           reducer: { theme: themeSlice, checked: checkedItemSlice },
-//         }),
-//       },
-//     );
+//       });
 
-//     expect(screen.getByText('Condition 1')).toBeInTheDocument();
-//     expect(screen.getByText('details')).toBeInTheDocument();
-//   });
+//       expect(screen.getByText('Condition 1')).toBeInTheDocument();
+//       expect(screen.getByText('details')).toBeInTheDocument();
+//     });
 
-//   test('checkbox toggles completed state', () => {
-//     const { store } = renderWithRedux(
-//       <Router>
-//         <SearchItem condition={condition} />
-//       </Router>,
-//       {
+//     test('checkbox toggles completed state', () => {
+//       const { store } = renderWithRedux(<SearchItem condition={condition} />, {
 //         initialState: {
-//           theme: { currentTheme: 'lightTheme' },
+//           checked: { checkedItem: {} },
 //         },
-//         store: configureStore({
-//           reducer: { theme: themeSlice, checked: checkedItemSlice },
-//         }),
-//       },
-//     );
+//       });
 
-//     const checkbox = screen.getByRole('checkbox');
-//     expect(checkbox).not.toBeChecked();
+//       const checkbox = screen.getByRole('checkbox');
+//       expect(checkbox).not.toBeChecked();
 
-//     fireEvent.click(checkbox);
-//     expect(store.getState());
+//       fireEvent.click(checkbox);
+//       expect(store.getState().checked.checkedItem[condition.uid]).toEqual({
+//         uid: '1',
+//         name: 'Condition 1',
+//         psychologicalCondition: true,
+//         checked: true,
+//       });
+
+//       fireEvent.click(checkbox);
+//       expect(store.getState().checked.checkedItem[condition.uid]).toEqual({
+//         uid: '1',
+//         name: 'Condition 1',
+//         psychologicalCondition: true,
+//         checked: false,
+//       });
+//     });
+
+//     test('handles details button click', () => {
+//       const router = useRouter();
+//       renderWithRedux(<SearchItem condition={condition} />, {
+//         initialState: {
+//           checked: { checkedItem: {} },
+//         },
+//       });
+
+//       const detailsButton = screen.getByText('details');
+//       fireEvent.click(detailsButton);
+
+//       expect(router.push).toHaveBeenCalledWith({
+//         pathname: `/item/${condition.uid}`,
+//         query: {},
+//       });
+//     });
 //   });
-// });

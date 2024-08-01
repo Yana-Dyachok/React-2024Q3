@@ -1,101 +1,50 @@
-// import '@testing-library/jest-dom';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import { Provider } from 'react-redux';
-// import { configureStore } from '@reduxjs/toolkit';
-// import { lightTheme, darkTheme } from '../redux/toggle-theme/theme';
-// import searchSlice from '../redux/slices/search-slice';
-// import themeSlice from '../redux/slices/theme-slice';
-// import SearchInput from '../components/search-input/search-input';
-// const renderWithRedux = (
-//   component: React.ReactNode,
-//   {
-//     initialState,
-//     store = configureStore({
-//       reducer: {
-//         search: searchSlice,
-//         theme: themeSlice,
-//       },
-//       preloadedState: initialState,
-//     }),
-//   } = {} as {
-//     initialState?: {
-//       search: { searchInput: string };
-//       theme: { currentTheme: typeof lightTheme | typeof darkTheme };
-//     };
-//     store?: ReturnType<typeof configureStore>;
-//   },
-// ) => {
-//   return {
-//     ...render(<Provider store={store}>{component}</Provider>),
-//     store,
-//   };
-// };
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import searchSlice from '../redux/slices/search-slice';
+import SearchInput from '../components/search-input/search-input';
+import { useTheme } from '../theme-context/theme-context';
+import useSearchQuery from '../utils/hooks/ls-hook';
 
-// describe('SearchInput', () => {
-//   it('should update search query and dispatch action on input change', () => {
-//     const mockOnSearchChange = jest.fn();
-//     const initialState = {
-//       search: { searchInput: '' },
-//       theme: { currentTheme: lightTheme },
-//     };
+jest.mock('../utils/hooks/ls-hook', () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
 
-//     renderWithRedux(<SearchInput onSearchChange={mockOnSearchChange} />, {
-//       initialState,
-//     });
+jest.mock('../theme-context/theme-context', () => ({
+  useTheme: jest.fn(),
+}));
 
-//     const input = screen.getByPlaceholderText('Search') as HTMLInputElement;
-//     fireEvent.change(input, { target: { value: 'test query' } });
+describe('SearchInput', () => {
+  let mockStore: ReturnType<typeof configureStore>;
+  let mockOnSearchChange: jest.Mock;
 
-//     expect(input.value).toBe('test query');
-//     expect(mockOnSearchChange).not.toHaveBeenCalled();
-//   });
+  beforeEach(() => {
+    mockOnSearchChange = jest.fn();
+    mockStore = configureStore({
+      reducer: { search: searchSlice },
+    });
 
-//   it('should call onSearchChange with trimmed query on button click', () => {
-//     const mockOnSearchChange = jest.fn();
-//     const initialState = {
-//       search: { searchInput: 'test query' },
-//       theme: { currentTheme: lightTheme },
-//     };
+    (useSearchQuery as jest.Mock).mockReturnValue(['', jest.fn()]);
+    (useTheme as jest.Mock).mockReturnValue({ theme: 'light' });
+  });
 
-//     renderWithRedux(<SearchInput onSearchChange={mockOnSearchChange} />, {
-//       initialState,
-//     });
+  test('calls onSearchChange on Enter key press', () => {
+    const setSearchQuery = jest.fn();
+    (useSearchQuery as jest.Mock).mockReturnValue([
+      'test query',
+      setSearchQuery,
+    ]);
 
-//     const button = screen.getByRole('button');
-//     fireEvent.click(button);
+    render(
+      <Provider store={mockStore}>
+        <SearchInput onSearchChange={mockOnSearchChange} />
+      </Provider>,
+    );
 
-//     expect(mockOnSearchChange).toHaveBeenCalledWith('test query');
-//   });
-
-//   it('should call onSearchChange with trimmed query on Enter key press', () => {
-//     const mockOnSearchChange = jest.fn();
-//     const initialState = {
-//       search: { searchInput: 'test query' },
-//       theme: { currentTheme: lightTheme },
-//     };
-
-//     renderWithRedux(<SearchInput onSearchChange={mockOnSearchChange} />, {
-//       initialState,
-//     });
-
-//     const input = screen.getByPlaceholderText('Search') as HTMLInputElement;
-//     fireEvent.keyPress(input, { key: 'Enter', code: 13, charCode: 13 });
-
-//     expect(mockOnSearchChange).toHaveBeenCalledWith('test query');
-//   });
-
-//   it('should apply correct theme class', () => {
-//     const initialState = {
-//       search: { searchInput: '' },
-//       theme: { currentTheme: darkTheme },
-//     };
-
-//     renderWithRedux(<SearchInput onSearchChange={() => {}} />, {
-//       initialState,
-//     });
-
-//     const searchInputBlock = screen.getByRole('textbox')
-//       .parentElement as HTMLElement;
-//     expect(searchInputBlock).toHaveClass('darkTheme');
-//   });
-// });
+    const input = screen.getByPlaceholderText('Search') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'test query' } });
+    fireEvent.keyPress(input, { key: 'Enter', code: 'Enter', charCode: 13 });
+    expect(mockOnSearchChange).toHaveBeenCalledWith('test query');
+  });
+});

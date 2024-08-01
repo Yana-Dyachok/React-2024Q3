@@ -1,108 +1,83 @@
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import { Provider } from 'react-redux';
-// import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
-// import { useRouter } from 'next/router';
-// import SearchItem from '../components/search-item/search-item';
-// import { Conditions } from '../types/api-interface';
-// import checkedItemSlice, {CheckedItemState} from '../redux/slices/checked-item-slice';
-// import { ThemeProvider } from '../theme-context/theme-provider';
-// import { RootState } from '../redux/store/store';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
+import { useRouter } from 'next/router';
+import SearchItem from '../components/search-item/search-item';
+import { Conditions } from '../types/api-interface';
+import checkedItemSlice, {
+  CheckedItemState,
+} from '../redux/slices/checked-item-slice';
+import { ThemeProvider } from '../theme-context/theme-provider';
+import { RootState } from '../redux/store/store';
 
-// jest.mock('next/router', () => ({
-//     useRouter: jest.fn(),
-//   }));
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
 
-//   const mockUseRouter = useRouter as jest.Mock;
+const mockUseRouter = useRouter as jest.Mock;
 
-//   interface RenderWithReduxOptions {
-//     initialState?: {
-//       checked: CheckedItemState;
-//     };
-//     store?: EnhancedStore<RootState>;
-//   }
+interface RenderWithReduxOptions {
+  initialState?: {
+    checked: CheckedItemState;
+  };
+  store?: EnhancedStore<RootState>;
+}
 
-//   const renderWithRedux = (
-//     component: React.ReactNode,
-//     { initialState, store }: RenderWithReduxOptions = {}
-//   ) => {
-//     const mockStore = configureStore({
-//       reducer: { checked: checkedItemSlice },
-//       preloadedState: initialState,
-//     });
+const renderWithRedux = (
+  component: React.ReactNode,
+  { initialState, store }: RenderWithReduxOptions = {},
+) => {
+  const mockStore = configureStore({
+    reducer: { checked: checkedItemSlice },
+    preloadedState: initialState,
+  });
 
-//     return {
-//       ...render(
-//         <Provider store={store || mockStore}>
-//           <ThemeProvider>{component}</ThemeProvider>
-//         </Provider>
-//       ),
-//       store: store || mockStore,
-//     };
-//   };
+  return {
+    ...render(
+      <Provider store={store || mockStore}>
+        <ThemeProvider>{component}</ThemeProvider>
+      </Provider>,
+    ),
+    store: store || mockStore,
+  };
+};
 
-//   describe('SearchItem', () => {
-//     let condition: Conditions;
+describe('SearchItem', () => {
+  let condition: Conditions;
 
-//     beforeEach(() => {
-//       condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
-//       mockUseRouter.mockReturnValue({
-//         push: jest.fn(),
-//         query: {},
-//       });
-//     });
+  beforeEach(() => {
+    condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
+    mockUseRouter.mockReturnValue({
+      push: jest.fn(),
+      query: {},
+    });
+  });
 
-//     test('renders condition name and link', () => {
-//       renderWithRedux(<SearchItem condition={condition} />, {
-//         initialState: {
-//           checked: { checkedItem: {} },
-//         },
-//       });
+  test('renders condition name and link', () => {
+    renderWithRedux(<SearchItem condition={condition} />, {
+      initialState: {
+        checked: { checkedItem: {} },
+      },
+    });
 
-//       expect(screen.getByText('Condition 1')).toBeInTheDocument();
-//       expect(screen.getByText('details')).toBeInTheDocument();
-//     });
+    expect(screen.getByText('Condition 1')).toBeInTheDocument();
+    expect(screen.getByText('details')).toBeInTheDocument();
+  });
 
-//     test('checkbox toggles completed state', () => {
-//       const { store } = renderWithRedux(<SearchItem condition={condition} />, {
-//         initialState: {
-//           checked: { checkedItem: {} },
-//         },
-//       });
+  test('handles details button click', () => {
+    const router = useRouter();
+    renderWithRedux(<SearchItem condition={condition} />, {
+      initialState: {
+        checked: { checkedItem: {} },
+      },
+    });
 
-//       const checkbox = screen.getByRole('checkbox');
-//       expect(checkbox).not.toBeChecked();
+    const detailsButton = screen.getByText('details');
+    fireEvent.click(detailsButton);
 
-//       fireEvent.click(checkbox);
-//       expect(store.getState().checked.checkedItem[condition.uid]).toEqual({
-//         uid: '1',
-//         name: 'Condition 1',
-//         psychologicalCondition: true,
-//         checked: true,
-//       });
-
-//       fireEvent.click(checkbox);
-//       expect(store.getState().checked.checkedItem[condition.uid]).toEqual({
-//         uid: '1',
-//         name: 'Condition 1',
-//         psychologicalCondition: true,
-//         checked: false,
-//       });
-//     });
-
-//     test('handles details button click', () => {
-//       const router = useRouter();
-//       renderWithRedux(<SearchItem condition={condition} />, {
-//         initialState: {
-//           checked: { checkedItem: {} },
-//         },
-//       });
-
-//       const detailsButton = screen.getByText('details');
-//       fireEvent.click(detailsButton);
-
-//       expect(router.push).toHaveBeenCalledWith({
-//         pathname: `/item/${condition.uid}`,
-//         query: {},
-//       });
-//     });
-//   });
+    expect(router.push).toHaveBeenCalledWith({
+      pathname: `/item/${condition.uid}`,
+      query: {},
+    });
+  });
+});

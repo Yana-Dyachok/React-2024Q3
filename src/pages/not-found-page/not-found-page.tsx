@@ -1,4 +1,4 @@
-// import Button from '../../components/ui/button/button';
+import Button from '../../components/ui/button/button';
 import styles from './not-found.module.scss';
 
 function NotFoundPage() {
@@ -14,9 +14,9 @@ function NotFoundPage() {
           <span className={styles.digitThird}>4</span>
         </span>
       </section>
-      {/* <Button btnType="button" to="/">
+      <Button btnType="button" to="/">
         Back to main
-      </Button> */}
+      </Button>
     </div>
   );
 }

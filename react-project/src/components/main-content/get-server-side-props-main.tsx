@@ -26,6 +26,7 @@ export const getServerSideProps: GetServerSideProps =
           )
           .unwrap();
         postData = fetchPostQuery;
+        console.log('fetchPostQuery result:', fetchPostQuery);
       } else {
         const fetchGetQuery = await store
           .dispatch(
@@ -36,6 +37,7 @@ export const getServerSideProps: GetServerSideProps =
           )
           .unwrap();
         getData = fetchGetQuery;
+        console.log('fetchGetQuery result:', fetchGetQuery);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -57,6 +59,8 @@ export const getServerSideProps: GetServerSideProps =
     );
 
     store.dispatch(setGlobalLoading(false));
+
+    console.log('SSR data:', { items, totalPages, currentPage: page });
 
     return {
       props: {

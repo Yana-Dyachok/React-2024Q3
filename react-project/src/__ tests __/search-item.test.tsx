@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
@@ -50,6 +51,7 @@ describe('SearchItem', () => {
     mockUseRouter.mockReturnValue({
       push: jest.fn(),
       query: {},
+      pathname: '/',
     });
   });
 
@@ -76,8 +78,8 @@ describe('SearchItem', () => {
     fireEvent.click(detailsButton);
 
     expect(router.push).toHaveBeenCalledWith({
-      pathname: `/item/${condition.uid}`,
-      query: {},
+      pathname: '/',
+      query: { item: condition.uid },
     });
   });
 });

@@ -12,19 +12,12 @@ import SearchList from '../components/search-list/search-list';
 import Pagination from '../components/ui/pagination/pagination';
 import Loading from '../components/ui/loading/loading';
 import useSearchQuery from '../utils/hooks/ls-hook';
-import styles from '../components/main-content/main-content.module.css';
 import type { RootState } from '../redux/store/store';
 import ErrorBoundary from '../components/error-boundary/error-boundary';
 import Header from '../components/header/header';
-import { Conditions } from '../types/api-interface';
-
-type MainPageProps = {
-  initialData: {
-    items: Conditions[];
-    totalPages: number;
-    currentPage: number;
-  };
-};
+import { MainPageProps } from '../types/types';
+import DescriptionItem from './item/export-description-item';
+import styles from '../components/main-content/main-content.module.css';
 
 function MainPage({ initialData }: MainPageProps) {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
@@ -38,23 +31,22 @@ function MainPage({ initialData }: MainPageProps) {
   );
 
   const closeDescription = () => {
-    if (pathname !== '/') {
-      const queryParams = new URLSearchParams(
-        query as Record<string, string>,
-      ).toString();
-      router.push(`/?${queryParams}`);
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { item, ...newQuery } = query;
+    const queryParams = new URLSearchParams(
+      newQuery as Record<string, string>,
+    ).toString();
+    router.push(`/?${queryParams}`);
   };
 
-  let data, error, isLoading;
   const fetchPostQuery = useFetchPostQuery({ searchQuery, pageSize, page });
   const fetchGetQuery = useFetchGetQuery({ page, pageSize });
 
-  if (searchQuery) {
-    ({ data, error, isLoading } = fetchPostQuery);
-  } else {
-    ({ data, error, isLoading } = fetchGetQuery);
-  }
+  const data = searchQuery ? fetchPostQuery.data : fetchGetQuery.data;
+  const error = searchQuery ? fetchPostQuery.error : fetchGetQuery.error;
+  const isLoading = searchQuery
+    ? fetchPostQuery.isLoading
+    : fetchGetQuery.isLoading;
 
   useEffect(() => {
     const initialPage = query.page ? parseInt(query.page as string, 10) : 1;
@@ -93,22 +85,32 @@ function MainPage({ initialData }: MainPageProps) {
 
   const handleChange = (value: number) => {
     setPage(value);
-    if (searchQuery) {
-      router.push(`${pathname}?page=${value}&searchQuery=${searchQuery}`);
-    } else {
-      router.push(`${pathname}?page=${value}`);
-    }
+    const newQuery = {
+      ...query,
+      page: value.toString(),
+      searchQuery: searchQuery || undefined,
+      item: query.item || undefined,
+    };
+    router.push({
+      pathname,
+      query: newQuery,
+    });
   };
 
   const handleSearchChange = (search: string) => {
     const searchValue = search.trim();
     setSearchQuery(searchValue);
     setPage(1);
-    if (searchValue !== '') {
-      router.push(`${pathname}?page=1&searchQuery=${searchValue}`);
-    } else {
-      router.push(`${pathname}?page=1`);
-    }
+    const newQuery = {
+      ...query,
+      page: '1',
+      searchQuery: searchValue !== '' ? searchValue : undefined,
+      item: query.item || undefined,
+    };
+    router.push({
+      pathname,
+      query: newQuery,
+    });
   };
 
   const totalPages = data?.page?.totalPages || initialData.totalPages || 1;
@@ -144,6 +146,7 @@ function MainPage({ initialData }: MainPageProps) {
                 </div>
               )}
             </div>
+            {query.item && <DescriptionItem />}
           </div>
         </div>
       </ErrorBoundary>

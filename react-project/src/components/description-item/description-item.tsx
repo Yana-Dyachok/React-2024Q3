@@ -12,10 +12,9 @@ import styles from './description-item.module.css';
 
 const DescriptionItem: React.FC = () => {
   const router = useRouter();
-  const { itemId } = router.query;
-  const id = Array.isArray(itemId) ? itemId[0] : (itemId ?? '');
+  const { item: id } = router.query;
 
-  const { data: condition, error, isLoading } = useFetchByIdQuery(id);
+  const { data: condition, error, isLoading } = useFetchByIdQuery(id as string);
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
   );
@@ -26,7 +25,7 @@ const DescriptionItem: React.FC = () => {
     if (condition) {
       dispatch(
         setSelectedItem({
-          id: id || null,
+          id: (id as string) || null,
           name: condition.name,
           psychologicalCondition: condition.psychologicalCondition,
         }),
@@ -37,13 +36,7 @@ const DescriptionItem: React.FC = () => {
   const { theme } = useTheme();
   const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
-  const queryWithoutItemId = Object.fromEntries(
-    Object.entries(router.query).filter(([key]) => key !== 'itemId'),
-  );
-  const searchParams = new URLSearchParams(
-    queryWithoutItemId as Record<string, string>,
-  );
-  const backUrl = `/?${searchParams.toString()}`;
+  const backUrl = router.asPath.replace(/&?item=[^&]+/, '');
 
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>

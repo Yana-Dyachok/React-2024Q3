@@ -29,10 +29,10 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
   };
 
   const handleDetailsClick = () => {
-    router.push({
-      pathname: `/item/${condition.uid}`,
-      query: router.query,
-    });
+    const newQuery = { ...router.query };
+    newQuery.item = condition.uid;
+
+    router.push({ pathname: router.pathname, query: newQuery });
   };
 
   return (

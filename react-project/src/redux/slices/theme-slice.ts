@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { RootState } from '../store/store';
-
-type Theme = 'light' | 'dark';
+import { Theme } from '../../types/types';
 
 export interface ThemeState {
   currentTheme: Theme;

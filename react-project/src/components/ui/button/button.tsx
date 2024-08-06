@@ -1,6 +1,5 @@
 import { useTheme } from '../../../theme-context/theme-context';
 import styles from './button.module.css';
-import Link from 'next/link';
 
 export type ButtonProps = {
   btnType: 'button' | 'submit';
@@ -33,14 +32,14 @@ const Button = ({
 
   if (download) {
     return (
-      <Link
+      <a
         href={to}
         className={`${styles.button} ${themeClass}`}
         onClick={handleClick}
         download={download}
       >
         {children}
-      </Link>
+      </a>
     );
   }
 

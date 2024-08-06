@@ -28,11 +28,19 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
     dispatch(toggleComplete({ condition: condition }));
   };
 
-  const handleDetailsClick = () => {
-    const newQuery = { ...router.query };
-    newQuery.item = condition.uid;
+  const removeItemIdFromQuery = (
+    query: Record<string, string | string[] | undefined>,
+  ) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { itemId, ...restQuery } = query;
+    return restQuery;
+  };
 
-    router.push({ pathname: router.pathname, query: newQuery });
+  const handleDetailsClick = () => {
+    router.push({
+      pathname: `/item/${condition.uid}`,
+      query: removeItemIdFromQuery(router.query),
+    });
   };
 
   return (

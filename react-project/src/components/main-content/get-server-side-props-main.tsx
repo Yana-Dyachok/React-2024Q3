@@ -5,6 +5,8 @@ import { apiPostSearchSlice } from '../../redux/api-slices/api-post-slice';
 import { setSearchResults } from '../../redux/slices/search-result-slice';
 import { setGlobalLoading } from '../../redux/slices/loading-slice';
 import { apiGetByIdSlice } from '../../redux/api-slices/api-get-slices';
+import { selectCheckedItems } from '../../redux/slices/checked-item-slice';
+import { RootState } from '../../redux/store/store';
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (context) => {
@@ -34,7 +36,6 @@ export const getServerSideProps: GetServerSideProps =
           )
           .unwrap();
         postData = fetchPostQuery;
-        console.log('fetchPostQuery result:', fetchPostQuery);
       } else {
         const fetchGetQuery = await store
           .dispatch(
@@ -45,7 +46,6 @@ export const getServerSideProps: GetServerSideProps =
           )
           .unwrap();
         getData = fetchGetQuery;
-        console.log('fetchGetQuery result:', fetchGetQuery);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -69,9 +69,10 @@ export const getServerSideProps: GetServerSideProps =
       }),
     );
 
-    store.dispatch(setGlobalLoading(false));
+    const state = store.getState();
+    const checkedItems = selectCheckedItems(state as RootState);
 
-    console.log('SSR data:', { items, totalPages, currentPage: page });
+    store.dispatch(setGlobalLoading(false));
 
     return {
       props: {
@@ -79,6 +80,7 @@ export const getServerSideProps: GetServerSideProps =
           items,
           totalPages,
           currentPage: page,
+          checkedItems,
         },
       },
     };

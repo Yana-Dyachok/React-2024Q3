@@ -7,6 +7,7 @@ const jestConfig = {
     '^.+\\.(js|jsx)?$': 'babel-jest',
   },
   moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
   transformIgnorePatterns: [

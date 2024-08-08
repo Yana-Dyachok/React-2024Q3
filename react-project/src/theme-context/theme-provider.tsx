@@ -1,6 +1,8 @@
+'use client';
 import { ReactNode, useMemo, useState } from 'react';
 import { ThemeContext } from './theme-context';
 import styles from './theme-provider.module.css';
+
 type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
@@ -17,6 +19,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
   const themeClass =
     value.theme === 'light' ? styles.lightTheme : styles.darkTheme;
+
   return (
     <ThemeContext.Provider value={value}>
       <div className={`${styles.container} ${themeClass}`}>{children}</div>

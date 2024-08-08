@@ -1,5 +1,6 @@
-import { useTheme } from '../theme-context/theme-context';
-import Button from '../components/ui/button/button';
+'use client';
+import { useTheme } from '@/theme-context/theme-context';
+import Button from '@/components/ui/button/button';
 import styles from './not-found.module.css';
 
 const NotFoundPage = () => {

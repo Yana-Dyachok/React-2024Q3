@@ -1,7 +1,7 @@
-// /** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: true,
+  swcMinify: false,
   webpack: (config) => {
     config.resolve.extensions.push('.ts', '.tsx');
     config.module.rules.push({

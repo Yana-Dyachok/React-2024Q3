@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723135243514" clover="3.2.0">
-  <project timestamp="1723135243514" name="All files">
-    <metrics statements="252" coveredstatements="234" conditionals="56" coveredconditionals="46" methods="64" coveredmethods="52" elements="372" coveredelements="332" complexity="0" loc="252" ncloc="252" packages="14" files="22" classes="22"/>
+<coverage generated="1723142024310" clover="3.2.0">
+  <project timestamp="1723142024310" name="All files">
+    <metrics statements="254" coveredstatements="215" conditionals="56" coveredconditionals="42" methods="64" coveredmethods="44" elements="374" coveredelements="301" complexity="0" loc="254" ncloc="254" packages="14" files="22" classes="22"/>
     <package name="app">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="not-found.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\not-found.tsx">
@@ -51,9 +51,9 @@
       </file>
     </package>
     <package name="app.lib.slices">
-      <metrics statements="65" coveredstatements="59" conditionals="9" coveredconditionals="7" methods="19" coveredmethods="15"/>
+      <metrics statements="65" coveredstatements="53" conditionals="9" coveredconditionals="5" methods="19" coveredmethods="11"/>
       <file name="checked-item-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\lib\slices\checked-item-slice.ts">
-        <metrics statements="29" coveredstatements="23" conditionals="7" coveredconditionals="5" methods="10" coveredmethods="6"/>
+        <metrics statements="29" coveredstatements="17" conditionals="7" coveredconditionals="3" methods="10" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
@@ -68,21 +68,21 @@
         <line num="40" count="2" type="stmt"/>
         <line num="41" count="2" type="stmt"/>
         <line num="43" count="2" type="stmt"/>
-        <line num="44" count="3" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
         <line num="52" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="53" count="0" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
         <line num="63" count="2" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
         <line num="69" count="2" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="74" count="2" type="stmt"/>
-        <line num="75" count="4" type="stmt"/>
-        <line num="77" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
       <file name="description-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\lib\slices\description-slice.ts">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -174,31 +174,33 @@
       </file>
     </package>
     <package name="components.search-item">
-      <metrics statements="22" coveredstatements="21" conditionals="4" coveredconditionals="2" methods="6" coveredmethods="5"/>
+      <metrics statements="24" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="1"/>
       <file name="search-item.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\search-item\search-item.tsx">
-        <metrics statements="22" coveredstatements="21" conditionals="4" coveredconditionals="2" methods="6" coveredmethods="5"/>
+        <metrics statements="24" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="46" count="2" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.search-list">
@@ -297,10 +299,10 @@
         <line num="2" count="6" type="stmt"/>
         <line num="11" count="6" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
-        <line num="16" count="21" type="stmt"/>
-        <line num="18" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="19" type="stmt"/>
+        <line num="18" count="18" type="cond" truecount="1" falsecount="0"/>
         <line num="19" count="4" type="stmt"/>
-        <line num="21" count="16" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
       </file>
       <file name="theme-provider.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\theme-context\theme-provider.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
@@ -308,12 +310,12 @@
         <line num="3" count="6" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
         <line num="12" count="6" type="stmt"/>
-        <line num="13" count="25" type="stmt"/>
-        <line num="15" count="25" type="stmt"/>
+        <line num="13" count="27" type="stmt"/>
+        <line num="15" count="27" type="stmt"/>
         <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="25" type="stmt"/>
-        <line num="21" count="25" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="25" type="stmt"/>
+        <line num="19" count="27" type="stmt"/>
+        <line num="21" count="27" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="27" type="stmt"/>
       </file>
     </package>
     <package name="utils.const">

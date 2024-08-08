@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { useFetchByIdQuery } from '../../redux/api-slices/api-get-slices';
-import { RootState } from '../../redux/store/store';
+import { useFetchByIdQuery } from '@/app/lib/api-slices/api-get-slices';
+import { RootState } from '@/app/lib/store';
 import { useTheme } from '../../theme-context/theme-context';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDescriptionLoading } from '../../redux/slices/loading-slice';
-import { setSelectedItem } from '../../redux/slices/description-slice';
+import { setDescriptionLoading } from '@/app/lib/slices/loading-slice';
+import { setSelectedItem } from '@/app/lib/slices/description-slice';
 import Loading from '../../components/ui/loading/loading';
 import styles from './description-item.module.css';
 
 const DescriptionItem: React.FC = () => {
-  const router = useRouter();
-  const { itemId } = router.query;
-  const id = Array.isArray(itemId) ? itemId[0] : (itemId ?? '');
+  const searchParams = useSearchParams();
+  const itemId = searchParams.get('itemId') ?? '';
 
-  const { data: condition, error, isLoading } = useFetchByIdQuery(id);
+  const { data: condition, error, isLoading } = useFetchByIdQuery(itemId);
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
   );
@@ -26,24 +25,21 @@ const DescriptionItem: React.FC = () => {
     if (condition) {
       dispatch(
         setSelectedItem({
-          id: id || null,
+          id: itemId || null,
           name: condition.name,
           psychologicalCondition: condition.psychologicalCondition,
         }),
       );
     }
-  }, [isLoading, dispatch, condition, id]);
+  }, [isLoading, dispatch, condition, itemId]);
 
   const { theme } = useTheme();
   const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
-  const queryWithoutItemId = Object.fromEntries(
-    Object.entries(router.query).filter(([key]) => key !== 'itemId'),
-  );
-  const searchParams = new URLSearchParams(
-    queryWithoutItemId as Record<string, string>,
-  );
-  const backUrl = `/?${searchParams.toString()}`;
+  // Construct URL without the `itemId` query parameter
+  const queryWithoutItemId = new URLSearchParams(searchParams.toString());
+  queryWithoutItemId.delete('itemId');
+  const backUrl = `/?${queryWithoutItemId.toString()}`;
 
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/lib/store';
 import { setSearchResults } from '@/app/lib/slices/search-result-slice';
@@ -10,16 +10,15 @@ import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
 import Loading from '../ui/loading/loading';
-import useSearchQuery from '../../utils/hooks/ls-hook';
+import useSearchQuery from '@/utils/hooks/ls-hook';
 import styles from './main-content.module.css';
-import type { MainPageProps } from '../../types/types';
+import type { MainPageProps } from '@/types/types';
 
 const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
-  const [page, setPage] = useState(initialData.currentPage || 1);
+  const [page, setPage] = useState(initialData?.currentPage || 1);
   const [pageSize] = useState(15);
   const router = useRouter();
-  const { pathname, query } = router;
   const dispatch = useDispatch();
   const isLoadingGlobal = useSelector(
     (state: RootState) => state.loading.globalLoading,
@@ -27,28 +26,32 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
 
   const fetchPostQuery = useFetchPostQuery({ searchQuery, pageSize, page });
   const fetchGetQuery = useFetchGetQuery({ page, pageSize });
-
   const { data, error, isLoading } = searchQuery
     ? fetchPostQuery
     : fetchGetQuery;
 
   useEffect(() => {
-    const initialPage = query.page ? parseInt(query.page as string, 10) : 1;
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialPage = urlParams.get('page')
+      ? parseInt(urlParams.get('page') as string, 10)
+      : 1;
     if (!isNaN(initialPage)) {
       setPage(initialPage);
     } else {
       setPage(1);
-      router.replace({ pathname, query: { ...query, page: '1' } });
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.set('page', '1');
+      router.push(`${window.location.pathname}?${newParams.toString()}`);
     }
-  }, [query.page, query, router, pathname]);
+  }, [router]);
 
   useEffect(() => {
     dispatch(setGlobalLoading(isLoading));
     if (data && !isLoading && !error) {
       dispatch(
         setSearchResults({
-          items: data.medicalConditions,
-          totalPages: data.page.totalPages,
+          items: data.medicalConditions || [],
+          totalPages: data.page?.totalPages ?? 1,
           currentPage: page,
         }),
       );
@@ -56,7 +59,7 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   }, [data, isLoading, error, dispatch, page]);
 
   useEffect(() => {
-    if (initialData.items.length > 0) {
+    if (initialData?.items?.length > 0) {
       dispatch(
         setSearchResults({
           items: initialData.items,
@@ -70,20 +73,12 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const handleChange = useCallback(
     (value: number) => {
       setPage(value);
-      router.push(
-        {
-          pathname,
-          query: {
-            ...query,
-            page: value.toString(),
-            searchQuery: searchQuery || undefined,
-          },
-        },
-        undefined,
-        { shallow: true },
-      );
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.set('page', value.toString());
+      newParams.set('searchQuery', searchQuery || '');
+      router.push(`${window.location.pathname}?${newParams.toString()}`);
     },
-    [pathname, query, searchQuery, router],
+    [searchQuery, router],
   );
 
   const handleSearchChange = useCallback(
@@ -91,36 +86,25 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
       const searchValue = search.trim();
       setSearchQuery(searchValue);
       setPage(1);
-      router.push(
-        {
-          pathname,
-          query: {
-            ...query,
-            page: '1',
-            searchQuery: searchValue !== '' ? searchValue : undefined,
-          },
-        },
-        undefined,
-        { shallow: true },
-      );
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.set('page', '1');
+      newParams.set('searchQuery', searchValue || '');
+      router.push(`${window.location.pathname}?${newParams.toString()}`);
     },
-    [pathname, query, router, setSearchQuery],
+    [setSearchQuery, router],
   );
 
-  const totalPages = data?.page?.totalPages || initialData.totalPages || 1;
+  const totalPages = data?.page?.totalPages ?? initialData?.totalPages ?? 1;
 
   return (
     <div className={styles.wrapper}>
       <div
         className={styles.mainContent}
         onClick={() => {
-          if (pathname !== '/') {
-            const queryParams = new URLSearchParams(
-              query as Record<string, string>,
-            );
-            queryParams.delete('itemId');
-            const newQueryString = queryParams.toString();
-            router.push(`/?${newQueryString}`, undefined, { shallow: true });
+          if (window.location.pathname !== '/') {
+            const newParams = new URLSearchParams(window.location.search);
+            newParams.delete('itemId');
+            router.push(`${window.location.pathname}?${newParams.toString()}`);
           }
         }}
       >
@@ -131,7 +115,7 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
           <div>No data found</div>
         ) : (
           <div className={styles.searchResult}>
-            {data?.medicalConditions.length === 0 ? (
+            {data?.medicalConditions?.length === 0 ? (
               <div>No results found</div>
             ) : (
               <>
@@ -141,7 +125,11 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
                   onPageChange={handleChange}
                 />
                 <SearchList
-                  conditions={data?.medicalConditions || initialData.items}
+                  conditions={
+                    data?.medicalConditions ||
+                    (initialData && initialData.items) ||
+                    []
+                  }
                 />
               </>
             )}

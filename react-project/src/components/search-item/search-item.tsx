@@ -1,6 +1,6 @@
 import React from 'react';
 import { Conditions } from '../../types/api-interface';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { RootState } from '@/app/lib/store';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -25,22 +25,18 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
   );
 
   const handleCheckboxChange = () => {
-    dispatch(toggleComplete({ condition: condition }));
+    dispatch(toggleComplete({ condition }));
   };
 
-  const removeItemIdFromQuery = (
-    query: Record<string, string | string[] | undefined>,
-  ) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { itemId, ...restQuery } = query;
-    return restQuery;
+  const removeItemIdFromQuery = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.delete('itemId');
+    return urlParams.toString();
   };
 
   const handleDetailsClick = () => {
-    router.push({
-      pathname: `/item/${condition.uid}`,
-      query: removeItemIdFromQuery(router.query),
-    });
+    const newQuery = removeItemIdFromQuery();
+    router.push(`/item/${condition.uid}?${newQuery}`);
   };
 
   return (

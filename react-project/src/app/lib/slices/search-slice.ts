@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFromLocalStorage } from '../../utils/local-storage/ls-handler';
+import { getFromLocalStorage } from '@/utils/local-storage/ls-handler';
 
 const initialState = {
   searchInput: getFromLocalStorage('searchQuery') || 'defaultSearchQuery',

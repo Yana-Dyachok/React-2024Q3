@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Conditions } from '../../types/api-interface';
+import { Conditions } from '@/types/api-interface';
 import { createSelector } from 'reselect';
-import { RootState } from '../store/store';
+import { RootState } from '@/app/lib/store';
 
 export interface CheckedConditions extends Conditions {
   checked: boolean;

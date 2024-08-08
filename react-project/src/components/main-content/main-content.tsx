@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
-import { setSearchResults } from '../../redux/slices/search-result-slice';
-import { setGlobalLoading } from '../../redux/slices/loading-slice';
-import { useFetchGetQuery } from '../../redux/api-slices/api-get-search-slice';
-import { useFetchPostQuery } from '../../redux/api-slices/api-post-slice';
+import { RootState } from '@/app/lib/store';
+import { setSearchResults } from '@/app/lib/slices/search-result-slice';
+import { setGlobalLoading } from '@/app/lib/slices/loading-slice';
+import { useFetchGetQuery } from '@/app/lib/api-slices/api-get-search-slice';
+import { useFetchPostQuery } from '@/app/lib/api-slices/api-post-slice';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';

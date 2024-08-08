@@ -4,7 +4,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import {
   apiGetByIdSlice,
   useFetchByIdQuery,
-} from '../redux/api-slices/api-get-slices';
+} from '@/app/lib/api-slices/api-get-slices';
 import { mockGetByIdResponse } from '../utils/const/mock-response';
 
 jest.mock('@reduxjs/toolkit/query/react', () => {

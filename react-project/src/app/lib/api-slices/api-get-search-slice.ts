@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ApiResponse } from '../../types/api-interface';
-import { PATH_SEARCH } from '../../utils/const/const';
+import { ApiResponse } from '@/types/api-interface';
+import { PATH_SEARCH } from '@/utils/const/const';
 
 export const apiGetSearchSlice = createApi({
   reducerPath: 'apiGetSearch',

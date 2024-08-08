@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Conditions } from '../../types/api-interface';
-import { PATH } from '../../utils/const/const';
+import { Conditions } from '@/types/api-interface';
+import { PATH } from '@/utils/const/const';
 
 export const apiGetByIdSlice = createApi({
   reducerPath: 'apiGetById',

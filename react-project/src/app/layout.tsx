@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { ThemeProvider } from '../theme-context/theme-provider';
+import StoreProvider from './StoreProvider';
 import '../index.css';
 
 export default function RootLayout({
@@ -21,7 +22,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import searchSlice from '../redux/slices/search-slice';
+import searchSlice from '@/app/lib/slices/search-slice';
 import SearchInput from '../components/search-input/search-input';
 import { useTheme } from '../theme-context/theme-context';
 import useSearchQuery from '../utils/hooks/ls-hook';

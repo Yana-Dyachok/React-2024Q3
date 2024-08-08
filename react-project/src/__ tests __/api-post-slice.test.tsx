@@ -4,7 +4,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import {
   apiPostSearchSlice,
   useFetchPostQuery,
-} from '../redux/api-slices/api-post-slice';
+} from '@/app/lib/api-slices/api-post-slice';
 import { mockResponse } from '../utils/const/mock-response';
 
 jest.mock('@reduxjs/toolkit/query/react', () => {

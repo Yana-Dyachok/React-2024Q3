@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
+import { RootState } from '@/app/lib/store';
 import {
   unselectAll,
   selectSelectedItems,
   selectConditionsArray,
-} from '../../redux/slices/checked-item-slice';
+} from '../../app/lib/slices/checked-item-slice';
 import Button from '../ui/button/button';
-import { CheckedConditions } from '../../redux/slices/checked-item-slice';
+import { CheckedConditions } from '@/app/lib/slices/checked-item-slice';
 import styles from './flyout.module.css';
 
 const convertToCSV = (data: CheckedConditions[]): string => {

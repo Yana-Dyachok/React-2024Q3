@@ -6,9 +6,9 @@ import SearchItem from '../components/search-item/search-item';
 import { Conditions } from '../types/api-interface';
 import checkedItemSlice, {
   CheckedItemState,
-} from '../redux/slices/checked-item-slice';
+} from '@/app/lib/slices/checked-item-slice';
 import { ThemeProvider } from '../theme-context/theme-provider';
-import { RootState } from '../redux/store/store';
+import { RootState } from '@/app/lib/store';
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),

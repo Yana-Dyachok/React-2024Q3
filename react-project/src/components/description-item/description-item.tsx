@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useFetchByIdQuery } from '@/app/lib/api-slices/api-get-slices';
 import { RootState } from '@/app/lib/store';
@@ -11,8 +11,9 @@ import Loading from '../../components/ui/loading/loading';
 import styles from './description-item.module.css';
 
 const DescriptionItem: React.FC = () => {
-  const searchParams = useSearchParams();
-  const itemId = searchParams.get('itemId') ?? '';
+  const pathname = usePathname();
+
+  const itemId = pathname.split('/').pop() || '';
 
   const { data: condition, error, isLoading } = useFetchByIdQuery(itemId);
   const descriptionLoading = useSelector(
@@ -36,18 +37,13 @@ const DescriptionItem: React.FC = () => {
   const { theme } = useTheme();
   const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
-  // Construct URL without the `itemId` query parameter
-  const queryWithoutItemId = new URLSearchParams(searchParams.toString());
-  queryWithoutItemId.delete('itemId');
-  const backUrl = `/?${queryWithoutItemId.toString()}`;
-
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>
       {descriptionLoading ? (
         <Loading />
       ) : (
         <>
-          <Link href={backUrl} passHref>
+          <Link href="/" passHref>
             <button
               aria-label="close"
               className={`${styles.closeButton} ${themeClass}`}

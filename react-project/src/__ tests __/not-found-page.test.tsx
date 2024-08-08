@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import NotFoundPage from '@/app/error';
+import NotFoundPage from '@/app/not-found';
 import { useTheme } from '../theme-context/theme-context';
 import { ThemeProvider } from '../theme-context/theme-provider';
 

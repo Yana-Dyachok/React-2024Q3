@@ -5,7 +5,7 @@ import MainContent from '../components/main-content/main-content';
 import Header from '../components/header/header';
 import { MainPageProps } from '../types/types';
 import ErrorBoundary from '../components/error-boundary/error-boundary';
-const DescriptionPage: React.FC<MainPageProps> = (props) => {
+const MainPage: React.FC<MainPageProps> = (props) => {
   return (
     <>
       <ErrorBoundary>
@@ -16,4 +16,4 @@ const DescriptionPage: React.FC<MainPageProps> = (props) => {
   );
 };
 
-export default DescriptionPage;
+export default MainPage;

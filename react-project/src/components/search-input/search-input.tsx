@@ -34,6 +34,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearchChange }) => {
 
   return (
     <section
+      data-testid="search-section"
       className={`${styles.searchInputBlock} ${themeClass}`}
       onClick={(event) => event.stopPropagation()}
     >

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723156977638" clover="3.2.0">
-  <project timestamp="1723156977638" name="All files">
-    <metrics statements="225" coveredstatements="205" conditionals="45" coveredconditionals="36" methods="58" coveredmethods="46" elements="328" coveredelements="287" complexity="0" loc="225" ncloc="225" packages="14" files="22" classes="22"/>
+<coverage generated="1723219707729" clover="3.2.0">
+  <project timestamp="1723219707729" name="All files">
+    <metrics statements="225" coveredstatements="209" conditionals="45" coveredconditionals="37" methods="58" coveredmethods="48" elements="328" coveredelements="294" complexity="0" loc="225" ncloc="225" packages="14" files="22" classes="22"/>
     <package name="app">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="not-found.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\not-found.tsx">
@@ -114,7 +114,7 @@
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
       </file>
@@ -145,32 +145,32 @@
       </file>
     </package>
     <package name="components.search-input">
-      <metrics statements="23" coveredstatements="19" conditionals="3" coveredconditionals="2" methods="5" coveredmethods="3"/>
+      <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="5" coveredmethods="5"/>
       <file name="search-input.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\search-input\search-input.tsx">
-        <metrics statements="23" coveredstatements="19" conditionals="3" coveredconditionals="2" methods="5" coveredmethods="3"/>
+        <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="5" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
         <line num="30" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.search-item">

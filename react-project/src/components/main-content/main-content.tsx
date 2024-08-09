@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/lib/store';
 import { setSearchResults } from '@/app/lib/slices/search-result-slice';
@@ -20,6 +20,7 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const [pageSize] = useState(15);
   const router = useRouter();
   const dispatch = useDispatch();
+  const pathname = usePathname();
   const isLoadingGlobal = useSelector(
     (state: RootState) => state.loading.globalLoading,
   );
@@ -29,6 +30,14 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const { data, error, isLoading } = searchQuery
     ? fetchPostQuery
     : fetchGetQuery;
+
+  const closeDescription = () => {
+    if (pathname.includes('/item/')) {
+      const searchParams = new URLSearchParams(window.location.search);
+      const newUrl = `/?${searchParams.toString()}`;
+      router.push(newUrl);
+    }
+  };
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -98,16 +107,7 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div
-        className={styles.mainContent}
-        onClick={() => {
-          if (window.location.pathname !== '/') {
-            const newParams = new URLSearchParams(window.location.search);
-            newParams.delete('itemId');
-            router.push(`${window.location.pathname}?${newParams.toString()}`);
-          }
-        }}
-      >
+      <div className={styles.mainContent} onClick={closeDescription}>
         <SearchInput onSearchChange={handleSearchChange} />
         {isLoadingGlobal ? (
           <Loading />

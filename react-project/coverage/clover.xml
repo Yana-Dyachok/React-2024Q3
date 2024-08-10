@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723219707729" clover="3.2.0">
-  <project timestamp="1723219707729" name="All files">
-    <metrics statements="225" coveredstatements="209" conditionals="45" coveredconditionals="37" methods="58" coveredmethods="48" elements="328" coveredelements="294" complexity="0" loc="225" ncloc="225" packages="14" files="22" classes="22"/>
+<coverage generated="1723302722731" clover="3.2.0">
+  <project timestamp="1723302722731" name="All files">
+    <metrics statements="235" coveredstatements="219" conditionals="48" coveredconditionals="40" methods="52" coveredmethods="42" elements="335" coveredelements="301" complexity="0" loc="235" ncloc="235" packages="14" files="21" classes="21"/>
     <package name="app">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="not-found.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\not-found.tsx">
@@ -16,38 +16,50 @@
         <line num="33" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="app.lib.api-slices">
-      <metrics statements="22" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
-      <file name="api-get-search-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\lib\api-slices\api-get-search-slice.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-      </file>
-      <file name="api-get-slices.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\lib\api-slices\api-get-slices.ts">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+    <package name="app.api">
+      <metrics statements="34" coveredstatements="34" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="api-get-byid.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\api\api-get-byid.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="14" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-      </file>
-      <file name="api-post-slice.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\lib\api-slices\api-post-slice.ts">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
+      </file>
+      <file name="api-get.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\api\api-get.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+      </file>
+      <file name="api-post.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\app\api\api-post.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
       </file>
     </package>
     <package name="app.lib.slices">
@@ -290,16 +302,11 @@
       </file>
     </package>
     <package name="utils.const">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="const.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\const.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
-      </file>
-      <file name="mock-response.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\utils\const\mock-response.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
       </file>
     </package>
     <package name="utils.hooks">

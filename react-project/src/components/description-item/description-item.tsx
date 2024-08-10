@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { useFetchByIdQuery } from '@/app/lib/api-slices/api-get-slices';
+import { useFetchMedicalConditionById } from '@/utils/hooks/api-hooks';
 import { RootState } from '@/app/lib/store';
 import { useTheme } from '../../theme-context/theme-context';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +15,11 @@ const DescriptionItem: React.FC = () => {
 
   const itemId = pathname.split('/').pop() || '';
 
-  const { data: condition, error, isLoading } = useFetchByIdQuery(itemId);
+  const {
+    data: condition,
+    error,
+    isLoading,
+  } = useFetchMedicalConditionById(itemId);
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
   );

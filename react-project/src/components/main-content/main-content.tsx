@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/lib/store';
 import { setSearchResults } from '@/app/lib/slices/search-result-slice';
 import { setGlobalLoading } from '@/app/lib/slices/loading-slice';
-import { useFetchGetQuery } from '@/app/lib/api-slices/api-get-search-slice';
-import { useFetchPostQuery } from '@/app/lib/api-slices/api-post-slice';
+import {
+  useFetchPostQuery,
+  useFetchMedicalConditions,
+} from '@/utils/hooks/api-hooks';
 import SearchInput from '../search-input/search-input';
 import SearchList from '../search-list/search-list';
 import Pagination from '../ui/pagination/pagination';
@@ -24,9 +26,8 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const isLoadingGlobal = useSelector(
     (state: RootState) => state.loading.globalLoading,
   );
-
-  const fetchPostQuery = useFetchPostQuery({ searchQuery, pageSize, page });
-  const fetchGetQuery = useFetchGetQuery({ page, pageSize });
+  const fetchPostQuery = useFetchPostQuery(searchQuery, pageSize, page);
+  const fetchGetQuery = useFetchMedicalConditions(page, pageSize);
   const { data, error, isLoading } = searchQuery
     ? fetchPostQuery
     : fetchGetQuery;

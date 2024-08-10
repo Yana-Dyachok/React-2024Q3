@@ -1,23 +1,16 @@
-'use client';
-import Header from '@/components/header/header';
-import ErrorBoundary from '@/components/error-boundary/error-boundary';
 import MainContent from '@/components/main-content/main-content';
-import { useFetchMedicalConditions } from '@/utils/hooks/api-hooks';
-import Loading from '@/components/ui/loading/loading';
+import fetchData from '@/app/api/api-get.ts';
 
-export default function MainPage() {
+export default async function MainPage() {
   const page = 1;
   const pageSize = 15;
 
-  const { data, error, isLoading } = useFetchMedicalConditions(page, pageSize);
+  const fetchDataAsync = async () => {
+    const response = await fetchData(page, pageSize);
+    return response;
+  };
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  const data = await fetchDataAsync();
 
   const initialData = {
     items: data?.medicalConditions || [],
@@ -25,10 +18,5 @@ export default function MainPage() {
     currentPage: data?.page.pageNumber || 15,
   };
 
-  return (
-    <ErrorBoundary>
-      <Header />
-      <MainContent initialData={initialData} />
-    </ErrorBoundary>
-  );
+  return <MainContent initialData={initialData} />;
 }

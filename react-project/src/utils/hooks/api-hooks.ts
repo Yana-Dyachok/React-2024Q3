@@ -1,36 +1,7 @@
 import { useState, useEffect } from 'react';
-import fetchMedicalConditionById from '@/app/api/api-get-byid';
 import fetchDataConditions from '@/app/api/api-post';
 import fetchData from '@/app/api/api-get';
-import { Conditions, ApiResponse } from '@/types/api-interface';
-
-export const useFetchMedicalConditionById = (uid: string) => {
-  const [data, setData] = useState<Conditions | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const result = await fetchMedicalConditionById(uid);
-        if (result) {
-          setData(result);
-        } else {
-          setError('Failed to fetch data');
-        }
-      } catch (error) {
-        setError('An error occurred while fetching data');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [uid]);
-
-  return { data, error, isLoading };
-};
+import { ApiResponse } from '@/types/api-interface';
 
 export const useFetchPostQuery = (
   searchQuery: string,

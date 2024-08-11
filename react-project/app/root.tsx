@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { ThemeProvider } from '../src/theme-context/theme-provider';
+import StoreProvider from '../src/lib/StoreProvider';
 import './index.css';
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -21,9 +22,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider>
-          {children}
-          <ScrollRestoration />
-          <Scripts />
+          <StoreProvider>
+            {children}
+            <ScrollRestoration />
+            <Scripts />
+          </StoreProvider>
         </ThemeProvider>
       </body>
     </html>

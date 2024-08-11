@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useLocation, Link } from '@remix-run/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/lib/store';
 import { setSelectedItem } from '@/lib/slices/description-slice';
@@ -15,8 +14,8 @@ const DescriptionItem: React.FC = () => {
   const [condition, setCondition] = useState<Conditions | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const pathname = usePathname();
-  const itemId = pathname.split('/').pop() || '';
+  const location = useLocation();
+  const itemId = location.pathname.split('/').pop() || '';
 
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
@@ -59,7 +58,7 @@ const DescriptionItem: React.FC = () => {
         <Loading />
       ) : (
         <>
-          <Link href="/" passHref>
+          <Link to="/" aria-label="close">
             <button
               aria-label="close"
               className={`${styles.closeButton} ${themeClass}`}

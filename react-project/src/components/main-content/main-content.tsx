@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useLocation, useNavigate } from '@remix-run/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
 import { setSearchResults } from '@/lib/slices/search-result-slice';
@@ -21,9 +21,9 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const [searchQuery, setSearchQuery] = useSearchQuery('searchQuery');
   const [page, setPage] = useState(initialData?.currentPage || 1);
   const [pageSize] = useState(15);
-  const router = useRouter();
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
-  const pathname = usePathname();
   const isLoadingGlobal = useSelector(
     (state: RootState) => state.loading.globalLoading,
   );
@@ -34,15 +34,15 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
     : fetchGetQuery;
 
   const closeDescription = () => {
-    if (pathname.includes('/item/')) {
-      const searchParams = new URLSearchParams(window.location.search);
+    if (location.pathname.includes('/item/')) {
+      const searchParams = new URLSearchParams(location.search);
       const newUrl = `/?${searchParams.toString()}`;
-      router.push(newUrl);
+      navigate(newUrl);
     }
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(location.search);
     const initialPage = urlParams.get('page')
       ? parseInt(urlParams.get('page') as string, 10)
       : 1;
@@ -50,11 +50,11 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
       setPage(initialPage);
     } else {
       setPage(1);
-      const newParams = new URLSearchParams(window.location.search);
+      const newParams = new URLSearchParams(location.search);
       newParams.set('page', '1');
-      router.push(`${window.location.pathname}?${newParams.toString()}`);
+      navigate(`${location.pathname}?${newParams.toString()}`);
     }
-  }, [router]);
+  }, [location.search, location.pathname, navigate]);
 
   useEffect(() => {
     dispatch(setGlobalLoading(isLoading));
@@ -84,12 +84,12 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
   const handleChange = useCallback(
     (value: number) => {
       setPage(value);
-      const newParams = new URLSearchParams(window.location.search);
+      const newParams = new URLSearchParams(location.search);
       newParams.set('page', value.toString());
       newParams.set('searchQuery', searchQuery || '');
-      router.push(`${window.location.pathname}?${newParams.toString()}`);
+      navigate(`${location.pathname}?${newParams.toString()}`);
     },
-    [searchQuery, router],
+    [searchQuery, location.search, location.pathname, navigate],
   );
 
   const handleSearchChange = useCallback(
@@ -97,12 +97,12 @@ const MainContent: React.FC<MainPageProps> = ({ initialData }) => {
       const searchValue = search.trim();
       setSearchQuery(searchValue);
       setPage(1);
-      const newParams = new URLSearchParams(window.location.search);
+      const newParams = new URLSearchParams(location.search);
       newParams.set('page', '1');
       newParams.set('searchQuery', searchValue || '');
-      router.push(`${window.location.pathname}?${newParams.toString()}`);
+      navigate(`${location.pathname}?${newParams.toString()}`);
     },
-    [setSearchQuery, router],
+    [setSearchQuery, location.search, location.pathname, navigate],
   );
 
   const totalPages = data?.page?.totalPages ?? initialData?.totalPages ?? 1;

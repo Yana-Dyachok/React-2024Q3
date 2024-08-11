@@ -1,6 +1,6 @@
 import React from 'react';
 import { Conditions } from '../../types/api-interface';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from '@remix-run/react';
 import { RootState } from '@/lib/store';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -15,7 +15,7 @@ interface SearchItemProps {
 }
 
 const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { theme } = useTheme();
   const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
@@ -36,13 +36,12 @@ const SearchItem: React.FC<SearchItemProps> = ({ condition }) => {
 
   const handleDetailsClick = () => {
     const newQuery = removeItemIdFromQuery();
-    router.push(`/item/${condition.uid}?${newQuery}`);
+    navigate(`/item/${condition.uid}?${newQuery}`);
   };
 
   return (
     <div
       className={`${styles.conditionBlock} ${themeClass}`}
-      key={condition.uid}
       onClick={(event) => event.stopPropagation()}
     >
       <input

@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from '@remix-run/react';
 import { Conditions } from '@/types/api-interface';
 import SearchItem from '@/components/search-item/search-item';
 import checkedItemSlice, {
@@ -12,8 +12,8 @@ import checkedItemSlice, {
 import { ThemeProvider } from '@/theme-context/theme-provider';
 import { RootState } from '@/lib/store';
 
-jest.mock('next/navigation', () => ({
-  useRouter: jest.fn(),
+jest.mock('@remix-run/react', () => ({
+  useNavigate: jest.fn(),
 }));
 
 jest.mock('react-redux', () => ({
@@ -27,7 +27,7 @@ jest.mock('@/theme-context/theme-context', () => ({
   useTheme: jest.fn(),
 }));
 
-const mockUseRouter = useRouter as jest.Mock;
+const mockUseNavigate = useNavigate as jest.Mock;
 const mockUseSelector = jest.requireMock('react-redux')
   .useSelector as jest.Mock;
 const mockUseDispatch = jest.requireMock('react-redux')
@@ -67,9 +67,7 @@ describe('SearchItem', () => {
 
   beforeEach(() => {
     condition = { uid: '1', name: 'Condition 1', psychologicalCondition: true };
-    mockUseRouter.mockReturnValue({
-      push: jest.fn(),
-    });
+    mockUseNavigate.mockReturnValue(jest.fn());
     mockUseSelector.mockReturnValue(false);
     mockUseTheme.mockReturnValue({ theme: 'light' });
     dispatch = jest.fn();
@@ -92,7 +90,7 @@ describe('SearchItem', () => {
   });
 
   test('handles details button click', () => {
-    const router = useRouter();
+    const navigate = mockUseNavigate();
     renderWithRedux(<SearchItem condition={condition} />, {
       initialState: {
         checked: { checkedItem: {} },
@@ -102,7 +100,7 @@ describe('SearchItem', () => {
     const detailsButton = screen.getByText('details');
     fireEvent.click(detailsButton);
 
-    expect(router.push).toHaveBeenCalledWith(`/item/${condition.uid}?`);
+    expect(navigate).toHaveBeenCalledWith(`/item/${condition.uid}?`);
   });
 
   test('handles checkbox toggle', () => {

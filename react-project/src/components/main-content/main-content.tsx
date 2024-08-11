@@ -1,9 +1,10 @@
+'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/app/lib/store';
-import { setSearchResults } from '@/app/lib/slices/search-result-slice';
-import { setGlobalLoading } from '@/app/lib/slices/loading-slice';
+import { RootState } from '@/lib/store';
+import { setSearchResults } from '@/lib/slices/search-result-slice';
+import { setGlobalLoading } from '@/lib/slices/loading-slice';
 import {
   useFetchPostQuery,
   useFetchMedicalConditions,

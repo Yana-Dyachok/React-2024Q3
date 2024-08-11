@@ -3,7 +3,7 @@ import checkedItemReducer, {
   toggleComplete,
   unselectAll,
   CheckedItemState,
-} from '@/app/lib/slices/checked-item-slice';
+} from '@/lib/slices/checked-item-slice';
 import { Conditions } from '../types/api-interface';
 
 describe('checkedItemSlice', () => {

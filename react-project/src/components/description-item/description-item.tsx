@@ -1,32 +1,44 @@
-import React, { useEffect } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { useFetchMedicalConditionById } from '@/utils/hooks/api-hooks';
-import { RootState } from '@/app/lib/store';
-import { useTheme } from '../../theme-context/theme-context';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDescriptionLoading } from '@/app/lib/slices/loading-slice';
-import { setSelectedItem } from '@/app/lib/slices/description-slice';
+import { RootState } from '@/lib/store';
+import { setSelectedItem } from '@/lib/slices/description-slice';
 import Loading from '../../components/ui/loading/loading';
 import styles from './description-item.module.css';
+import fetchMedicalConditionById from '@/api/api-get-byid';
+import { useTheme } from '../../theme-context/theme-context';
+import { Conditions } from '@/types/api-interface';
 
 const DescriptionItem: React.FC = () => {
-  const pathname = usePathname();
+  const [condition, setCondition] = useState<Conditions | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
+  const pathname = usePathname();
   const itemId = pathname.split('/').pop() || '';
 
-  const {
-    data: condition,
-    error,
-    isLoading,
-  } = useFetchMedicalConditionById(itemId);
   const descriptionLoading = useSelector(
     (state: RootState) => state.loading.descriptionLoading,
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setDescriptionLoading(isLoading));
+    const fetchDataAsync = async () => {
+      try {
+        const response = await fetchMedicalConditionById(itemId);
+        setCondition(response);
+      } catch (error) {
+        console.error('Error fetching medical condition:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDataAsync();
+  }, [itemId]);
+
+  useEffect(() => {
     if (condition) {
       dispatch(
         setSelectedItem({
@@ -36,14 +48,14 @@ const DescriptionItem: React.FC = () => {
         }),
       );
     }
-  }, [isLoading, dispatch, condition, itemId]);
+  }, [condition, itemId, dispatch]);
 
   const { theme } = useTheme();
   const themeClass = theme === 'light' ? styles.lightTheme : styles.darkTheme;
 
   return (
     <div className={`${styles.descriptionBlock} ${themeClass}`}>
-      {descriptionLoading ? (
+      {loading || descriptionLoading ? (
         <Loading />
       ) : (
         <>
@@ -53,22 +65,18 @@ const DescriptionItem: React.FC = () => {
               className={`${styles.closeButton} ${themeClass}`}
             />
           </Link>
-          {error ? (
-            <div>Error fetching data</div>
-          ) : (
-            <div className={styles.descriptionContainer}>
-              <span>Condition:</span>
-              <span className={`${styles.name} ${themeClass}`}>
-                {condition?.name}
-              </span>
-              <span className={styles.descriptionTitle}>
-                {`It's ${
-                  condition?.psychologicalCondition ? '' : 'not'
-                } a psychological condition`}
-              </span>
-              <div className={`${styles.medicalIcon} ${themeClass}`}></div>
-            </div>
-          )}
+          <div className={styles.descriptionContainer}>
+            <span>Condition:</span>
+            <span className={`${styles.name} ${themeClass}`}>
+              {condition?.name || 'No name available'}
+            </span>
+            <span className={styles.descriptionTitle}>
+              {`It's ${
+                condition?.psychologicalCondition ? '' : 'not'
+              } a psychological condition`}
+            </span>
+            <div className={`${styles.medicalIcon} ${themeClass}`}></div>
+          </div>
         </>
       )}
     </div>

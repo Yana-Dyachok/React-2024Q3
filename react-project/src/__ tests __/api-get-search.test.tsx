@@ -1,4 +1,4 @@
-import fetchData from '@/app/api/api-get';
+import fetchData from '@/api/api-get';
 
 describe('fetchData', () => {
   const originalFetch = window.fetch;

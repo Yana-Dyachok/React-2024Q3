@@ -1,12 +1,12 @@
 import React from 'react';
 import { Conditions } from '../../types/api-interface';
 import { useRouter } from 'next/navigation';
-import { RootState } from '@/app/lib/store';
+import { RootState } from '@/lib/store';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleComplete,
   makeSelectIsCompleted,
-} from '@/app/lib/slices/checked-item-slice';
+} from '@/lib/slices/checked-item-slice';
 import { useTheme } from '../../theme-context/theme-context';
 import styles from './search-item.module.css';
 

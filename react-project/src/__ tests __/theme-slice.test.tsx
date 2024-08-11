@@ -1,9 +1,9 @@
-import { RootState } from '@/app/lib/store';
+import { RootState } from '@/lib/store';
 import themeReducer, {
   setLightTheme,
   setDarkTheme,
   selectCurrentTheme,
-} from '@/app/lib/slices/theme-slice';
+} from '@/lib/slices/theme-slice';
 import { configureStore } from '@reduxjs/toolkit';
 
 describe('themeSlice', () => {

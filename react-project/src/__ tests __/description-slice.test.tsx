@@ -1,7 +1,7 @@
 import descriptionReducer, {
   setSelectedItem,
   clearSelectedItem,
-} from '@/app/lib/slices/description-slice';
+} from '@/lib/slices/description-slice';
 
 describe('description slice', () => {
   const initialState = {

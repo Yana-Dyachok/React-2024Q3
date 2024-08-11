@@ -1,7 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import searchInputReducer, {
-  addSearchInput,
-} from '@/app/lib/slices/search-slice';
+import searchInputReducer, { addSearchInput } from '@/lib/slices/search-slice';
 import { getFromLocalStorage } from '../utils/local-storage/ls-handler';
 jest.mock('../utils/local-storage/ls-handler', () => ({
   getFromLocalStorage: jest.fn(),

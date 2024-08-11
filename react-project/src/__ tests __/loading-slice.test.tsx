@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import loadingReducer, {
   setGlobalLoading,
   setDescriptionLoading,
-} from '@/app/lib/slices/loading-slice';
+} from '@/lib/slices/loading-slice';
 
 describe('loadingSlice', () => {
   const store = configureStore({

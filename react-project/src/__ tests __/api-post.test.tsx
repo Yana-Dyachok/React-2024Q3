@@ -1,4 +1,4 @@
-import fetchDataConditions from '@/app/api/api-post';
+import fetchDataConditions from '@/api/api-post';
 
 describe('fetchDataConditions', () => {
   const originalFetch = window.fetch;

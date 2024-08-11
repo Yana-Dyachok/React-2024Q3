@@ -86,12 +86,10 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,17 +112,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ApiResponse } from './api-interface';
-&nbsp;
-const PATH = `https://stapi.co/api/v1/rest/medicalCondition/search`;
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ApiResponse } from '@/types/api-interface';
+import { PATH_SEARCH } from '@/utils/const/const';
 &nbsp;
 const fetchDataConditions = async (
   search: string,
   pageSize: number,
   pageNumber: number,
 ): Promise&lt;ApiResponse | null&gt; =&gt; {
-  const url = `${PATH}?pageNumber=${pageNumber - 1}&amp;pageSize=${pageSize}`;
+  const url = `${PATH_SEARCH}?pageNumber=${pageNumber - 1}&amp;pageSize=${pageSize}`;
   try {
     const result: Response = await fetch(url, {
       method: 'POST',
@@ -157,7 +154,7 @@ export default fetchDataConditions;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-17T22:13:26.823Z
+      at 2024-08-11T09:37:34.603Z
     </div>
     <script src="../prettify.js"></script>
     <script>

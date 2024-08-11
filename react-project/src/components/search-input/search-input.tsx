@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/app/lib/store';
-import { addSearchInput } from '@/app/lib/slices/search-slice';
+import { AppDispatch } from '@/lib/store';
+import { addSearchInput } from '@/lib/slices/search-slice';
 import useSearchQuery from '../../utils/hooks/ls-hook';
 import { useTheme } from '../../theme-context/theme-context';
 import styles from './search-input.module.css';

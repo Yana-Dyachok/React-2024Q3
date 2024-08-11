@@ -1,11 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import searchSlice from '@/app/lib/slices/search-slice';
+import searchSlice from '@/lib/slices/search-slice';
 import SearchInput from '../components/search-input/search-input';
 import { useTheme } from '../theme-context/theme-context';
 import useSearchQuery from '../utils/hooks/ls-hook';
-import { addSearchInput } from '@/app/lib/slices/search-slice';
+import { addSearchInput } from '@/lib/slices/search-slice';
 
 jest.mock('../utils/hooks/ls-hook', () => ({
   __esModule: true,

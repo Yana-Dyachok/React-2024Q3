@@ -1,4 +1,4 @@
-import fetchMedicalConditionById from '@/app/api/api-get-byid';
+import fetchMedicalConditionById from '@/api/api-get-byid';
 import { Conditions } from '@/types/api-interface';
 
 describe('fetchMedicalConditionById', () => {

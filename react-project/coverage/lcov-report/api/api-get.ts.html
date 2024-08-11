@@ -25,7 +25,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">13/13</span>
+            <span class="fraction">11/11</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -43,7 +43,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">12/12</span>
+            <span class="fraction">11/11</span>
           </div>
         </div>
         <p class="quiet">
@@ -81,65 +81,50 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Conditions } from './api-interface';
-&nbsp;
-const PATH = `https://stapi.co/api/v1/rest/medicalCondition`;
-&nbsp;
-const fetchMedicalConditionById = async (
-  uid: string,
-): Promise&lt;Conditions | null&gt; =&gt; {
-  const url = `${PATH}?uid=${uid}`;
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { PATH_SEARCH } from '@/utils/const/const';
+export default async function fetchData(page: number, pageSize: number) {
   try {
-    const result: Response = await fetch(url, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+    const params = new URLSearchParams({
+      pageNumber: (page - 1).toString(),
+      pageSize: pageSize.toString(),
     });
 &nbsp;
-    if (!result.ok) return null;
+    const response = await fetch(`${PATH_SEARCH}?${params.toString()}`);
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch medical conditions: ${response.status} ${response.statusText}`,
+      );
+    }
 &nbsp;
-    const response = await result.json();
-    const medicalCondition: Conditions = response.medicalCondition;
-&nbsp;
-    return medicalCondition;
+    const jsonData = await response.json();
+    return jsonData;
   } catch (error) {
-    console.error('Error fetching data: ', error);
-    return null;
+    console.error('Error fetching medical conditions:', error);
+    throw error;
   }
-};
-&nbsp;
-export default fetchMedicalConditionById;
+}
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -154,7 +139,7 @@ export default fetchMedicalConditionById;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-17T22:13:26.823Z
+      at 2024-08-11T09:37:34.603Z
     </div>
     <script src="../prettify.js"></script>
     <script>

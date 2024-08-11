@@ -8,9 +8,9 @@ import SearchItem from '@/components/search-item/search-item';
 import checkedItemSlice, {
   CheckedItemState,
   toggleComplete,
-} from '@/app/lib/slices/checked-item-slice';
+} from '@/lib/slices/checked-item-slice';
 import { ThemeProvider } from '@/theme-context/theme-provider';
-import { RootState } from '@/app/lib/store';
+import { RootState } from '@/lib/store';
 
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),

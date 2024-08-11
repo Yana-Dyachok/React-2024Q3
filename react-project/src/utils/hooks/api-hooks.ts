@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import fetchMedicalConditionById from '@/app/api/api-get-byid';
-import fetchDataConditions from '@/app/api/api-post';
-import fetchData from '@/app/api/api-get';
-import { Conditions, ApiResponse } from '@/types/api-interface';
+import fetchMedicalConditionById from 'src/api/api-get-byid';
+import fetchDataConditions from 'src/api/api-post';
+import fetchData from 'src/api/api-get';
+import { ApiResponse, Conditions } from 'src/types/api-interface';
 
 export const useFetchMedicalConditionById = (uid: string) => {
   const [data, setData] = useState<Conditions | null>(null);

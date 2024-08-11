@@ -1,0 +1,14 @@
+{
+  "c": ["app/layout", "webpack"],
+  "r": [],
+  "m": [
+    "(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5C%D0%AF%D0%BD%D0%B0%5C%5CDesktop%5C%5Crs-prod%5C%5CReact-2024Q3%5C%5Creact-project%5C%5Csrc%5C%5Capp%5C%5Clayout.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=false!",
+    "(app-pages-browser)/./src/app/StoreProvider.tsx",
+    "(app-pages-browser)/./src/app/layout.tsx",
+    "(app-pages-browser)/./src/app/lib/slices/theme-slice.ts",
+    "(app-pages-browser)/./src/app/lib/store.ts",
+    "(app-pages-browser)/./src/index.css",
+    "(app-pages-browser)/./src/theme-context/theme-provider.module.css",
+    "(app-pages-browser)/./src/theme-context/theme-provider.tsx"
+  ]
+}

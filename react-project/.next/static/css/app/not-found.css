@@ -1,0 +1,113 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/ui/button/button.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.button_lightTheme__PsdmJ {
+  --background-color: var(--c-blue-300);
+  --border: var(--c-blue-700);
+  --color-text: var(--c-white);
+  --hover: var(--c-blue-100);
+}
+
+.button_darkTheme__yfn1g {
+  --background-color: var(--c-grey-900);
+  --border: var(--c-red);
+  --color-text: var(--c-red);
+  --hover: var(--c-green-900);
+}
+
+.button_button__iUKg0 {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-text);
+  background-color: var(--background-color);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--border));
+  cursor: pointer;
+}
+
+.button_button__iUKg0:active,
+.button_button__iUKg0:focus {
+  background-color: var(--hover);
+}
+
+.button_button__iUKg0:disabled {
+  border: none;
+  background-color: var(--c-gray);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) and (pointer: fine) {
+  .button_button__iUKg0:hover:not([disabled]) {
+    color: var(--c-white);
+    background-color: var(--hover);
+    filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--c-white));
+    transform: scale(1.05);
+  }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/not-found.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.not-found_lightTheme__od80B {
+  --color: var(--c-blue-700);
+}
+
+.not-found_darkTheme__J_hry {
+  --color: var(--c-red);
+}
+
+.not-found_errorBlock__eQFQI {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+.not-found_errorContainer__f2dzT {
+  text-align: center;
+  font-family: 'oswald';
+  font-weight: 500;
+  margin: 2rem;
+}
+
+.not-found_title__bOfUG {
+  text-align: center;
+}
+
+.not-found_spanError__48XTK {
+  display: inline-block;
+  line-height: 0.7;
+  position: relative;
+  color: var(--color);
+}
+
+.not-found_digitFirst__Af06j,
+.not-found_digitSecond__RIsPM,
+.not-found_digitThird__9_3i4 {
+  display: inline-block;
+  position: relative;
+  font-size: 18rem;
+  filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--c-white));
+}
+
+@media (max-width: 800px) {
+  .not-found_digitFirst__Af06j,
+  .not-found_digitSecond__RIsPM,
+  .not-found_digitThird__9_3i4 {
+    font-size: 12rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .not-found_digitFirst__Af06j,
+  .not-found_digitSecond__RIsPM,
+  .not-found_digitThird__9_3i4 {
+    font-size: 7rem;
+  }
+}

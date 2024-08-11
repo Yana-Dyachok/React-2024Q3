@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
   Links,
   Meta,
@@ -8,6 +8,7 @@ import {
 } from '@remix-run/react';
 import { ThemeProvider } from '../src/theme-context/theme-provider';
 import StoreProvider from '../src/lib/StoreProvider';
+import Loading from '../src/components/ui/loading/loading';
 import './index.css';
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -36,7 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Layout>
-      <Outlet />
+      <Suspense fallback={<Loading />}>
+        <Outlet />
+      </Suspense>
     </Layout>
   );
 }

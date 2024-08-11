@@ -20,6 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
@@ -34,7 +35,8 @@
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "css-modules.d.ts"
   ],
   "exclude": ["node_modules"]
 }

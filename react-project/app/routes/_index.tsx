@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from '../../src/components/header/header';
 import ErrorBoundary from '../../src/components/error-boundary/error-boundary';
 import MainContent from '../../src/components/main-content/main-content';
-import fetchData from '../../src/api/api-get.ts';
-import { ApiResponse } from '../../src/types/api-interface.ts';
+import fetchData from '../../src/api/api-get';
+import { ApiResponse } from '../../src/types/api-interface';
 
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -35,6 +36,7 @@ const MainPage: React.FC = () => {
       <ErrorBoundary>
         <Header />
         <MainContent initialData={initialData} />
+        <Outlet />
       </ErrorBoundary>
     </>
   );

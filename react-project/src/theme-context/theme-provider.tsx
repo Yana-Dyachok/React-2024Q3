@@ -1,4 +1,3 @@
-'use client';
 import { ReactNode, useMemo, useState } from 'react';
 import { ThemeContext } from './theme-context';
 import styles from './theme-provider.module.css';

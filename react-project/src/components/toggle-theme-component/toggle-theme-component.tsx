@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { useTheme } from '../../theme-context/theme-context';
 import styles from './toggle-theme-indicator.module.css';

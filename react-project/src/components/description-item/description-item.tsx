@@ -1,4 +1,3 @@
-'use client';
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from '@remix-run/react';
 import { useSelector, useDispatch } from 'react-redux';

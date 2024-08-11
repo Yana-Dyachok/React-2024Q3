@@ -24,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <ThemeProvider>
           <StoreProvider>
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
             <ScrollRestoration />
             <Scripts />
           </StoreProvider>
@@ -37,9 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Layout>
-      <Suspense fallback={<Loading />}>
-        <Outlet />
-      </Suspense>
+      <Outlet />
     </Layout>
   );
 }

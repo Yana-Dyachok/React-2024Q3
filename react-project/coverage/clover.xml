@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723388111036" clover="3.2.0">
-  <project timestamp="1723388111037" name="All files">
+<coverage generated="1723390627029" clover="3.2.0">
+  <project timestamp="1723390627029" name="All files">
     <metrics statements="235" coveredstatements="219" conditionals="48" coveredconditionals="40" methods="52" coveredmethods="42" elements="335" coveredelements="301" complexity="0" loc="235" ncloc="235" packages="14" files="21" classes="21"/>
     <package name="app.routes">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -66,11 +66,11 @@
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="header.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\header\header.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.search-input">
@@ -149,14 +149,14 @@
       <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="toggle-theme-component.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\components\toggle-theme-component\toggle-theme-component.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.ui.button">
@@ -279,26 +279,26 @@
       <metrics statements="17" coveredstatements="17" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
       <file name="theme-context.ts" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\theme-context\theme-context.ts">
         <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="2" count="5" type="stmt"/>
-        <line num="11" count="5" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
-        <line num="16" count="15" type="stmt"/>
-        <line num="18" count="14" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="21" count="10" type="stmt"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="17" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
       </file>
       <file name="theme-provider.tsx" path="C:\Users\Яна\Desktop\rs-prod\React-2024Q3\react-project\src\theme-context\theme-provider.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="12" count="5" type="stmt"/>
-        <line num="13" count="22" type="stmt"/>
-        <line num="15" count="22" type="stmt"/>
-        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="22" type="stmt"/>
-        <line num="21" count="22" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="22" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="22" type="stmt"/>
+        <line num="14" count="22" type="stmt"/>
+        <line num="15" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="22" type="stmt"/>
+        <line num="20" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="22" type="stmt"/>
       </file>
     </package>
     <package name="src.utils.const">

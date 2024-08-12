@@ -1,0 +1,98 @@
+@import '../styles/colors.scss';
+.form {
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border: 0.1rem solid $c-orange-900;
+  border-radius: 2rem;
+}
+
+.formInner {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin: 0.8rem 0;
+  box-sizing: border-box;
+  border: 0.2rem solid $c-green-500;
+  border-radius: 1rem;
+}
+
+.input:focus {
+  border: 0.2rem solid $c-orange-500;
+}
+
+.passwordBlock {
+  display: flex;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  color: var(--c-blue-800);
+  border: 0.2rem solid var(--c-mint-100);
+  border-radius: 1rem;
+}
+
+.passwordBlock:focus {
+  border: 0.2rem solid var(--c-blue-800);
+}
+
+.borderError {
+  border: 0.2rem solid red;
+}
+
+.passwordInput {
+  width: 100%;
+  border: 0;
+  outline: 0;
+}
+
+.passwordEye {
+  margin-top: 0.5rem;
+  min-width: 3rem;
+  height: 2.5rem;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+  background-color: $c-orange-900;
+  cursor: pointer;
+}
+
+.passwordEyeClosed {
+  mask-image: url('../assets/svg-icons/eye-off-svgrepo-com.svg');
+}
+
+.passwordEyeOpen {
+  mask-image: url('../assets/svg-icons/eye-svgrepo-com.svg');
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  font-size: 1.7rem;
+  text-align: left;
+  color: red;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .passwordEye {
+    min-width: 2rem;
+    height: 1.5rem;
+  }
+
+  .errors {
+    font-size: 1.5rem;
+  }
+}

@@ -1,5 +1,12 @@
+import Button from '../../components/ui/button/button';
 function FormHookPage() {
-  return <div>Form Hook</div>;
+  return (
+    <form>
+      <Button btnType="submit" disabled>
+        Submit
+      </Button>
+    </form>
+  );
 }
 
 export default FormHookPage;

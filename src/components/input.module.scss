@@ -22,10 +22,10 @@
   box-sizing: border-box;
   border: 0.2rem solid $c-green-500;
   border-radius: 1rem;
-}
 
-.input:focus {
-  border: 0.2rem solid $c-orange-500;
+  &:focus {
+    border: 0.2rem solid $c-orange-500;
+  }
 }
 
 .passwordBlock {
@@ -36,10 +36,9 @@
   color: var(--c-blue-800);
   border: 0.2rem solid var(--c-mint-100);
   border-radius: 1rem;
-}
-
-.passwordBlock:focus {
-  border: 0.2rem solid var(--c-blue-800);
+  &:focus {
+    border: 0.2rem solid var(--c-blue-800);
+  }
 }
 
 .borderError {

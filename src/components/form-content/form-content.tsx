@@ -5,15 +5,18 @@ import InputAge from '../../components/input-age/input-age';
 import ImgInput from '../img-Input/img-input';
 import InputEmail from '../../components/input-email/input-email';
 import InputPassword from '../../components/input-password/input-password';
+import InputGender, { InputGenderRef } from '../input-gender/input-gender';
 import Button from '../../components/ui/button/button';
 import {
   createNameValidationSchema,
   createImageValidationSchema,
   createAgeValidationSchema,
+  createGenderValidationSchema,
   createEmailValidationSchema,
   createPasswordValidationSchema,
   createConfirmPasswordValidationSchema,
 } from '../../utils/const/validation-const';
+import Checkbox from '../ui/checkbox/checkbox';
 import styles from '../../components/input.module.scss';
 
 const FormContent: React.FC = () => {
@@ -22,14 +25,17 @@ const FormContent: React.FC = () => {
     inputNameRef: React.createRef<HTMLInputElement>(),
     inputImgRef: React.createRef<HTMLInputElement>(),
     inputAgeRef: React.createRef<HTMLInputElement>(),
+    inputGenderRef: React.createRef<InputGenderRef>(),
     inputEmailRef: React.createRef<HTMLInputElement>(),
     inputPasswordRef: React.createRef<HTMLInputElement>(),
     inputConfirmPasswordRef: React.createRef<HTMLInputElement>(),
+    inputAcceptRef: React.createRef<HTMLInputElement>(),
   };
 
   const nameErrorRef = useRef<string>('');
   const imgErrorRef = useRef<string>('');
   const ageErrorRef = useRef<string>('');
+  const genderErrorRef = useRef<string>('');
   const emailErrorRef = useRef<string>('');
   const passwordErrorRef = useRef<string>('');
   const passwordConfirmErrorRef = useRef<string>('');
@@ -46,9 +52,11 @@ const FormContent: React.FC = () => {
     const formFields: {
       name: FormField<string>;
       age: FormField<number | string>;
+      gender: FormField<string>;
       email: FormField<string>;
       password: FormField<string>;
       confirmPassword: FormField<string>;
+      accept: { value: boolean };
       img: FormField<File | null>;
     } = {
       name: {
@@ -60,6 +68,11 @@ const FormContent: React.FC = () => {
         value: Number(refList.inputAgeRef.current?.value) || 0,
         validationSchema: createAgeValidationSchema(),
         errorRef: ageErrorRef,
+      },
+      gender: {
+        value: refList.inputGenderRef.current?.getValue() || '',
+        validationSchema: createGenderValidationSchema(),
+        errorRef: genderErrorRef,
       },
       email: {
         value: refList.inputEmailRef.current?.value || '',
@@ -78,6 +91,9 @@ const FormContent: React.FC = () => {
         ),
         errorRef: passwordConfirmErrorRef,
       },
+      accept: {
+        value: refList.inputAcceptRef.current?.checked || false,
+      },
       img: {
         value: refList.inputImgRef.current?.files?.[0] || null,
         validationSchema: createImageValidationSchema(),
@@ -88,17 +104,19 @@ const FormContent: React.FC = () => {
 
     for (const key of Object.keys(formFields)) {
       const field = formFields[key as keyof typeof formFields];
-      try {
-        await field.validationSchema.validate(field.value);
-        field.errorRef.current = '';
-      } catch (validationError) {
-        field.errorRef.current = (
-          validationError as yup.ValidationError
-        ).message;
-        isValid = false;
+
+      if ('validationSchema' in field && 'errorRef' in field) {
+        try {
+          await field.validationSchema.validate(field.value);
+          field.errorRef.current = '';
+        } catch (validationError) {
+          field.errorRef.current = (
+            validationError as yup.ValidationError
+          ).message;
+          isValid = false;
+        }
       }
     }
-
     forceUpdate((prev) => !prev);
     return isValid;
   };
@@ -109,7 +127,7 @@ const FormContent: React.FC = () => {
     const isFormValid = await validateForm();
 
     if (isFormValid) {
-      console.log('submited');
+      console.log('Form submitted successfully');
     }
   };
 
@@ -123,6 +141,10 @@ const FormContent: React.FC = () => {
       <div className={styles.formInner}>
         <InputName error={nameErrorRef.current} ref={refList.inputNameRef} />
         <InputAge error={ageErrorRef.current} ref={refList.inputAgeRef} />
+        <InputGender
+          error={genderErrorRef.current}
+          ref={refList.inputGenderRef}
+        />
         <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
         <InputPassword
           error={passwordErrorRef.current}
@@ -133,6 +155,12 @@ const FormContent: React.FC = () => {
           error={passwordConfirmErrorRef.current}
           ref={refList.inputConfirmPasswordRef}
           text={'Confirm password:'}
+        />
+        <Checkbox
+          name="accept"
+          label="I accept"
+          type="checkbox"
+          refer={refList.inputAcceptRef}
         />
         <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
       </div>

@@ -21,3 +21,12 @@ export interface InputProps {
   error: string;
   text?: string;
 }
+
+export interface CheckboxProps {
+  name: string;
+  label: string;
+  type: 'radio' | 'checkbox';
+  refer: React.ForwardedRef<HTMLInputElement>;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+}

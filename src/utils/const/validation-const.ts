@@ -37,6 +37,9 @@ export const createAgeValidationSchema = () =>
       return numberValue >= 0 && numberValue <= 120;
     });
 
+export const createGenderValidationSchema = () =>
+  yup.string().required('*gender is required');
+
 export const createEmailValidationSchema = () =>
   yup
     .string()

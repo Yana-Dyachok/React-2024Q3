@@ -1,0 +1,27 @@
+@import '../../../styles/colors.scss';
+.checkboxBlock {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.inputCheckbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.1rem solid $c-green-500;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+
+  &:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: solid $c-green-500;
+    border-width: 0 0.2rem 0.2rem 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}

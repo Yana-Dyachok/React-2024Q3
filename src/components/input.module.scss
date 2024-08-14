@@ -1,6 +1,6 @@
 @import '../styles/colors.scss';
 .form {
-  max-width: 50rem;
+  max-width: 70rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,18 @@
 
 .formInner {
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.label {
+  font-size: 1.5rem;
+  padding: 0;
+}
+
+.inputBlock {
+  height: 12rem;
 }
 
 .input {
@@ -33,11 +45,10 @@
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   box-sizing: border-box;
-  color: var(--c-blue-800);
-  border: 0.2rem solid var(--c-mint-100);
+  border: 0.2rem solid $c-green-500;
   border-radius: 1rem;
   &:focus {
-    border: 0.2rem solid var(--c-blue-800);
+    border: 0.2rem solid $c-orange-500;
   }
 }
 
@@ -58,7 +69,7 @@
   mask-repeat: no-repeat;
   mask-size: cover;
   mask-position: center;
-  background-color: $c-orange-900;
+  background-color: $c-green-500;
   cursor: pointer;
 }
 
@@ -73,8 +84,7 @@
 .errors {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 1rem;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   text-align: left;
   color: red;
 }
@@ -86,6 +96,10 @@
 }
 
 @media (max-width: 600px) {
+  .formInner {
+    grid-template-columns: 1fr;
+  }
+
   .passwordEye {
     min-width: 2rem;
     height: 1.5rem;

@@ -1,12 +1,13 @@
-import Button from '../../components/ui/button/button';
-function FormHookPage() {
+import React from 'react';
+import FormHookContent from '../../components/form-content/form-content';
+import styles from '../pages.module.scss';
+const FormHookPage: React.FC = () => {
   return (
-    <form>
-      <Button btnType="submit" disabled>
-        Submit
-      </Button>
-    </form>
+    <div className={styles.wrapper}>
+      <h1>Form Hook</h1>
+      <FormHookContent />
+    </div>
   );
-}
+};
 
 export default FormHookPage;

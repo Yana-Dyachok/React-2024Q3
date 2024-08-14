@@ -4,8 +4,12 @@ import styles from './header.module.scss';
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <Link to="form">Form</Link>
-      <Link to="form-hook">Hook form</Link>
+      <Link to="form" className={styles.link}>
+        Form
+      </Link>
+      <Link to="form-hook" className={styles.link}>
+        Hook form
+      </Link>
     </header>
   );
 };

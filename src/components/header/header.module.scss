@@ -1,5 +1,31 @@
 @import '../../styles/colors.scss';
 .header {
-  color: $c-yellow;
+  display: flex;
+  justify-content: space-around;
   background-color: $c-green-500;
+  padding: 1rem;
+}
+
+.link {
+  color: $c-yellow;
+  padding-bottom: 0.3rem;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0.1rem;
+    background-color: $c-orange-900;
+    transition: all 0.4s ease-in;
+    transform: translateX(-50%);
+  }
+  &:hover::before {
+    width: 100%;
+    color: $c-orange-900;
+  }
+  &:hover {
+    color: $c-orange-900;
+  }
 }

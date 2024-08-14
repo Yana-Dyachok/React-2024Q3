@@ -36,6 +36,7 @@ export const createAgeValidationSchema = () =>
       const numberValue = Number(value);
       return numberValue >= 0 && numberValue <= 120;
     });
+
 export const createEmailValidationSchema = () =>
   yup
     .string()
@@ -46,22 +47,41 @@ export const createEmailValidationSchema = () =>
     )
     .max(255, '*email cannot be longer than 255 characters');
 
+export const createPasswordValidationSchema = () =>
+  yup
+    .string()
+    .required('*password is required')
+    .min(8, '*password must be at least 8 characters long')
+    .matches(/[A-Z]/, '*password must contain at least one uppercase letter')
+    .matches(/[a-z]/, '*password must contain at least one lowercase letter')
+    .matches(/[0-9]/, '*password must contain at least one number')
+    .matches(
+      /[@$!%*?&]/,
+      '*password must contain at least one special character (@, $, !, %, *, ?, &)',
+    )
+    .max(255, '*password cannot be longer than 255 characters');
+
+export const createConfirmPasswordValidationSchema = (password: string) => {
+  return yup
+    .string()
+    .required('*password confirmation is required')
+    .oneOf([password], "*passwords don't match");
+};
+
 export const createImageValidationSchema = () =>
-  yup.object({
-    image: yup
-      .mixed()
-      .required('*image is required')
-      .test('fileType', '*unsupported File Format', (value) => {
-        if (value && value instanceof File) {
-          const fileType = value.type;
-          return ['image/jpeg', 'image/png'].includes(fileType);
-        }
-        return false;
-      })
-      .test('fileSize', '*file size exceeds 5MB', (value) => {
-        if (value && value instanceof File) {
-          return value.size <= 5 * 1024 * 1024;
-        }
-        return false;
-      }),
-  });
+  yup
+    .mixed<File>()
+    .required('*image is required')
+    .test('fileType', '*unsupported File Format', (value) => {
+      if (value && value instanceof File) {
+        const fileType = value.type;
+        return ['image/jpeg', 'image/png'].includes(fileType);
+      }
+      return false;
+    })
+    .test('fileSize', '*file size exceeds 5MB', (value) => {
+      if (value && value instanceof File) {
+        return value.size <= 5 * 1024 * 1024;
+      }
+      return false;
+    });

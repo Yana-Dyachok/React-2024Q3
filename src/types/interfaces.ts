@@ -19,4 +19,5 @@ export interface FileData {
 
 export interface InputProps {
   error: string;
+  text?: string;
 }

@@ -24,13 +24,12 @@
 }
 
 .inputBlock {
-  height: 12rem;
+  min-height: 10rem;
 }
 
 .input {
   width: 100%;
   padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
   box-sizing: border-box;
   border: 0.2rem solid $c-green-500;
   border-radius: 1rem;

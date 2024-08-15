@@ -8,7 +8,7 @@ export interface FormData {
   confirmPassword: string;
   accept: boolean;
   img: File | null;
-  country?: string;
+  country: string;
 }
 
 export interface InputProps {

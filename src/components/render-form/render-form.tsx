@@ -23,6 +23,10 @@ const RenderForm: React.FC<RenderFormProps> = ({ formData, title }) => {
           Gender: <span className={styles.renderItems}>{formData.gender}</span>
         </p>
         <p>
+          Country:{' '}
+          <span className={styles.renderItems}>{formData.country}</span>
+        </p>
+        <p>
           Email: <span className={styles.renderItems}>{formData.email}</span>
         </p>
         <p>

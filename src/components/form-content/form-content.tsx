@@ -7,12 +7,13 @@ import ImgInput from '../img-Input/img-input';
 import InputEmail from '../../components/input-email/input-email';
 import InputPassword from '../../components/input-password/input-password';
 import InputGender, { InputGenderRef } from '../input-gender/input-gender';
+import InputCountry from '../input-country/input-country';
 import Button from '../../components/ui/button/button';
 import {
   createNameValidationSchema,
   createImageValidationSchema,
   createAgeValidationSchema,
-  createGenderValidationSchema,
+  createInputValidationSchema,
   createEmailValidationSchema,
   createPasswordValidationSchema,
   createConfirmPasswordValidationSchema,
@@ -35,6 +36,7 @@ const FormContent: React.FC = () => {
     inputPasswordRef: React.createRef<HTMLInputElement>(),
     inputConfirmPasswordRef: React.createRef<HTMLInputElement>(),
     inputAcceptRef: React.createRef<HTMLInputElement>(),
+    inputCountryRef: React.createRef<HTMLInputElement>(),
   };
 
   const nameErrorRef = useRef<string>('');
@@ -44,6 +46,7 @@ const FormContent: React.FC = () => {
   const emailErrorRef = useRef<string>('');
   const passwordErrorRef = useRef<string>('');
   const passwordConfirmErrorRef = useRef<string>('');
+  const countryErrorRef = useRef<string>('');
 
   const [, forceUpdate] = useState(false);
 
@@ -63,6 +66,7 @@ const FormContent: React.FC = () => {
       confirmPassword: FormField<string>;
       accept: { value: boolean };
       img: FormField<File | null>;
+      country: FormField<string>;
     } = {
       name: {
         value: refList.inputNameRef.current?.value || '',
@@ -76,7 +80,7 @@ const FormContent: React.FC = () => {
       },
       gender: {
         value: refList.inputGenderRef.current?.getValue() || '',
-        validationSchema: createGenderValidationSchema(),
+        validationSchema: createInputValidationSchema(),
         errorRef: genderErrorRef,
       },
       email: {
@@ -103,6 +107,11 @@ const FormContent: React.FC = () => {
         value: refList.inputImgRef.current?.files?.[0] || null,
         validationSchema: createImageValidationSchema(),
         errorRef: imgErrorRef,
+      },
+      country: {
+        value: refList.inputCountryRef.current?.value || '',
+        validationSchema: createInputValidationSchema(),
+        errorRef: countryErrorRef,
       },
     };
     let isValid = true;
@@ -134,6 +143,7 @@ const FormContent: React.FC = () => {
           confirmPassword: formFields.confirmPassword.value,
           accept: formFields.accept.value,
           img: formFields.img.value,
+          country: formFields.country.value,
         }),
       );
     }
@@ -160,7 +170,6 @@ const FormContent: React.FC = () => {
       <div className={styles.formInner}>
         <InputName error={nameErrorRef.current} ref={refList.inputNameRef} />
         <InputAge error={ageErrorRef.current} ref={refList.inputAgeRef} />
-        <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
         <InputPassword
           error={passwordErrorRef.current}
           ref={refList.inputPasswordRef}
@@ -171,7 +180,11 @@ const FormContent: React.FC = () => {
           ref={refList.inputConfirmPasswordRef}
           text={'Confirm password:'}
         />
-        <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
+        <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
+        <InputCountry
+          error={countryErrorRef.current}
+          ref={refList.inputCountryRef}
+        />
         <InputGender
           error={genderErrorRef.current}
           ref={refList.inputGenderRef}
@@ -182,6 +195,7 @@ const FormContent: React.FC = () => {
           type="checkbox"
           refer={refList.inputAcceptRef}
         />
+        <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
       </div>
       <div className={styles.buttonContainer}>
         <Button btnType="submit">Submit</Button>

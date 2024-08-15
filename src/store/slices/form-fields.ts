@@ -10,6 +10,7 @@ const initialState: FormData = {
   confirmPassword: '',
   accept: false,
   img: null,
+  country: '',
 };
 
 const formSlice = createSlice({

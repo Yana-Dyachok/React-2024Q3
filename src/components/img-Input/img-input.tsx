@@ -3,7 +3,7 @@ import styles from '../input.module.scss';
 import { InputProps } from '../../types/interfaces';
 
 const ImgInput = forwardRef<HTMLInputElement, InputProps>(({ error }, ref) => (
-  <div className={`${styles.inputBlock} ${error ? styles.error : ''}`}>
+  <div className={styles.inputBlock}>
     <label htmlFor="input-img" className={styles.label}>
       Image:
     </label>

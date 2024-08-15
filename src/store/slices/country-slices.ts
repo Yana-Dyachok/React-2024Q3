@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface CountryState {
+import { COUNTRY_LIST } from '../../utils/const/const';
+export interface CountryState {
   countries: string[];
 }
 
 const initialState: CountryState = {
-  countries: [],
+  countries: COUNTRY_LIST,
 };
 
 const countrySlice = createSlice({

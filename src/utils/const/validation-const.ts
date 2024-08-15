@@ -24,21 +24,17 @@ export const createAgeValidationSchema = () =>
     .string()
     .required('*age is required')
     .matches(/^\d+$/, '*age must be a positive number')
-    .test(
-      'is-positive',
-      '*age must be a number without decimal points or commas',
-      (value) => {
-        const numberValue = Number(value);
-        return numberValue > 0;
-      },
-    )
+    .test('is-positive', '*age must be a number and required', (value) => {
+      const numberValue = Number(value);
+      return numberValue > 0;
+    })
     .test('within-range', '*age must be between 0 and 120', (value) => {
       const numberValue = Number(value);
       return numberValue >= 0 && numberValue <= 120;
     });
 
-export const createGenderValidationSchema = () =>
-  yup.string().required('*gender is required');
+export const createInputValidationSchema = () =>
+  yup.string().required('*choice is required');
 
 export const createEmailValidationSchema = () =>
   yup

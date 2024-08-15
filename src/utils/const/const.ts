@@ -13,5 +13,3 @@ export const COUNTRY_LIST = [
   'Italy',
   'Russia',
 ];
-
-export const GENDER = ['male', 'female'];

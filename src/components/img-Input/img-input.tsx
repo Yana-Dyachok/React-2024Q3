@@ -4,7 +4,9 @@ import { InputProps } from '../../types/interfaces';
 
 const ImgInput = forwardRef<HTMLInputElement, InputProps>(({ error }, ref) => (
   <div className={`${styles.inputBlock} ${error ? styles.error : ''}`}>
-    <label htmlFor="input-img">Image:</label>
+    <label htmlFor="input-img" className={styles.label}>
+      Image:
+    </label>
     <input
       ref={ref}
       id="input-img"

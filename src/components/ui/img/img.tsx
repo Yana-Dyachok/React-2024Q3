@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from './img.module.scss';
 const ImagePreview: React.FC<{ file: File | null }> = ({ file }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
@@ -12,9 +12,15 @@ const ImagePreview: React.FC<{ file: File | null }> = ({ file }) => {
   }, [file]);
 
   return (
-    <div>
+    <div className={styles.imgBlock}>
       {imageUrl && (
-        <img src={imageUrl} alt="Uploaded" width={100} height={100} />
+        <img
+          src={imageUrl}
+          alt="Uploaded"
+          width={300}
+          height={400}
+          className={styles.img}
+        />
       )}
     </div>
   );

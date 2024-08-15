@@ -5,9 +5,10 @@
   gap: 1rem;
 }
 
-.inputCheckbox {
+@mixin inputBox($r) {
   width: 1.5rem;
   height: 1.5rem;
+  border-radius: $r;
   border: 0.1rem solid $c-green-500;
   appearance: none;
   position: relative;
@@ -23,5 +24,19 @@
     border: solid $c-green-500;
     border-width: 0 0.2rem 0.2rem 0;
     transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+.inputCheckbox {
+  @include inputBox(0);
+}
+
+.inputRadio {
+  @include inputBox(50%);
+}
+
+@media (max-width: 600px) {
+  .checkboxBlock {
+    font-size: 1.7rem;
   }
 }

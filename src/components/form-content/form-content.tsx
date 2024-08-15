@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputName from '../../components/input-name/input-name';
 import InputAge from '../../components/input-age/input-age';
 import ImgInput from '../img-Input/img-input';
@@ -17,9 +18,13 @@ import {
   createConfirmPasswordValidationSchema,
 } from '../../utils/const/validation-const';
 import Checkbox from '../ui/checkbox/checkbox';
+import { useDispatch } from 'react-redux';
+import { setFormData } from '../../store/slices/form-fields';
 import styles from '../../components/input.module.scss';
 
 const FormContent: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const refList = {
     formRef: React.createRef<HTMLFormElement>(),
     inputNameRef: React.createRef<HTMLInputElement>(),
@@ -118,6 +123,20 @@ const FormContent: React.FC = () => {
       }
     }
     forceUpdate((prev) => !prev);
+    if (isValid) {
+      dispatch(
+        setFormData({
+          name: formFields.name.value,
+          age: formFields.age.value,
+          gender: formFields.gender.value,
+          email: formFields.email.value,
+          password: formFields.password.value,
+          confirmPassword: formFields.confirmPassword.value,
+          accept: formFields.accept.value,
+          img: formFields.img.value,
+        }),
+      );
+    }
     return isValid;
   };
 
@@ -127,7 +146,7 @@ const FormContent: React.FC = () => {
     const isFormValid = await validateForm();
 
     if (isFormValid) {
-      console.log('Form submitted successfully');
+      navigate('/');
     }
   };
 
@@ -141,10 +160,6 @@ const FormContent: React.FC = () => {
       <div className={styles.formInner}>
         <InputName error={nameErrorRef.current} ref={refList.inputNameRef} />
         <InputAge error={ageErrorRef.current} ref={refList.inputAgeRef} />
-        <InputGender
-          error={genderErrorRef.current}
-          ref={refList.inputGenderRef}
-        />
         <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
         <InputPassword
           error={passwordErrorRef.current}
@@ -156,13 +171,17 @@ const FormContent: React.FC = () => {
           ref={refList.inputConfirmPasswordRef}
           text={'Confirm password:'}
         />
+        <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
+        <InputGender
+          error={genderErrorRef.current}
+          ref={refList.inputGenderRef}
+        />
         <Checkbox
           name="accept"
-          label="I accept"
+          label="accept Terms and Conditions agreement"
           type="checkbox"
           refer={refList.inputAcceptRef}
         />
-        <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
       </div>
       <div className={styles.buttonContainer}>
         <Button btnType="submit">Submit</Button>

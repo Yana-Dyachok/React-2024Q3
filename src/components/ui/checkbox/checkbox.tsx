@@ -7,7 +7,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={styles.checkboxBlock}>
         <input
-          className={styles.inputCheckbox}
+          className={`${type === 'radio' ? styles.inputRadio : styles.inputCheckbox}`}
           type={type}
           id={label}
           name={name}

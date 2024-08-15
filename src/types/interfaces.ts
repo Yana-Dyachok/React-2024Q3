@@ -1,20 +1,14 @@
 import { Gender } from './enums';
 export interface FormData {
   name: string;
-  age: number;
+  age: number | string;
+  gender: Gender | string;
   email: string;
   password: string;
   confirmPassword: string;
-  gender: Gender;
-  acceptTerms: boolean;
-  picture: FileData;
-  country: string;
-}
-
-export interface FileData {
-  base64: string;
-  size: number;
-  extension: 'png' | 'jpeg';
+  accept: boolean;
+  img: File | null;
+  country?: string;
 }
 
 export interface InputProps {

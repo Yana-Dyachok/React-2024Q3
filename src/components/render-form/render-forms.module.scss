@@ -2,8 +2,22 @@
 .renderBlock {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: flex-start;
   padding: 1rem;
+  &:last-child {
+    background-color: inherit;
+    border-radius: 1rem;
+    animation: highlight 10s forwards;
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: $c-white;
+  }
+  100% {
+    background-color: inherit;
+  }
 }
 
 .renderFormsBlock {
@@ -21,4 +35,10 @@
   color: $c-orange-900;
   margin-left: 1rem;
   font-family: 'oswald';
+}
+
+@media (max-width: 500px) {
+  .renderFormsBlock {
+    max-width: 30rem;
+  }
 }

@@ -20,7 +20,7 @@ import {
 } from '../../utils/const/validation-const';
 import Checkbox from '../ui/checkbox/checkbox';
 import { useDispatch } from 'react-redux';
-import { setFormData } from '../../store/slices/form-fields';
+import { addFormData } from '../../store/slices/form-fields';
 import styles from '../../components/input.module.scss';
 
 const FormContent: React.FC = () => {
@@ -134,7 +134,7 @@ const FormContent: React.FC = () => {
     forceUpdate((prev) => !prev);
     if (isValid) {
       dispatch(
-        setFormData({
+        addFormData({
           name: formFields.name.value,
           age: formFields.age.value,
           gender: formFields.gender.value,

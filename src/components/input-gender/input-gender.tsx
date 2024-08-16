@@ -46,7 +46,13 @@ const InputGender = forwardRef<InputGenderRef, InputProps>(({ error }, ref) => {
           checked={selectedGender === Gender.Male}
         />
       </div>
-      <div className={styles.errors}>{error}</div>
+      {error && (
+        <div className={styles.errors}>
+          {error.map((er) => (
+            <p key={er}>{er}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 });

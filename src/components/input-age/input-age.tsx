@@ -17,7 +17,13 @@ const InputAge = forwardRef<HTMLInputElement, InputProps>(({ error }, ref) => {
           type="number"
         />
       </div>
-      <div className={styles.errors}>{error}</div>
+      {error && (
+        <div className={styles.errors}>
+          {error.map((er) => (
+            <p key={er}>{er}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 });

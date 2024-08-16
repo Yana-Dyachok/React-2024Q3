@@ -20,7 +20,13 @@ const InputEmail = forwardRef<HTMLInputElement, InputProps>(
             tabIndex={1}
           />
         </div>
-        <div className={styles.errors}>{error}</div>
+        {error && (
+          <div className={styles.errors}>
+            {error.map((er) => (
+              <p key={er}>{er}</p>
+            ))}
+          </div>
+        )}
       </div>
     );
   },

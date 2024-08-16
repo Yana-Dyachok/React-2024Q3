@@ -12,7 +12,7 @@ export interface FormData {
 }
 
 export interface InputProps {
-  error: string;
+  error: string[];
   text?: string;
 }
 

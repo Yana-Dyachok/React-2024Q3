@@ -39,21 +39,21 @@ const FormContent: React.FC = () => {
     inputCountryRef: React.createRef<HTMLInputElement>(),
   };
 
-  const nameErrorRef = useRef<string>('');
-  const imgErrorRef = useRef<string>('');
-  const ageErrorRef = useRef<string>('');
-  const genderErrorRef = useRef<string>('');
-  const emailErrorRef = useRef<string>('');
-  const passwordErrorRef = useRef<string>('');
-  const passwordConfirmErrorRef = useRef<string>('');
-  const countryErrorRef = useRef<string>('');
+  const nameErrorRef = useRef<string[]>([]);
+  const imgErrorRef = useRef<string[]>([]);
+  const ageErrorRef = useRef<string[]>([]);
+  const genderErrorRef = useRef<string[]>([]);
+  const emailErrorRef = useRef<string[]>([]);
+  const passwordErrorRef = useRef<string[]>([]);
+  const passwordConfirmErrorRef = useRef<string[]>([]);
+  const countryErrorRef = useRef<string[]>([]);
 
   const [, forceUpdate] = useState(false);
 
   type FormField<T> = {
     value: T;
     validationSchema: yup.Schema<T>;
-    errorRef: React.MutableRefObject<string>;
+    errorRef: React.MutableRefObject<string[]>;
   };
 
   const validateForm = async (): Promise<boolean> => {
@@ -114,6 +114,7 @@ const FormContent: React.FC = () => {
         errorRef: countryErrorRef,
       },
     };
+
     let isValid = true;
 
     for (const key of Object.keys(formFields)) {
@@ -121,16 +122,19 @@ const FormContent: React.FC = () => {
 
       if ('validationSchema' in field && 'errorRef' in field) {
         try {
-          await field.validationSchema.validate(field.value);
-          field.errorRef.current = '';
+          await field.validationSchema.validate(field.value, {
+            abortEarly: false,
+          });
+          field.errorRef.current = [];
         } catch (validationError) {
-          field.errorRef.current = (
-            validationError as yup.ValidationError
-          ).message;
+          if (validationError instanceof yup.ValidationError) {
+            field.errorRef.current = validationError.errors;
+          }
           isValid = false;
         }
       }
     }
+
     forceUpdate((prev) => !prev);
     if (isValid) {
       dispatch(

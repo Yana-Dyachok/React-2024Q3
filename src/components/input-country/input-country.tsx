@@ -29,7 +29,13 @@ const InputCountry = forwardRef<HTMLInputElement, InputProps>(
             ))}
           </datalist>
         </div>
-        <div className={styles.errors}>{error}</div>
+        {error && (
+          <div className={styles.errors}>
+            {error.map((er) => (
+              <p key={er}>{er}</p>
+            ))}
+          </div>
+        )}
       </div>
     );
   },

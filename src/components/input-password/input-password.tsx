@@ -34,7 +34,13 @@ const InputPassword = forwardRef<HTMLInputElement, InputProps>(
             />
           </div>
         </div>
-        <div className={styles.errors}>{error}</div>
+        {error && (
+          <div className={styles.errors}>
+            {error.map((er) => (
+              <p key={er}>{er}</p>
+            ))}
+          </div>
+        )}
       </div>
     );
   },

@@ -24,3 +24,8 @@ export interface CheckboxProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
 }
+
+export interface InputFormProps extends InputProps {
+  name: string;
+  type: 'text' | 'number' | 'email';
+}

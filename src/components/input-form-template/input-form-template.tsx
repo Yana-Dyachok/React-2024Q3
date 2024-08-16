@@ -1,22 +1,21 @@
 import { forwardRef } from 'react';
+import { InputFormProps } from '../../types/interfaces';
 import styles from '../input.module.scss';
-import { InputProps } from '../../types/interfaces';
-
-const InputEmail = forwardRef<HTMLInputElement, InputProps>(
-  ({ error }, ref) => {
+const InputFormTemlate = forwardRef<HTMLInputElement, InputFormProps>(
+  ({ error, text, name, type }, ref) => {
     return (
       <div className={styles.inputBlock}>
         <div className={styles.inputInner}>
-          <label className={styles.label} htmlFor="input-email">
-            Email:
+          <label className={styles.label} htmlFor={`input-${name}`}>
+            {name[0].toLocaleUpperCase() + name.slice(1)}:
           </label>
           <input
             ref={ref}
-            id="input-email"
-            name="input-email"
+            id={`input-${name}`}
+            name={`input-${name}`}
             className={`${styles.input} ${error.length !== 0 ? styles.borderError : ''}`}
-            type="text"
-            placeholder="user@example.com"
+            type={type}
+            placeholder={text}
             tabIndex={1}
           />
         </div>
@@ -32,4 +31,4 @@ const InputEmail = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-export default InputEmail;
+export default InputFormTemlate;

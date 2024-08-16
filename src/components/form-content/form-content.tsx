@@ -1,10 +1,8 @@
 import * as yup from 'yup';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputName from '../../components/input-name/input-name';
-import InputAge from '../../components/input-age/input-age';
+import InputFormTemlate from '../input-form-template/input-form-template';
 import ImgInput from '../img-Input/img-input';
-import InputEmail from '../../components/input-email/input-email';
 import InputPassword from '../../components/input-password/input-password';
 import InputGender, { InputGenderRef } from '../input-gender/input-gender';
 import InputCountry from '../input-country/input-country';
@@ -172,8 +170,19 @@ const FormContent: React.FC = () => {
       className={styles.form}
     >
       <div className={styles.formInner}>
-        <InputName error={nameErrorRef.current} ref={refList.inputNameRef} />
-        <InputAge error={ageErrorRef.current} ref={refList.inputAgeRef} />
+        <InputFormTemlate
+          error={nameErrorRef.current}
+          name="name"
+          text="Jane"
+          type="text"
+          ref={refList.inputNameRef}
+        />
+        <InputFormTemlate
+          error={ageErrorRef.current}
+          name="age"
+          type="number"
+          ref={refList.inputAgeRef}
+        />
         <InputPassword
           error={passwordErrorRef.current}
           ref={refList.inputPasswordRef}
@@ -184,7 +193,13 @@ const FormContent: React.FC = () => {
           ref={refList.inputConfirmPasswordRef}
           text={'Confirm password:'}
         />
-        <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
+        <InputFormTemlate
+          error={emailErrorRef.current}
+          name="email"
+          text="user@example.com"
+          type="email"
+          ref={refList.inputEmailRef}
+        />
         <InputCountry
           error={countryErrorRef.current}
           ref={refList.inputCountryRef}

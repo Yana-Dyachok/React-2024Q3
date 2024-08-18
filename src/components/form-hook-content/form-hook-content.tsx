@@ -65,6 +65,7 @@ const FormHookContent: React.FC = () => {
           console.log(err, 'err');
         });
     }
+    console.log(fileInput);
   }, [fileInput]);
 
   React.useEffect(() => {
@@ -101,13 +102,6 @@ const FormHookContent: React.FC = () => {
           name="age"
           register={register}
         />
-        <InputFormHookTemplate
-          error={formatErrors(errors.email)}
-          name="email"
-          text="user@example.com"
-          type="email"
-          register={register}
-        />
         <InputPassword
           error={formatErrors(errors.password)}
           register={register}
@@ -117,6 +111,13 @@ const FormHookContent: React.FC = () => {
           error={formatErrors(errors.confirmPassword)}
           register={register}
           name="confirmPassword"
+        />
+        <InputFormHookTemplate
+          error={formatErrors(errors.email)}
+          name="email"
+          text="user@example.com"
+          type="email"
+          register={register}
         />
         <InputCountry
           error={formatErrors(errors.country)}

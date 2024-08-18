@@ -85,5 +85,28 @@ export const createImageValidationSchema = () =>
       return false;
     });
 
-export const createImageConvertValidationSchema = () =>
-  yup.string().required('*img is required');
+export const createImageConvertValidationSchema = () => {
+  return yup
+    .mixed()
+    .required('*file is required')
+    .test('file-size', '*file size exceeds the limit (5MB)', (value) => {
+      if (!value || !(value instanceof FileList) || value.length === 0)
+        return false;
+
+      const file = value[0];
+      const maxSize = 5 * 1024 * 1024;
+      return file.size <= maxSize;
+    })
+    .test(
+      'file-type',
+      '*invalid file type (only PNG or JPEG allowed)',
+      (value) => {
+        if (!value || !(value instanceof FileList) || value.length === 0)
+          return false;
+
+        const file = value[0];
+        const validTypes = ['image/png', 'image/jpeg'];
+        return validTypes.includes(file.type);
+      },
+    );
+};

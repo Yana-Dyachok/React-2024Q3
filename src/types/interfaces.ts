@@ -16,7 +16,7 @@ export interface FormData extends FormDataTemplate {
   img: File | null;
 }
 
-export interface FormDataStore extends Omit<FormData, 'img'> {
+export interface FormDataStore extends FormDataTemplate {
   img: string | null;
 }
 

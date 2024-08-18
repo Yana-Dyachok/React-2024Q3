@@ -47,7 +47,8 @@ const FormHookContent: React.FC = () => {
     handleSubmit,
     formState: { errors, isValid },
     watch,
-  } = useForm<FormDataStore>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } = useForm<any>({
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
@@ -65,7 +66,6 @@ const FormHookContent: React.FC = () => {
           console.log(err, 'err');
         });
     }
-    console.log(fileInput);
   }, [fileInput]);
 
   React.useEffect(() => {

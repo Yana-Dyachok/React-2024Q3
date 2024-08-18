@@ -47,9 +47,8 @@ const FormHookContent: React.FC = () => {
     handleSubmit,
     formState: { errors, isValid },
     watch,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } = useForm<any>({
-    resolver: yupResolver(schema),
+  } = useForm<FormDataStore>({
+    resolver: yupResolver(schema as never),
     mode: 'onChange',
   });
 

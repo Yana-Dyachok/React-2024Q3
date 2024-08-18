@@ -1,10 +1,10 @@
 import React from 'react';
 import ImagePreview from '../ui/img/img';
-import { FormData } from '../../types/interfaces';
+import { FormDataStore } from '../../types/interfaces';
 import styles from './render-forms.module.scss';
 
 interface RenderFormProps {
-  formData: FormData;
+  formData: FormDataStore;
   title: string;
 }
 
@@ -39,7 +39,7 @@ const RenderForm: React.FC<RenderFormProps> = ({ formData, title }) => {
             {formData.accept ? 'Yes' : 'No'}
           </span>
         </p>
-        <ImagePreview file={formData.img} />
+        <ImagePreview base64Image={formData.img} />
       </div>
     </div>
   );

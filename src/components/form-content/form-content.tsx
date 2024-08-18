@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { convertToBase64 } from '../../utils/const/convert-img';
 import InputFormTemlate from '../input-form-template/input-form-template';
 import ImgInput from '../img-Input/img-input';
 import InputPassword from '../../components/input-password/input-password';
@@ -135,6 +136,9 @@ const FormContent: React.FC = () => {
 
     forceUpdate((prev) => !prev);
     if (isValid) {
+      const base64Image = formFields.img.value
+        ? await convertToBase64(formFields.img.value)
+        : null;
       dispatch(
         addFormData({
           name: formFields.name.value,
@@ -144,7 +148,7 @@ const FormContent: React.FC = () => {
           password: formFields.password.value,
           confirmPassword: formFields.confirmPassword.value,
           accept: formFields.accept.value,
-          img: formFields.img.value,
+          img: base64Image,
           country: formFields.country.value,
         }),
       );
@@ -186,12 +190,12 @@ const FormContent: React.FC = () => {
         <InputPassword
           error={passwordErrorRef.current}
           ref={refList.inputPasswordRef}
-          text={'Password:'}
+          name="password"
         />
         <InputPassword
           error={passwordConfirmErrorRef.current}
           ref={refList.inputConfirmPasswordRef}
-          text={'Confirm password:'}
+          name="confirmPassword"
         />
         <InputFormTemlate
           error={emailErrorRef.current}

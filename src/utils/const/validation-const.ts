@@ -84,3 +84,6 @@ export const createImageValidationSchema = () =>
       }
       return false;
     });
+
+export const createImageConvertValidationSchema = () =>
+  yup.string().required('*img is required');

@@ -1,31 +1,38 @@
 import { forwardRef, useState } from 'react';
 import styles from '../input.module.scss';
-import { InputProps } from '../../types/interfaces';
+import { FormData } from '../../types/interfaces';
+import { CombinedProps } from '../../types/type';
 
-const InputPassword = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, text }, ref) => {
+const InputPassword = forwardRef<HTMLInputElement, CombinedProps>(
+  (props, ref) => {
+    const { error = [], register, name } = props;
+
+    const inputProps = register
+      ? { ...register(name as keyof FormData) }
+      : { ref };
+
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
-    const idText = text?.[0]?.toLocaleLowerCase() || 'password';
+
     return (
       <div className={styles.inputBlock}>
         <div className={styles.inputInner}>
-          <label className={styles.label} htmlFor={idText}>
-            {text}
+          <label className={styles.label} htmlFor={name}>
+            {name === 'password' ? 'Password' : 'Confirm password'}:
           </label>
           <div
             className={`${styles.passwordBlock} ${error.length !== 0 ? styles.borderError : ''}`}
           >
             <input
-              ref={ref}
-              id={idText}
+              id={name}
               type={showPassword ? 'text' : 'password'}
-              name={idText}
+              name={name}
               placeholder="password"
               className={styles.passwordInput}
               tabIndex={1}
+              {...inputProps}
             />
             <button
               type="button"

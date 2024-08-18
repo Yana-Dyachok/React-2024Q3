@@ -1,5 +1,7 @@
 import { Gender } from './enums';
-export interface FormData {
+import { UseFormRegister } from 'react-hook-form';
+
+export interface FormDataTemplate {
   name: string;
   age: number | string;
   gender: Gender | string;
@@ -7,25 +9,49 @@ export interface FormData {
   password: string;
   confirmPassword: string;
   accept: boolean;
-  img: File | null;
   country: string;
+}
+
+export interface FormData extends FormDataTemplate {
+  img: File | null;
+}
+
+export interface FormDataStore extends Omit<FormData, 'img'> {
+  img: string | null;
 }
 
 export interface InputProps {
   error: string[];
   text?: string;
+  name?: string;
 }
 
-export interface CheckboxProps {
-  name: string;
+interface CheckboxPropsTemplate {
   label: string;
   type: 'radio' | 'checkbox';
-  refer: React.ForwardedRef<HTMLInputElement>;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
+}
+
+export interface CheckboxProps extends CheckboxPropsTemplate {
+  refer?: React.ForwardedRef<HTMLInputElement>;
+  name: string;
+}
+
+export interface CheckboxPropsHooks extends CheckboxPropsTemplate {
+  register: UseFormRegister<FormDataStore>;
+  name: keyof FormDataStore;
 }
 
 export interface InputFormProps extends InputProps {
   name: string;
   type: 'text' | 'number' | 'email';
+}
+
+export interface InputFormHookProps {
+  error: string[];
+  name: keyof FormDataStore;
+  register: UseFormRegister<FormDataStore>;
+  text?: string;
+  type?: string;
 }

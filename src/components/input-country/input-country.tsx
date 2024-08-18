@@ -1,14 +1,18 @@
 import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
-import { InputProps } from '../../types/interfaces';
 import { CountryState } from '../../store/slices/country-slices';
+import { CombinedProps } from '../../types/type';
 import styles from '../../components/input.module.scss';
 
-const InputCountry = forwardRef<HTMLInputElement, InputProps>(
-  ({ error }, ref) => {
+const InputCountry = forwardRef<HTMLInputElement, CombinedProps>(
+  (props, ref) => {
     const countries = useSelector(
       (state: { country: CountryState }) => state.country.countries,
     );
+
+    const { error = [], register, name = 'country' } = props;
+
+    const inputProps = register ? { ...register(name) } : { ref };
 
     return (
       <div className={styles.inputBlock}>
@@ -20,7 +24,7 @@ const InputCountry = forwardRef<HTMLInputElement, InputProps>(
             list="country-list"
             id="country"
             name="country"
-            ref={ref}
+            {...inputProps}
             className={`${styles.input} ${error.length !== 0 ? styles.borderError : ''}`}
           />
           <datalist id="country-list">

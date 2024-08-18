@@ -10,18 +10,12 @@ const ImgInput = forwardRef<HTMLInputElement, InputProps>(({ error }, ref) => (
     <input
       ref={ref}
       id="input-img"
-      name="image"
+      name="img"
       type="file"
       accept="image/png, image/jpeg"
       className={`${styles.input} ${error.length !== 0 ? styles.borderError : ''}`}
     />
-    {error && (
-      <div className={styles.errors}>
-        {error.map((er) => (
-          <p key={er}>{er}</p>
-        ))}
-      </div>
-    )}
+    {error && <div className={styles.errors}>{error}</div>}
   </div>
 ));
 

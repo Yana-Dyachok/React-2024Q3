@@ -1,5 +1,5 @@
 import React from 'react';
-import FormHookContent from '../../components/form-content/form-content';
+import FormHookContent from '../../components/form-hook-content/form-hook-content';
 import styles from '../pages.module.scss';
 const FormHookPage: React.FC = () => {
   return (

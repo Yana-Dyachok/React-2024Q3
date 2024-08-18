@@ -1,128 +1,140 @@
-import React, { useRef, useState } from 'react';
-import InputName from '../../components/input-name/input-name';
-import InputAge from '../../components/input-age/input-age';
-import ImgInput from '../../components/img-Input/img-input';
-import InputEmail from '../../components/input-email/input-email';
-import InputPassword from '../../components/input-password/input-password';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import styles from '../../components/input.module.scss';
+import InputFormHookTemlate from '../input-form-hook-template/input-form-hook-template';
+import ImgInputHook from '../img-Input/img-hook-input';
+import InputHookGender from '../input-gender/input-hook-gender';
+import InputPassword from '../input-password/input-password';
+import InputCountry from '../input-country/input-country';
+import Checkbox from '../ui/checkbox/checkbox';
 import Button from '../../components/ui/button/button';
+import { addFormData } from '../../store/slices/form-fields';
+import { FormDataStore } from '../../types/interfaces';
 import {
   createNameValidationSchema,
-  createImageValidationSchema,
+  createImageConvertValidationSchema,
   createAgeValidationSchema,
   createEmailValidationSchema,
   createPasswordValidationSchema,
+  createInputValidationSchema,
+  createConfirmPasswordValidationSchema,
 } from '../../utils/const/validation-const';
-import * as yup from 'yup';
-import styles from '../../components/input.module.scss';
+import { convertToBase64 } from '../../utils/const/convert-img';
 
 const FormHookContent: React.FC = () => {
-  const refList = {
-    formRef: React.createRef<HTMLFormElement>(),
-    inputNameRef: React.createRef<HTMLInputElement>(),
-    inputImgRef: React.createRef<HTMLInputElement>(),
-    inputAgeRef: React.createRef<HTMLInputElement>(),
-    inputEmailRef: React.createRef<HTMLInputElement>(),
-    inputPasswordRef: React.createRef<HTMLInputElement>(),
+  const [password, setPassword] = useState<string>('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const schema = yup.object().shape({
+    name: createNameValidationSchema(),
+    age: createAgeValidationSchema(),
+    gender: createInputValidationSchema(),
+    email: createEmailValidationSchema(),
+    password: createPasswordValidationSchema(),
+    confirmPassword: createConfirmPasswordValidationSchema(password),
+    img: createImageConvertValidationSchema(),
+    country: createInputValidationSchema(),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    watch,
+  } = useForm<FormDataStore>({
+    resolver: yupResolver(schema),
+    mode: 'onChange',
+  });
+
+  const passwordValue = watch('password');
+  React.useEffect(() => {
+    setPassword(passwordValue);
+  }, [passwordValue]);
+
+  const handleFormSubmit: SubmitHandler<FormDataStore> = async (data) => {
+    if (data.img?.[0]) {
+      const formattedData: FormDataStore = {
+        ...data,
+        img: await convertToBase64(data.img?.[0]),
+      };
+
+      dispatch(addFormData(formattedData));
+    }
+    navigate('/');
   };
 
-  const nameErrorRef = useRef<string>('');
-  const imgErrorRef = useRef<string>('');
-  const ageErrorRef = useRef<string>('');
-  const emailErrorRef = useRef<string>('');
-  const passwordErrorRef = useRef<string>('');
-
-  const [, forceUpdate] = useState(false);
-
-  const validateForm = async (): Promise<boolean> => {
-    const nameValue = refList.inputNameRef.current?.value || '';
-    const nameValidationSchema = createNameValidationSchema();
-    const ageValue = refList.inputAgeRef.current?.value || '';
-    const ageValidationSchema = createAgeValidationSchema();
-    const emailValue = refList.inputEmailRef.current?.value || '';
-    const emailValidationSchema = createEmailValidationSchema();
-    const passwordValue = refList.inputPasswordRef.current?.value || '';
-    const passwordValidationSchema = createPasswordValidationSchema();
-    const imgValue = refList.inputImgRef.current?.files?.[0] || null;
-    const imgValidationSchema = createImageValidationSchema();
-    let isValid = true;
-    try {
-      await nameValidationSchema.validate(nameValue);
-      nameErrorRef.current = '';
-    } catch (validationError) {
-      nameErrorRef.current = (validationError as yup.ValidationError).message;
-      isValid = false;
-    }
-
-    try {
-      await ageValidationSchema.validate(Number(ageValue));
-      ageErrorRef.current = '';
-    } catch (validationError) {
-      ageErrorRef.current = (validationError as yup.ValidationError).message;
-      isValid = false;
-    }
-
-    try {
-      await emailValidationSchema.validate(emailValue);
-      emailErrorRef.current = '';
-    } catch (validationError) {
-      emailErrorRef.current = (validationError as yup.ValidationError).message;
-      isValid = false;
-    }
-
-    try {
-      await passwordValidationSchema.validate(passwordValue);
-      passwordErrorRef.current = '';
-    } catch (validationError) {
-      passwordErrorRef.current = (
-        validationError as yup.ValidationError
-      ).message;
-      isValid = false;
-    }
-
-    try {
-      await imgValidationSchema.validate({ image: imgValue });
-      imgErrorRef.current = '';
-    } catch (validationError) {
-      if (validationError instanceof yup.ValidationError) {
-        imgErrorRef.current = validationError.errors.join(', ');
-      }
-      isValid = false;
-    }
-
-    forceUpdate((prev) => !prev);
-
-    return isValid;
-  };
-
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const isFormValid = await validateForm();
-
-    if (isFormValid) {
-      console.log('Form submitted');
-    }
+  const formatErrors = (error?: { message?: string }): string[] => {
+    return error?.message ? [error.message] : [];
   };
 
   return (
     <form
-      ref={refList.formRef}
-      onSubmit={handleFormSubmit}
+      onSubmit={handleSubmit(handleFormSubmit)}
       noValidate
       className={styles.form}
     >
       <div className={styles.formInner}>
-        <InputName error={nameErrorRef.current} ref={refList.inputNameRef} />
-        <InputAge error={ageErrorRef.current} ref={refList.inputAgeRef} />
-        <InputEmail error={emailErrorRef.current} ref={refList.inputEmailRef} />
-        <InputPassword
-          error={passwordErrorRef.current}
-          ref={refList.inputPasswordRef}
+        <InputFormHookTemlate
+          error={formatErrors(errors.name)}
+          text="Jane"
+          type="text"
+          name="name"
+          register={register}
         />
-        <ImgInput error={imgErrorRef.current} ref={refList.inputImgRef} />
+        <InputFormHookTemlate
+          error={formatErrors(errors.age)}
+          text=""
+          type="number"
+          name="age"
+          register={register}
+        />
+        <InputFormHookTemlate
+          error={formatErrors(errors.email)}
+          name="email"
+          text="user@example.com"
+          type="email"
+          register={register}
+        />
+        <InputPassword
+          error={formatErrors(errors.password)}
+          register={register}
+          name="password"
+        />
+        <InputPassword
+          error={formatErrors(errors.confirmPassword)}
+          register={register}
+          name="confirmPassword"
+        />
+        <InputCountry
+          error={formatErrors(errors.country)}
+          register={register}
+        />
+        <InputHookGender
+          error={formatErrors(errors.gender)}
+          name="gender"
+          register={register}
+        />
+        <Checkbox
+          name="accept"
+          label="accept Terms and Conditions agreement"
+          type="checkbox"
+          register={register}
+        />
+        <ImgInputHook
+          error={formatErrors(errors.img)}
+          name="img"
+          register={register}
+        />
       </div>
       <div className={styles.buttonContainer}>
-        <Button btnType="submit">Submit</Button>
+        <Button btnType="submit" disabled={!isValid}>
+          Submit
+        </Button>
       </div>
     </form>
   );

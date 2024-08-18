@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import styles from '../../components/input.module.scss';
-import InputFormHookTemlate from '../input-form-hook-template/input-form-hook-template';
+import InputFormHookTemplate from '../input-form-hook-template/input-form-hook-template';
 import ImgInputHook from '../img-Input/img-hook-input';
 import InputHookGender from '../input-gender/input-hook-gender';
 import InputPassword from '../input-password/input-password';
@@ -23,10 +23,11 @@ import {
   createInputValidationSchema,
   createConfirmPasswordValidationSchema,
 } from '../../utils/const/validation-const';
-import { convertToBase64 } from '../../utils/const/convert-img';
+import { convertToBase64 } from '../../utils/const/convert-img.ts';
 
 const FormHookContent: React.FC = () => {
   const [password, setPassword] = useState<string>('');
+  const [img, setImg] = useState<string | null>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -52,19 +53,26 @@ const FormHookContent: React.FC = () => {
   });
 
   const passwordValue = watch('password');
+  const fileInput = watch('img');
+
+  React.useEffect(() => {
+    if (fileInput && fileInput.length > 0) {
+      convertToBase64(fileInput[0] as unknown as File)
+        .then((res) => {
+          setImg(res);
+        })
+        .catch((err) => {
+          console.log(err, 'err');
+        });
+    }
+  }, [fileInput]);
+
   React.useEffect(() => {
     setPassword(passwordValue);
   }, [passwordValue]);
 
-  const handleFormSubmit: SubmitHandler<FormDataStore> = async (data) => {
-    if (data.img?.[0]) {
-      const formattedData: FormDataStore = {
-        ...data,
-        img: await convertToBase64(data.img?.[0]),
-      };
-
-      dispatch(addFormData(formattedData));
-    }
+  const handleFormSubmit: SubmitHandler<FormDataStore> = (data) => {
+    dispatch(addFormData({ ...data, img }));
     navigate('/');
   };
 
@@ -79,21 +87,21 @@ const FormHookContent: React.FC = () => {
       className={styles.form}
     >
       <div className={styles.formInner}>
-        <InputFormHookTemlate
+        <InputFormHookTemplate
           error={formatErrors(errors.name)}
           text="Jane"
           type="text"
           name="name"
           register={register}
         />
-        <InputFormHookTemlate
+        <InputFormHookTemplate
           error={formatErrors(errors.age)}
           text=""
           type="number"
           name="age"
           register={register}
         />
-        <InputFormHookTemlate
+        <InputFormHookTemplate
           error={formatErrors(errors.email)}
           name="email"
           text="user@example.com"

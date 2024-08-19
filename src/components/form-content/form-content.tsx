@@ -16,15 +16,20 @@ import {
   createEmailValidationSchema,
   createPasswordValidationSchema,
   createConfirmPasswordValidationSchema,
+  createCountryValidationSchema,
 } from '../../utils/const/validation-const';
 import Checkbox from '../ui/checkbox/checkbox';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addFormData } from '../../store/slices/form-fields';
+import { CountryState } from '../../store/slices/country-slices';
 import styles from '../../components/input.module.scss';
 
 const FormContent: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const countries = useSelector(
+    (state: { country: CountryState }) => state.country.countries,
+  );
   const refList = {
     formRef: React.createRef<HTMLFormElement>(),
     inputNameRef: React.createRef<HTMLInputElement>(),
@@ -109,7 +114,7 @@ const FormContent: React.FC = () => {
       },
       country: {
         value: refList.inputCountryRef.current?.value || '',
-        validationSchema: createInputValidationSchema(),
+        validationSchema: createCountryValidationSchema(countries),
         errorRef: countryErrorRef,
       },
     };

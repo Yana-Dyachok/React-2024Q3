@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -21,16 +21,20 @@ import {
   createEmailValidationSchema,
   createPasswordValidationSchema,
   createInputValidationSchema,
+  createCountryValidationSchema,
   createConfirmPasswordValidationSchema,
 } from '../../utils/const/validation-const';
 import { convertToBase64 } from '../../utils/const/convert-img.ts';
+import { CountryState } from '../../store/slices/country-slices.ts';
 
 const FormHookContent: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [img, setImg] = useState<string | null>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const countries = useSelector(
+    (state: { country: CountryState }) => state.country.countries,
+  );
   const schema = yup.object().shape({
     name: createNameValidationSchema(),
     age: createAgeValidationSchema(),
@@ -39,7 +43,7 @@ const FormHookContent: React.FC = () => {
     password: createPasswordValidationSchema(),
     confirmPassword: createConfirmPasswordValidationSchema(password),
     img: createImageConvertValidationSchema(),
-    country: createInputValidationSchema(),
+    country: createCountryValidationSchema(countries),
   });
 
   const {

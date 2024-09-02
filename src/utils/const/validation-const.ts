@@ -36,6 +36,12 @@ export const createAgeValidationSchema = () =>
 export const createInputValidationSchema = () =>
   yup.string().required('*choice is required');
 
+export const createCountryValidationSchema = (countries: string[]) =>
+  yup
+    .string()
+    .required('*country is required')
+    .oneOf(countries, '*please select a valid country');
+
 export const createEmailValidationSchema = () =>
   yup
     .string()

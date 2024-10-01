@@ -1,5 +1,8 @@
 # React forms.
-
+Deployment:  [link]( https://react-dyachok.netlify.app/)
+![form](https://github.com/user-attachments/assets/8594c43f-bba1-4f02-b724-c8b0bd01602c)
+![task-hook](https://github.com/user-attachments/assets/f7b87318-e372-4a7c-b693-a35c4067af9e)
+![task-h](https://github.com/user-attachments/assets/c30e4296-01b8-4f66-bd0d-41fbe3112331)
 ## Technical Requirements
 
 1. Create a separate branch for this task. Branch name: "forms". For this task you will need to create a new application.

@@ -7,4 +7,6 @@ export default defineConfig({
   css: {
     modules: {},
   },
+  
+  base: "/?page=1"
 });

@@ -8,5 +8,5 @@ export default defineConfig({
     modules: {},
   },
   
-  base: "/React-2024Q3/"
+  base: ""
 });

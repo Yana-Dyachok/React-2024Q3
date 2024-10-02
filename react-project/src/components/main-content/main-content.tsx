@@ -25,8 +25,8 @@ const MainContent = () => {
   );
 
   const closeDescription = () => {
-    if (pathname !== '/') {
-      navigate(`/${search}`);
+    if (pathname !== '/React-2024Q3/?page=1') {
+      navigate(`/React-2024Q3/${search}`);
     }
   };
 
@@ -47,7 +47,7 @@ const MainContent = () => {
       setPage(Number(initialPage));
     } else {
       setPage(1);
-      navigate(`/?page=1`, { replace: true });
+      navigate(`/React-2024Q3/?page=1`, { replace: true });
     }
   }, [search, navigate, pageSize]);
 

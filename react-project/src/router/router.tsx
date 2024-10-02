@@ -10,7 +10,7 @@ import DescriptionItem from '../pages/description-item/description-item';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<MainPage />}>
+      <Route path="/React-2024Q3/" element={<MainPage />}>
         <Route path="item/:itemId" element={<DescriptionItem />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />

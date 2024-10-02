@@ -34,7 +34,7 @@ class ErrorBoundary extends React.Component<
       return (
         <div className={styles.container}>
           <h2>Ooops... You are getting an error</h2>
-          <Button btnType="button" to="/">
+          <Button btnType="button" to="/React-2024Q3/?page=1">
             Back
           </Button>
         </div>

@@ -26,7 +26,7 @@ function NotFoundPage() {
           <span className={styles.digitThird}>4</span>
         </span>
       </section>
-      <Button btnType="button" to="/">
+      <Button btnType="button" to="/React-2024Q3/?page=1">
         Back to main
       </Button>
     </div>

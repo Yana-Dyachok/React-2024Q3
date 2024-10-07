@@ -1,6 +1,8 @@
 import Button from '../../components/ui/button/button';
 import styles from './not-found.module.scss';
 
+export const handle = { hidePath: true };
+
 function NotFoundPage() {
   return (
     <div className={styles.errorBlock}>

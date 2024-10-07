@@ -11,7 +11,7 @@ interface RenderFormProps {
 const RenderForm: React.FC<RenderFormProps> = ({ formData, title }) => {
   return (
     <div className={styles.renderBlock}>
-      <h2>{title}</h2>
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.renderFormsBlock}>
         <p>
           Name: <span className={styles.renderItems}>{formData.name}</span>

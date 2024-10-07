@@ -4,7 +4,7 @@ import styles from '../pages.module.scss';
 const FormPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>Form</h1>
+      <h1>Controlled Form</h1>
       <FormContent />
     </div>
   );

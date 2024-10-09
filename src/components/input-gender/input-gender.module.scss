@@ -1,0 +1,20 @@
+.inputBlock {
+  height: 12rem;
+}
+
+.title {
+  font-size: 1.7rem;
+}
+
+.inputInner {
+  display: flex;
+  gap: 1rem;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  text-align: left;
+  color: red;
+}

@@ -1,0 +1,49 @@
+@import '../../styles/colors.scss';
+
+.renderBlock {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  padding: 1rem;
+  &:last-child {
+    background-color: inherit;
+    border-radius: 1rem;
+    animation: highlight 10s forwards;
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: $c-white;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.renderFormsBlock {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 2rem;
+  border: 0.1rem solid $c-orange-900;
+  border-radius: 2rem;
+}
+
+.renderItems {
+  color: $c-orange-900;
+  margin-left: 1rem;
+  font-family: 'oswald';
+}
+
+@media (max-width: 500px) {
+  .renderFormsBlock {
+    width: 30rem;
+  }
+}
